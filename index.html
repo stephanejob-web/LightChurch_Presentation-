@@ -998,152 +998,172 @@
             }
         }
 
-        /* ===== ORBIT ANIMATION ===== */
-        .orbit-wrapper {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 30vw;
-            height: 10vw;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 0;
-        }
+        /* (Orbit animations moved to orbit-scene system below) */
 
-        .orbiting-church {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            font-size: 1.8vw;
-            /* Proportional sizing for TV */
-            font-weight: 800;
-            padding: 0.8vw 2vw;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid var(--accent-1);
-            border-radius: 980px;
+        /* ===== ORBIT SYSTEM (Slide 4) ===== */
+        .orbit-scene {
+            position: relative;
+            width: 70vw;
+            height: 34vw;
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(20px);
-            white-space: nowrap;
-            color: #FFFFFF;
-            box-shadow: 0 0 30px rgba(41, 151, 255, 0.4);
-            opacity: 0;
-            transition: opacity 1s ease;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+            margin-top: 0.5vw;
         }
 
-        .slide.active .orbiting-church {
+        .hub-core {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hub-glow-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 18vw;
+            height: 18vw;
+            background: radial-gradient(circle, rgba(41, 151, 255, 0.25) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            filter: blur(40px);
+            z-index: 0;
+            pointer-events: none;
+            animation: hub-breathe 4s infinite ease-in-out;
+        }
+
+        @keyframes hub-breathe {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+            50% { transform: translate(-50%, -50%) scale(1.4); opacity: 0.7; }
+        }
+
+        .orbit-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+        }
+
+        .slide.active .orbit-ring {
+            animation: ring-appear 1.2s ease forwards;
+        }
+
+        .slide.active .orbit-ring-2 {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes ring-appear {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .orbit-ring-1 {
+            width: 26vw;
+            height: 26vw;
+            border: 1px solid rgba(41, 151, 255, 0.12);
+        }
+
+        .orbit-ring-2 {
+            width: 46vw;
+            height: 46vw;
+            border: 1px solid rgba(41, 151, 255, 0.06);
+        }
+
+        .orbit-church {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 1.1vw;
+            font-weight: 700;
+            padding: 0.5vw 1.4vw;
+            background: rgba(41, 151, 255, 0.08);
+            border: 1px solid rgba(41, 151, 255, 0.25);
+            border-radius: 980px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            white-space: nowrap;
+            color: var(--text);
+            box-shadow: 0 0 20px rgba(41, 151, 255, 0.12);
+            opacity: 0;
+            transition: opacity 0.8s ease 0.6s;
+        }
+
+        .slide.active .orbit-church {
             opacity: 1;
         }
 
-        /* 3D Orbit Simulation refined for large TV text */
-        @keyframes orbit-path {
+        /* Inner orbit — clockwise, 14s */
+        @keyframes orbit-cw {
             0% {
-                transform: translate(-50%, -50%) rotate(0deg) translateX(22vw) rotate(0deg) scale(1.2);
+                transform: translate(-50%, -50%) rotate(0deg) translateX(13vw) rotate(0deg) scale(1.08);
                 z-index: 10;
                 filter: blur(0);
-                opacity: 1;
             }
-
             25% {
-                transform: translate(-50%, -50%) rotate(90deg) translateX(22vw) rotate(-90deg) scale(0.9);
-                z-index: -1;
-                filter: blur(2px);
-                opacity: 0.6;
+                transform: translate(-50%, -50%) rotate(90deg) translateX(13vw) rotate(-90deg) scale(0.95);
+                z-index: 1;
+                filter: blur(1px);
             }
-
             50% {
-                transform: translate(-50%, -50%) rotate(180deg) translateX(22vw) rotate(-180deg) scale(0.7);
-                z-index: -2;
-                filter: blur(5px);
-                opacity: 0.3;
-            }
-
-            75% {
-                transform: translate(-50%, -50%) rotate(270deg) translateX(22vw) rotate(-270deg) scale(0.9);
+                transform: translate(-50%, -50%) rotate(180deg) translateX(13vw) rotate(-180deg) scale(0.8);
                 z-index: -1;
                 filter: blur(2px);
-                opacity: 0.6;
             }
-
+            75% {
+                transform: translate(-50%, -50%) rotate(270deg) translateX(13vw) rotate(-270deg) scale(0.95);
+                z-index: 1;
+                filter: blur(1px);
+            }
             100% {
-                transform: translate(-50%, -50%) rotate(360deg) translateX(22vw) rotate(-360deg) scale(1.2);
+                transform: translate(-50%, -50%) rotate(360deg) translateX(13vw) rotate(-360deg) scale(1.08);
                 z-index: 10;
                 filter: blur(0);
-                opacity: 1;
             }
         }
 
-        .church-1 {
-            animation: orbit-path 8s infinite linear;
-        }
+        .oc-i { animation: orbit-cw 14s linear infinite; }
+        .oc-i1 { animation-delay: 0s; }
+        .oc-i2 { animation-delay: -4.67s; }
+        .oc-i3 { animation-delay: -9.33s; }
 
-        .church-2 {
-            animation: orbit-path 8s infinite linear -2s;
-        }
-
-        .church-3 {
-            animation: orbit-path 8s infinite linear -4s;
-        }
-
-        .church-4 {
-            animation: orbit-path 8s infinite linear -6s;
-        }
-
-        /* ===== CONNECTION LINES & GREEN FLOW ===== */
-        .connection-line {
-            position: absolute;
-            right: 100%;
-            top: 50%;
-            width: 22vw;
-            height: 2px;
-            background: rgba(41, 151, 255, 0.3);
-            transform-origin: right center;
-            pointer-events: none;
-            z-index: -1;
-            overflow: visible;
-        }
-
-        /* Green Particle Flow (Website Style) */
-        .connection-line::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 0;
-            width: 8px;
-            height: 8px;
-            background: #00FF88;
-            /* Bright Green from site */
-            border-radius: 50%;
-            box-shadow: 0 0 10px #00FF88, 0 0 20px #00FF88;
-            transform: translate(50%, -50%);
-            animation: flow-to-hub 2s infinite linear;
-        }
-
-        @keyframes flow-to-hub {
+        /* Outer orbit — counter-clockwise, 22s */
+        @keyframes orbit-ccw {
             0% {
-                transform: translate(0, -50%) scale(0.5);
-                opacity: 0;
-                right: 0;
+                transform: translate(-50%, -50%) rotate(0deg) translateX(23vw) rotate(0deg) scale(1.05);
+                z-index: 10;
+                filter: blur(0);
             }
-
-            20% {
-                opacity: 1;
-                transform: translate(0, -50%) scale(1);
+            25% {
+                transform: translate(-50%, -50%) rotate(-90deg) translateX(23vw) rotate(90deg) scale(0.9);
+                z-index: 1;
+                filter: blur(1.5px);
             }
-
-            80% {
-                opacity: 1;
-                transform: translate(0, -50%) scale(1);
+            50% {
+                transform: translate(-50%, -50%) rotate(-180deg) translateX(23vw) rotate(180deg) scale(0.72);
+                z-index: -1;
+                filter: blur(3px);
             }
-
+            75% {
+                transform: translate(-50%, -50%) rotate(-270deg) translateX(23vw) rotate(270deg) scale(0.9);
+                z-index: 1;
+                filter: blur(1.5px);
+            }
             100% {
-                transform: translate(5vw, -50%) scale(0.5);
-                opacity: 0;
-                right: 100%;
+                transform: translate(-50%, -50%) rotate(-360deg) translateX(23vw) rotate(360deg) scale(1.05);
+                z-index: 10;
+                filter: blur(0);
             }
         }
+
+        .oc-o { animation: orbit-ccw 22s linear infinite; font-size: 1vw; padding: 0.4vw 1.2vw; }
+        .oc-o1 { animation-delay: 0s; }
+        .oc-o2 { animation-delay: -7.33s; }
+        .oc-o3 { animation-delay: -14.67s; }
 
         /* ===== MAP FRANCE ===== */
         .map-container {
@@ -1378,13 +1398,6 @@
             border-color: rgba(255, 59, 48, 0.3);
         }
 
-        body.light .orbiting-church {
-            background: rgba(0, 0, 0, 0.06);
-            color: var(--text);
-            text-shadow: none;
-            box-shadow: 0 0 30px rgba(0, 113, 227, 0.3);
-        }
-
         body.light .tech-bar-list,
         body.light .tech-stack {
             color: rgba(255, 255, 255, 0.9);
@@ -1392,10 +1405,6 @@
 
         body.light .stat-lbl {
             color: rgba(255, 255, 255, 0.9);
-        }
-
-        body.light .connection-line {
-            background: rgba(0, 113, 227, 0.3);
         }
 
         body.light .shimmer-text {
@@ -1419,6 +1428,24 @@
 
         body.light .core-container::after {
             background: rgba(0, 113, 227, 0.15);
+        }
+
+        body.light .orbit-ring-1 {
+            border-color: rgba(0, 113, 227, 0.15);
+        }
+
+        body.light .orbit-ring-2 {
+            border-color: rgba(0, 113, 227, 0.08);
+        }
+
+        body.light .orbit-church {
+            background: rgba(0, 113, 227, 0.06);
+            border-color: rgba(0, 113, 227, 0.2);
+            box-shadow: 0 0 20px rgba(0, 113, 227, 0.08);
+        }
+
+        body.light .hub-glow-bg {
+            background: radial-gradient(circle, rgba(0, 113, 227, 0.15) 0%, transparent 70%);
         }
 
         /* Lightning Bolt Central Hub Overlay */
@@ -1455,35 +1482,7 @@
             }
         }
 
-        /* Central focal point pulse */
-        .core-container::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 12vw;
-            height: 12vw;
-            background: rgba(41, 151, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(40px);
-            z-index: -1;
-            animation: focal-pulse 3s infinite;
-        }
-
-        @keyframes focal-pulse {
-
-            0%,
-            100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.2;
-            }
-
-            50% {
-                transform: translate(-50%, -50%) scale(1.5);
-                opacity: 0.5;
-            }
-        }
+        /* (focal-pulse replaced by hub-glow-bg in orbit-scene) */
     </style>
 </head>
 
@@ -1655,38 +1654,43 @@
             </p>
         </div>
 
-        <!-- ======== SLIDE 4 : LA SOLUTION (Animation) ======== -->
+        <!-- ======== SLIDE 4 : LA SOLUTION (Orbit) ======== -->
         <div class="slide">
             <p class="overline accent anim">La solution</p>
-            <div class="hero-title anim d1 core-container"
-                style="display:flex; flex-direction:column; align-items:center; min-height: 40vh; justify-content: center;">
-                <div class="core-glow"
-                    style="background: radial-gradient(circle, #2997FF 0%, transparent 70%); opacity:0.6;"></div>
 
-                <svg class="bolt-icon" viewBox="0 0 24 24">
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                </svg>
+            <div class="orbit-scene anim d1">
+                <!-- Orbit rings visibles -->
+                <div class="orbit-ring orbit-ring-1"></div>
+                <div class="orbit-ring orbit-ring-2"></div>
 
-                <span class="gradient-text shimmer-text" style="font-size: 5vw; font-weight: 800; letter-spacing: -0.03em;">Light Church</span>
-                <span class="hub-label-sub">Hub Central</span>
+                <!-- Glow derriere le hub -->
+                <div class="hub-glow-bg"></div>
 
-                <!-- Orbiting elements -->
-                <div class="orbit-wrapper">
-                    <div class="orbiting-church church-1">
-                        <div class="connection-line"></div>Eglise Paris
-                    </div>
-                    <div class="orbiting-church church-2">
-                        <div class="connection-line"></div>Eglise Lyon
-                    </div>
-                    <div class="orbiting-church church-3">
-                        <div class="connection-line"></div>Eglise Toulon
-                    </div>
-                    <div class="orbiting-church church-4">
-                        <div class="connection-line"></div>Eglise Marseille
-                    </div>
+                <!-- Hub central -->
+                <div class="hub-core">
+                    <svg class="bolt-icon" viewBox="0 0 24 24">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg>
+                    <span class="gradient-text shimmer-text"
+                        style="font-size: 4.5vw; font-weight: 800; letter-spacing: -0.03em;">Light Church</span>
+                    <span class="hub-label-sub">Hub Central</span>
                 </div>
+
+                <!-- Inner orbit — 3 eglises, sens horaire -->
+                <div class="orbit-church oc-i oc-i1">Paris</div>
+                <div class="orbit-church oc-i oc-i2">Lyon</div>
+                <div class="orbit-church oc-i oc-i3">Marseille</div>
+
+                <!-- Outer orbit — 3 eglises, sens anti-horaire -->
+                <div class="orbit-church oc-o oc-o1">Bordeaux</div>
+                <div class="orbit-church oc-o oc-o2">Lille</div>
+                <div class="orbit-church oc-o oc-o3">Toulouse</div>
             </div>
-            <p class="body-text anim d2" style="margin-top: 2vw;">Une seule plateforme qui centralise tout</p>
+
+            <p class="anim d2" style="font-size: 2.2vw; text-align: center; margin-top: 1.5vw; font-weight: 500;">
+                Une seule plateforme.
+                <span class="gradient-gold">Toutes les eglises connectees.</span>
+            </p>
         </div>
 
         <!-- ======== SLIDE 5 : LES PILIERS ======== -->
