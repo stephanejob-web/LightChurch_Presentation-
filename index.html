@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Church - Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* ===== RESPONSIVE FONT SCALE (vw) ===== */
+            --fs-hero: 5vw;
+            --fs-section: 3.8vw;
+            --fs-body: 1.8vw;
+            --fs-overline: 1.2vw;
+            --fs-card-title: 1.6vw;
+            --fs-card-text: 1.3vw;
+            --fs-small: 1.1vw;
+            --fs-stat: 3.2vw;
+            --fs-nav: 1vw;
+
+            /* ===== DARK THEME (default) ===== */
+            --bg: #000000;
+            --text: #F5F5F7;
+            --grey: #86868B;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --accent-1: #2997FF;
+            --accent-2: #68DCFC;
+            --gold: #BF9B30;
+            --gold-light: #E8D48B;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --card-hover: rgba(255, 255, 255, 0.07);
+            --problem-bg: rgba(255, 59, 48, 0.04);
+            --problem-border: rgba(255, 59, 48, 0.1);
+            --problem-hover: rgba(255, 59, 48, 0.08);
+            --consequence-bg: rgba(255, 255, 255, 0.03);
+            --consequence-border: rgba(255, 255, 255, 0.05);
+            --nav-bg: rgba(0, 0, 0, 0.7);
+            --nav-btn-bg: rgba(255, 255, 255, 0.08);
+            --wf-bg: rgba(255, 255, 255, 0.05);
+            --wf-border: rgba(255, 255, 255, 0.08);
+            --close-line: rgba(255, 255, 255, 0.1);
+            --dot-color: var(--accent-1);
+            --dot-white: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ===== LIGHT THEME ===== */
+        body.light {
+            --bg: #FFFFFF;
+            --text: #1D1D1F;
+            --grey: #6E6E73;
+            --text-secondary: rgba(0, 0, 0, 0.7);
+            --text-muted: rgba(0, 0, 0, 0.55);
+            --accent-1: #0071E3;
+            --accent-2: #147CE5;
+            --gold: #A07B1A;
+            --gold-light: #C4981F;
+            --card-bg: rgba(0, 0, 0, 0.03);
+            --card-border: rgba(0, 0, 0, 0.06);
+            --card-hover: rgba(0, 0, 0, 0.06);
+            --problem-bg: rgba(255, 59, 48, 0.04);
+            --problem-border: rgba(255, 59, 48, 0.12);
+            --problem-hover: rgba(255, 59, 48, 0.08);
+            --consequence-bg: rgba(0, 0, 0, 0.02);
+            --consequence-border: rgba(0, 0, 0, 0.06);
+            --nav-bg: rgba(255, 255, 255, 0.75);
+            --nav-btn-bg: rgba(0, 0, 0, 0.06);
+            --wf-bg: rgba(0, 0, 0, 0.04);
+            --wf-border: rgba(0, 0, 0, 0.08);
+            --close-line: rgba(0, 0, 0, 0.1);
+            --dot-color: var(--accent-1);
+            --dot-white: rgba(255, 255, 255, 0.5);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+            transition: background 0.5s ease, color 0.5s ease;
+            width: 100vw;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== PROGRESS ===== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+            z-index: 1001;
+            transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* ===== NAV ===== */
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2vw;
+            padding: 1vw 2vw;
+            background: var(--nav-bg);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border-top: 1px solid var(--card-border);
+            transition: background 0.5s ease;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5vw;
+            padding: 0.6vw 1.6vw;
+            border: none;
+            border-radius: 980px;
+            background: var(--nav-btn-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size: var(--fs-nav);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            user-select: none;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-1);
+            transform: scale(1.05);
+        }
+
+        .nav-btn:active {
+            transform: scale(0.98);
+        }
+
+        .nav-btn svg {
+            width: 1vw;
+            height: 1vw;
+            fill: currentColor;
+        }
+
+        .slide-counter {
+            font-size: var(--fs-nav);
+            color: var(--grey);
+            font-weight: 500;
+            min-width: 4vw;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* ===== FULLSCREEN ===== */
+        .top-btn {
+            position: fixed;
+            z-index: 1001;
+            width: 2.5vw;
+            height: 2.5vw;
+            border: none;
+            border-radius: 50%;
+            background: var(--nav-btn-bg);
+            backdrop-filter: blur(20px);
+            color: var(--grey);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .top-btn:hover {
+            background: var(--card-hover);
+            color: var(--text);
+        }
+
+        .fullscreen-btn {
+            top: 1.2vw;
+            right: 1.2vw;
+        }
+
+        .theme-btn {
+            top: 1.2vw;
+            right: 4.5vw;
+        }
+
+        .fullscreen-btn svg {
+            width: 1.2vw;
+            height: 1.2vw;
+            fill: currentColor;
+        }
+
+        /* ===== SLIDES ===== */
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3vw 5vw 5.5vw;
+            opacity: 0;
+            transform: scale(0.98) translateY(10px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: all;
+        }
+
+        /* ===== APPLE TYPOGRAPHY (RESPONSIVE) ===== */
+        .overline {
+            font-size: var(--fs-overline);
+            font-weight: 600;
+            letter-spacing: 0.1vw;
+            color: var(--grey);
+            margin-bottom: 0.6vw;
+        }
+
+        .overline.accent {
+            color: var(--accent-1);
+        }
+
+        .hero-title {
+            font-size: var(--fs-hero);
+            font-weight: 800;
+            line-height: 1.05;
+            text-align: center;
+            letter-spacing: -0.03em;
+        }
+
+        .section-title {
+            font-size: var(--fs-section);
+            font-weight: 700;
+            line-height: 1.1;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .body-text {
+            font-size: var(--fs-body);
+            font-weight: 400;
+            color: var(--grey);
+            text-align: center;
+            max-width: 55vw;
+            line-height: 1.4;
+            margin-top: 0.8vw;
+        }
+
+        /* ===== GRADIENT TEXT ===== */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-red {
+            background: linear-gradient(135deg, #FF6B6B, #EE5A24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== GLASS CARDS ===== */
+        .glass {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .glass:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        /* ===== GRIDS ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2vw;
+            width: 100%;
+            max-width: 90vw;
+            margin-top: 2.5vw;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2vw;
+            width: 100%;
+            max-width: 92vw;
+            margin-top: 2.5vw;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1vw;
+            width: 100%;
+            max-width: 92vw;
+            margin-top: 2.5vw;
+        }
+
+        /* ===== PROBLEM CARDS ===== */
+        .problem-card {
+            background: var(--problem-bg);
+            border: 1px solid var(--problem-border);
+            border-radius: 1.2vw;
+            padding: 1.5vw 1.3vw;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .problem-card:hover {
+            background: var(--problem-hover);
+            border-color: rgba(255, 59, 48, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .problem-icon {
+            font-size: 2vw;
+            margin-bottom: 0.8vw;
+            opacity: 0.9;
+        }
+
+        .problem-icon-svg {
+            margin-bottom: 1vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: drop-shadow(0 0 1.5vw rgba(255, 255, 255, 0.08));
+        }
+
+        .problem-title {
+            font-size: var(--fs-card-title);
+            font-weight: 700;
+            color: #FF6B6B;
+            margin-bottom: 0.5vw;
+        }
+
+        .problem-desc {
+            font-size: var(--fs-card-text);
+            color: var(--grey);
+            line-height: 1.5;
+        }
+
+        /* ===== CONSEQUENCE CARDS ===== */
+        .consequence-card {
+            background: var(--consequence-bg);
+            border: 1px solid var(--consequence-border);
+            border-radius: 1.2vw;
+            padding: 1.8vw 1.3vw;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .consequence-card:hover {
+            transform: translateY(-4px);
+            background: var(--card-hover);
+        }
+
+        .consequence-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #FF6B6B, #EE5A24);
+        }
+
+        .c-number {
+            font-size: 3vw;
+            font-weight: 900;
+            color: rgba(255, 107, 107, 0.15);
+            line-height: 1;
+            margin-bottom: 0.6vw;
+        }
+
+        .c-title {
+            font-size: var(--fs-card-title);
+            font-weight: 700;
+            margin-bottom: 0.6vw;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        .c-text {
+            font-size: var(--fs-card-text);
+            color: var(--grey);
+            line-height: 1.5;
+        }
+
+        /* ===== PILLAR CARDS ===== */
+        .pillar {
+            border-radius: 1.5vw;
+            padding: 2.5vw 2vw;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar:hover {
+            transform: translateY(-6px) scale(1.02);
+        }
+
+        .pillar.blue {
+            background: linear-gradient(145deg, #0A4DA6, #2997FF);
+        }
+
+        .pillar.green {
+            background: linear-gradient(145deg, #1B6B35, #30B04E);
+        }
+
+        .pillar.gold {
+            background: linear-gradient(145deg, #8B6914, #D4A632);
+        }
+
+        .pillar-emoji {
+            font-size: 3vw;
+            margin-bottom: 1.2vw;
+        }
+
+        .pillar-name {
+            font-size: 2vw;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15vw;
+            margin-bottom: 0.4vw;
+        }
+
+        .pillar-line {
+            width: 2.5vw;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 1vw auto;
+            border-radius: 2px;
+        }
+
+        .pillar-desc {
+            font-size: var(--fs-card-text);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* ===== FEATURE PANELS ===== */
+        .panel {
+            border-radius: 1.5vw;
+            padding: 2vw 2vw;
+        }
+
+        .panel.glass-panel {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+        }
+
+        .panel.blue-panel {
+            background: linear-gradient(145deg, #0A4DA6, #1976D2);
+        }
+
+        .panel.dark-panel {
+            background: linear-gradient(145deg, #0D1117, #161B22);
+            border: 1px solid var(--card-border);
+        }
+
+        body.light .panel.dark-panel {
+            background: linear-gradient(145deg, #F0F0F5, #E8E8ED);
+        }
+
+        .panel.green-panel {
+            background: linear-gradient(145deg, #1B6B35, #2E8B48);
+        }
+
+        .panel-head {
+            font-size: var(--fs-card-title);
+            font-weight: 700;
+            margin-bottom: 1.5vw;
+            display: flex;
+            align-items: center;
+            gap: 0.6vw;
+        }
+
+        .panel-head.gold-head {
+            color: var(--gold-light);
+        }
+
+        .feat {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7vw;
+            margin-bottom: 0.8vw;
+            font-size: var(--fs-card-text);
+            line-height: 1.4;
+            color: var(--text-secondary);
+        }
+
+        .feat .dot {
+            width: 0.4vw;
+            height: 0.4vw;
+            border-radius: 50%;
+            background: var(--dot-color);
+            margin-top: 0.5vw;
+            flex-shrink: 0;
+        }
+
+        .feat.white-dot .dot {
+            background: var(--dot-white);
+        }
+
+        .feat.gold-dot .dot {
+            background: var(--gold);
+        }
+
+        /* ===== ADMIN CARDS ===== */
+        .admin-card {
+            border-radius: 1.2vw;
+            padding: 1.8vw 1.3vw;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .admin-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .admin-icon {
+            font-size: 2.5vw;
+            margin-bottom: 1vw;
+        }
+
+        .admin-name {
+            font-size: var(--fs-card-title);
+            font-weight: 700;
+            margin-bottom: 0.6vw;
+        }
+
+        .admin-desc {
+            font-size: var(--fs-card-text);
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        /* ===== WORKFLOW ===== */
+        .workflow {
+            width: 100%;
+            max-width: 90vw;
+            margin-top: 1.8vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6vw;
+            flex-wrap: wrap;
+        }
+
+        .wf-step {
+            background: var(--wf-bg);
+            border: 1px solid var(--wf-border);
+            border-radius: 980px;
+            padding: 0.6vw 1.3vw;
+            font-size: var(--fs-small);
+            font-weight: 500;
+        }
+
+        .wf-step.done {
+            border-color: rgba(48, 176, 78, 0.4);
+            color: #30B04E;
+        }
+
+        .wf-arrow {
+            color: var(--grey);
+            font-size: var(--fs-small);
+        }
+
+        /* ===== TECH CARDS ===== */
+        .tech-card {
+            border-radius: 1.2vw;
+            padding: 1.8vw 1.5vw;
+            text-align: center;
+        }
+
+        .tech-name {
+            font-size: var(--fs-card-title);
+            font-weight: 700;
+            margin-bottom: 1vw;
+        }
+
+        .tech-stack {
+            font-size: var(--fs-card-text);
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .tech-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2vw;
+            width: 100%;
+            max-width: 92vw;
+            margin-top: 1.2vw;
+        }
+
+        .tech-bar {
+            border-radius: 1.2vw;
+            padding: 1.5vw;
+            text-align: center;
+        }
+
+        .tech-bar-title {
+            font-size: var(--fs-card-title);
+            font-weight: 700;
+            margin-bottom: 0.5vw;
+        }
+
+        .tech-bar-list {
+            font-size: var(--fs-card-text);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== STAT CARDS ===== */
+        .stat {
+            border-radius: 1.2vw;
+            padding: 1.6vw 1vw;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .stat:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-num {
+            font-size: var(--fs-stat);
+            font-weight: 900;
+            margin-bottom: 0.4vw;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-lbl {
+            font-size: var(--fs-card-text);
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.4;
+        }
+
+        /* ===== PHASE CARDS ===== */
+        .phase {
+            border-radius: 1.5vw;
+            padding: 2.2vw 1.8vw;
+        }
+
+        .phase-over {
+            font-size: var(--fs-small);
+            text-transform: uppercase;
+            letter-spacing: 0.1vw;
+            opacity: 0.6;
+            margin-bottom: 0.4vw;
+        }
+
+        .phase-name {
+            font-size: 2vw;
+            font-weight: 800;
+            margin-bottom: 1vw;
+        }
+
+        .phase-line {
+            width: 2.5vw;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            margin-bottom: 1.2vw;
+        }
+
+        .phase-row {
+            font-size: var(--fs-card-text);
+            margin-bottom: 0.9vw;
+            display: flex;
+            align-items: center;
+            gap: 0.5vw;
+        }
+
+        .phase-row .arr {
+            opacity: 0.5;
+        }
+
+        /* ===== CLOSING ===== */
+        .verse-text {
+            font-size: 4.5vw;
+            font-weight: 700;
+            font-style: italic;
+            text-align: center;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .verse-source {
+            font-size: var(--fs-body);
+            color: var(--grey);
+            margin-top: 0.8vw;
+            text-align: center;
+            font-style: normal;
+        }
+
+        .close-line {
+            width: 4vw;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 2.5vw auto;
+        }
+
+        .close-name {
+            font-size: 3.5vw;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            text-align: center;
+        }
+
+        .close-url {
+            font-size: var(--fs-body);
+            color: var(--accent-1);
+            text-align: center;
+            margin-top: 0.4vw;
+            font-weight: 500;
+        }
+
+        .close-cta {
+            display: flex;
+            gap: 2vw;
+            margin-top: 2.5vw;
+        }
+
+        .cta-card {
+            padding: 1.3vw 2.8vw;
+            border-radius: 1.2vw;
+            text-align: center;
+        }
+
+        .cta-card.blue-cta {
+            background: rgba(41, 151, 255, 0.1);
+            border: 1px solid rgba(41, 151, 255, 0.2);
+        }
+
+        .cta-card.gold-cta {
+            background: rgba(191, 155, 48, 0.1);
+            border: 1px solid rgba(191, 155, 48, 0.2);
+        }
+
+        .cta-who {
+            font-size: var(--fs-card-title);
+            font-weight: 700;
+            margin-bottom: 0.3vw;
+        }
+
+        .cta-what {
+            font-size: var(--fs-card-text);
+            color: var(--grey);
+        }
+
+        .close-merci {
+            font-size: 2.8vw;
+            font-weight: 800;
+            margin-top: 2.5vw;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .anim {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slide.active .anim {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide.active .d1 {
+            transition-delay: 0.1s;
+        }
+
+        .slide.active .d2 {
+            transition-delay: 0.2s;
+        }
+
+        .slide.active .d3 {
+            transition-delay: 0.35s;
+        }
+
+        .slide.active .d4 {
+            transition-delay: 0.5s;
+        }
+
+        .slide.active .d5 {
+            transition-delay: 0.65s;
+        }
+
+        /* ===== KEYBOARD HINT ===== */
+        .hint {
+            position: fixed;
+            bottom: 4vw;
+            right: 1.5vw;
+            font-size: 0.7vw;
+            color: rgba(255, 255, 255, 0.15);
+            z-index: 999;
+        }
+
+        kbd {
+            display: inline-block;
+            padding: 0.1vw 0.4vw;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.65vw;
+            margin: 0 0.1vw;
+        }
+
+        /* ===== GLOW EFFECTS ===== */
+        .glow-blue {
+            filter: drop-shadow(0 0 60px rgba(41, 151, 255, 0.15));
+        }
+
+        .glow-gold {
+            filter: drop-shadow(0 0 60px rgba(191, 155, 48, 0.15));
+        }
+
+        /* ===== CENTER ANIMATION ===== */
+        .core-container {
+            position: relative;
+            z-index: 1;
+            animation: core-float 6s infinite ease-in-out;
+        }
+
+        @keyframes core-float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .core-glow,
+        .core-glow-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .core-glow {
+            width: 180%;
+            height: 180%;
+            background: radial-gradient(circle, var(--accent-1) 0%, transparent 70%);
+        }
+
+        .core-glow-inner {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--accent-2) 0%, transparent 60%);
+        }
+
+        .slide.active .core-glow {
+            opacity: 0.5;
+            animation: core-pulse-outer 4s infinite ease-in-out;
+        }
+
+        .slide.active .core-glow-inner {
+            opacity: 0.7;
+            animation: core-pulse-inner 2s infinite ease-in-out;
+        }
+
+        @keyframes core-pulse-outer {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(0.85);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes core-pulse-inner {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(0.9);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .shimmer-text {
+            background: linear-gradient(90deg,
+                    var(--accent-1) 0%,
+                    var(--accent-2) 20%,
+                    #FFFFFF 50%,
+                    var(--accent-2) 80%,
+                    var(--accent-1) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        /* ===== ORBIT ANIMATION ===== */
+        .orbit-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30vw;
+            height: 10vw;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orbiting-church {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 1.8vw;
+            /* Proportional sizing for TV */
+            font-weight: 800;
+            padding: 0.8vw 2vw;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent-1);
+            border-radius: 980px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(20px);
+            white-space: nowrap;
+            color: #FFFFFF;
+            box-shadow: 0 0 30px rgba(41, 151, 255, 0.4);
+            opacity: 0;
+            transition: opacity 1s ease;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+        }
+
+        .slide.active .orbiting-church {
+            opacity: 1;
+        }
+
+        /* 3D Orbit Simulation refined for large TV text */
+        @keyframes orbit-path {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) translateX(22vw) rotate(0deg) scale(1.2);
+                z-index: 10;
+                filter: blur(0);
+                opacity: 1;
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotate(90deg) translateX(22vw) rotate(-90deg) scale(0.9);
+                z-index: -1;
+                filter: blur(2px);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotate(180deg) translateX(22vw) rotate(-180deg) scale(0.7);
+                z-index: -2;
+                filter: blur(5px);
+                opacity: 0.3;
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotate(270deg) translateX(22vw) rotate(-270deg) scale(0.9);
+                z-index: -1;
+                filter: blur(2px);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg) translateX(22vw) rotate(-360deg) scale(1.2);
+                z-index: 10;
+                filter: blur(0);
+                opacity: 1;
+            }
+        }
+
+        .church-1 {
+            animation: orbit-path 8s infinite linear;
+        }
+
+        .church-2 {
+            animation: orbit-path 8s infinite linear -2s;
+        }
+
+        .church-3 {
+            animation: orbit-path 8s infinite linear -4s;
+        }
+
+        .church-4 {
+            animation: orbit-path 8s infinite linear -6s;
+        }
+
+        /* ===== CONNECTION LINES & GREEN FLOW ===== */
+        .connection-line {
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            width: 22vw;
+            height: 2px;
+            background: rgba(41, 151, 255, 0.3);
+            transform-origin: right center;
+            pointer-events: none;
+            z-index: -1;
+            overflow: visible;
+        }
+
+        /* Green Particle Flow (Website Style) */
+        .connection-line::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            background: #00FF88;
+            /* Bright Green from site */
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00FF88, 0 0 20px #00FF88;
+            transform: translate(50%, -50%);
+            animation: flow-to-hub 2s infinite linear;
+        }
+
+        @keyframes flow-to-hub {
+            0% {
+                transform: translate(0, -50%) scale(0.5);
+                opacity: 0;
+                right: 0;
+            }
+
+            20% {
+                opacity: 1;
+                transform: translate(0, -50%) scale(1);
+            }
+
+            80% {
+                opacity: 1;
+                transform: translate(0, -50%) scale(1);
+            }
+
+            100% {
+                transform: translate(5vw, -50%) scale(0.5);
+                opacity: 0;
+                right: 100%;
+            }
+        }
+
+        /* Lightning Bolt Central Hub Overlay */
+        .hub-label-sub {
+            display: block;
+            font-size: 0.8vw;
+            color: #2997FF;
+            text-transform: uppercase;
+            letter-spacing: 0.2vw;
+            margin-top: 0.5vw;
+            font-weight: 600;
+        }
+
+        .bolt-icon {
+            width: 4vw;
+            height: 4vw;
+            fill: #FFFFFF !important;
+            filter: drop-shadow(0 0 15px #2997FF);
+            margin-bottom: 0.5vw;
+            animation: bolt-flicker 4s infinite;
+        }
+
+        @keyframes bolt-flicker {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Central focal point pulse */
+        .core-container::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12vw;
+            height: 12vw;
+            background: rgba(41, 151, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(40px);
+            z-index: -1;
+            animation: focal-pulse 3s infinite;
+        }
+
+        @keyframes focal-pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.2;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <button class="top-btn theme-btn" onclick="toggleTheme()" title="Changer le thème (T)">
+        <svg viewBox="0 0 24 24" id="themeIcon">
+            <path
+                d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 00-1.41-1.41l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 00-1.41-1.41l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z" />
+        </svg>
+    </button>
+
+    <button class="top-btn fullscreen-btn" onclick="toggleFullscreen()" title="Plein ecran (F)">
+        <svg viewBox="0 0 24 24">
+            <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+        </svg>
+    </button>
+
+    <div class="slides-container">
+
+        <!-- ======== SLIDE 1 : INTRO ======== -->
+        <div class="slide active">
+            <h1 class="hero-title anim d1">Light Church</h1>
+            <h1 class="hero-title anim d1">
+                2 500 eglises evangeliques<br>en France.
+            </h1>
+            <p class="anim d2" style="font-size: 3vw; font-weight: 500; margin-top: 1vw;">
+                <span class="gradient-gold">Combien sont invisibles en ligne ?</span>
+            </p>
+            <p class="body-text anim d3" style="font-size: 1.6vw;">La plateforme numerique au service des eglises
+                evangeliques de France</p>
+        </div>
+
+        <!-- ======== SLIDE 2 : LE PROBLEME ======== -->
+        <div class="slide">
+            <p class="overline anim" style="color: #FF6B6B;">Le probleme</p>
+            <h1 class="section-title anim d1">
+                L'information est <span class="gradient-red">dispersee partout</span>
+            </h1>
+            <p class="body-text anim d2">Chaque eglise est eparpillee sur des dizaines de plateformes. Rien n'est
+                centralise.</p>
+            <div class="grid-3 anim d3">
+
+                <!-- FACEBOOK -->
+                <div class="problem-card">
+                    <div class="problem-icon-svg">
+                        <svg viewBox="0 0 24 24" style="width:3.5vw;height:3.5vw;">
+                            <path fill="#1877F2"
+                                d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
+                        </svg>
+                    </div>
+                    <div class="problem-title">Facebook</div>
+                    <div class="problem-desc">Pages obsoletes, horaires jamais mis a jour, difficile a trouver</div>
+                </div>
+
+                <!-- INSTAGRAM -->
+                <div class="problem-card">
+                    <div class="problem-icon-svg">
+                        <defs>
+                            <radialGradient id="ig" cx="30%" cy="107%" r="150%">
+                                <stop offset="0%" stop-color="#fdf497" />
+                                <stop offset="5%" stop-color="#fdf497" />
+                                <stop offset="45%" stop-color="#fd5949" />
+                                <stop offset="60%" stop-color="#d6249f" />
+                                <stop offset="90%" stop-color="#285AEB" />
+                            </radialGradient>
+                        </defs>
+                        <path fill="url(#ig)"
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.088 4.088 0 011.47.957c.453.454.793.918.957 1.47.163.46.35 1.26.403 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.088 4.088 0 01-.957 1.47 4.088 4.088 0 01-1.47.957c-.46.163-1.26.35-2.43.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.088 4.088 0 01-1.47-.957 4.088 4.088 0 01-.957-1.47c-.163-.46-.35-1.26-.403-2.43C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.088 4.088 0 01.957-1.47A4.088 4.088 0 015.063 2.293c.46-.163 1.26-.35 2.43-.403C8.759 1.832 9.139 1.82 12 1.82V2.163zM12 0C8.741 0 8.333.014 7.053.072 5.775.131 4.902.333 4.14.63a5.883 5.883 0 00-2.126 1.384A5.883 5.883 0 00.63 4.14C.333 4.902.131 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.059 1.278.261 2.151.558 2.913a5.883 5.883 0 001.384 2.126A5.883 5.883 0 004.14 23.37c.762.297 1.635.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.278-.059 2.151-.261 2.913-.558a5.883 5.883 0 002.126-1.384 5.883 5.883 0 001.384-2.126c.297-.762.499-1.635.558-2.913C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.059-1.278-.261-2.151-.558-2.913a5.883 5.883 0 00-1.384-2.126A5.883 5.883 0 0019.86.63C19.098.333 18.225.131 16.947.072 15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg>
+                    </div>
+                    <div class="problem-title">Instagram</div>
+                    <div class="problem-desc">Des photos sans infos pratiques. Pas d'adresse, pas d'horaires</div>
+                </div>
+
+                <!-- YOUTUBE -->
+                <div class="problem-card">
+                    <div class="problem-icon-svg">
+                        <svg viewBox="0 0 24 24" style="width:3.5vw;height:3.5vw;">
+                            <path fill="#FF0000"
+                                d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.546 12 3.546 12 3.546s-7.505 0-9.377.504A3.016 3.016 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.504 9.376.504 9.376.504s7.505 0 9.377-.504a3.016 3.016 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </div>
+                    <div class="problem-title">YouTube</div>
+                    <div class="problem-desc">Des videos de culte mais aucune info concrete sur l'eglise</div>
+                </div>
+
+                <!-- GOOGLE MAPS -->
+                <div class="problem-card">
+                    <div class="problem-icon-svg">
+                        <svg viewBox="0 0 24 24" style="width:3.5vw;height:3.5vw;">
+                            <path fill="#4285F4"
+                                d="M12 0C7.31 0 3.5 3.81 3.5 8.5c0 6.375 8.5 15.5 8.5 15.5s8.5-9.125 8.5-15.5C20.5 3.81 16.69 0 12 0z" />
+                            <circle fill="#fff" cx="12" cy="8.5" r="3" />
+                        </svg>
+                    </div>
+                    <div class="problem-title">Google Maps</div>
+                    <div class="problem-desc">Fiches incompletes, horaires errones, aucun evenement</div>
+                </div>
+
+                <!-- TIKTOK -->
+                <div class="problem-card">
+                    <div class="problem-icon-svg">
+                        <svg viewBox="0 0 24 24" style="width:3.5vw;height:3.5vw;">
+                            <path fill="#ff004f"
+                                d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                        </svg>
+                    </div>
+                    <div class="problem-title">TikTok</div>
+                    <div class="problem-desc">Du contenu viral mais aucune structure, aucune info utile</div>
+                </div>
+
+                <!-- WHATSAPP -->
+                <div class="problem-card">
+                    <div class="problem-icon-svg">
+                        <svg viewBox="0 0 24 24" style="width:3.5vw;height:3.5vw;">
+                            <path fill="#25D366"
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                    </div>
+                    <div class="problem-title">WhatsApp</div>
+                    <div class="problem-desc">Groupes fermes, info limitee au cercle existant</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 3 : CONSEQUENCES ======== -->
+        <div class="slide">
+            <p class="overline anim" style="color: #FF6B6B;">Les consequences</p>
+            <h1 class="section-title anim d1">
+                Des situations <span class="gradient-red">concretes</span>
+            </h1>
+            <div class="grid-4 anim d2">
+                <div class="consequence-card">
+                    <div class="c-number">1</div>
+                    <div class="c-title">Un fidele demenage</div>
+                    <div class="c-text">Il ne trouve pas d'eglise dans sa nouvelle ville. Il s'isole.</div>
+                </div>
+                <div class="consequence-card">
+                    <div class="c-number">2</div>
+                    <div class="c-title">Un pasteur organise un evenement</div>
+                    <div class="c-text">Personne en dehors de son cercle n'en entend parler. 50 places vides.</div>
+                </div>
+                <div class="consequence-card">
+                    <div class="c-number">3</div>
+                    <div class="c-title">Un touriste cherche un culte</div>
+                    <div class="c-text">Google ne montre rien de fiable. Il renonce.</div>
+                </div>
+                <div class="consequence-card">
+                    <div class="c-number">4</div>
+                    <div class="c-title">Pasteurs d'une meme ville</div>
+                    <div class="c-text">Ne se connaissent pas. Aucun reseau. Pas de synergie.</div>
+                </div>
+            </div>
+            <p class="anim d3" style="margin-top: 2vw; font-size: 1.8vw; text-align: center;">
+                <span class="gradient-gold">Il manque un outil centralise, simple et accessible a tous.</span>
+            </p>
+        </div>
+
+        <!-- ======== SLIDE 4 : LA SOLUTION (Animation) ======== -->
+        <div class="slide">
+            <p class="overline accent anim">La solution</p>
+            <h1 class="hero-title anim d1 core-container"
+                style="display:flex; flex-direction:column; align-items:center; min-height: 40vh; justify-content: center;">
+                <div class="core-glow"
+                    style="background: radial-gradient(circle, #2997FF 0%, transparent 70%); opacity:0.6;"></div>
+
+                <svg class="bolt-icon" viewBox="0 0 24 24">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+
+                <span class="gradient-text shimmer-text" style="font-size: 5vw;">Light Church</span>
+                <span class="hub-label-sub">Hub Central</span>
+
+                <!-- Orbiting elements -->
+                <div class="orbit-wrapper">
+                    <div class="orbiting-church church-1">
+                        <div class="connection-line"></div>Eglise Paris
+                    </div>
+                    <div class="orbiting-church church-2">
+                        <div class="connection-line"></div>Eglise Lyon
+                    </div>
+                    <div class="orbiting-church church-3">
+                        <div class="connection-line"></div>Eglise Toulon
+                    </div>
+                    <div class="orbiting-church church-4">
+                        <div class="connection-line"></div>Eglise Marseille
+                    </div>
+                </div>
+            </h1>
+            <p class="body-text anim d2" style="margin-top: 2vw;">Une seule plateforme qui centralise tout</p>
+        </div>
+
+        <!-- ======== SLIDE 5 : LES PILIERS ======== -->
+        <div class="slide">
+            <p class="overline accent anim">Notre approche</p>
+            <h1 class="section-title anim d1">
+                Trois piliers <span class="gradient-blue">fondamentaux</span>
+            </h1>
+            <div class="grid-3 anim d2 glow-blue" style="margin-top: 5vh;">
+                <div class="pillar blue">
+                    <div class="pillar-emoji">&#128205;</div>
+                    <div class="pillar-name">Trouver</div>
+                    <div class="pillar-line"></div>
+                    <div class="pillar-desc">Une eglise pres de chez soi<br>sur une carte interactive<br>par
+                        denomination, ville, proximite</div>
+                </div>
+                <div class="pillar green">
+                    <div class="pillar-emoji">&#128197;</div>
+                    <div class="pillar-name">Participer</div>
+                    <div class="pillar-line"></div>
+                    <div class="pillar-desc">Decouvrir les evenements<br>recevoir des notifications push<br>suivre
+                        en
+                        direct sur YouTube</div>
+                </div>
+                <div class="pillar gold">
+                    <div class="pillar-emoji">&#129309;</div>
+                    <div class="pillar-name">Connecter</div>
+                    <div class="pillar-line"></div>
+                    <div class="pillar-desc">Les pasteurs entre eux<br>via un reseau dedie<br>avec annuaire et
+                        filtres
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 5 : CARTE + FICHE ======== -->
+        <div class="slide">
+            <p class="overline accent anim">Fonctionnalites</p>
+            <h1 class="section-title anim d1">
+                Une carte, <span class="gradient-gold">toutes les eglises</span>
+            </h1>
+            <div class="grid-2 anim d2">
+                <div class="panel glass-panel">
+                    <div class="panel-head">&#127758; Carte interactive</div>
+                    <div class="feat"><span class="dot"></span><span>Geolocalisation automatique</span></div>
+                    <div class="feat"><span class="dot"></span><span>Clustering intelligent des marqueurs</span></div>
+                    <div class="feat"><span class="dot"></span><span>Filtrage par denomination et ville</span></div>
+                    <div class="feat"><span class="dot"></span><span>Chargement dynamique au zoom</span></div>
+                    <div class="feat"><span class="dot"></span><span>Recherche par rayon (km)</span></div>
+                </div>
+                <div class="panel blue-panel">
+                    <div class="panel-head" style="color: white;">&#9962; Fiche eglise complete</div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Nom, denomination, union d'eglise</span>
+                    </div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Adresse + geolocalisation</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Horaires de culte par jour</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Telephone, email, site web</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Facebook, Instagram, YouTube, TikTok,
+                            WhatsApp, LinkedIn</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Logo, parking, description</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 6 : EVENEMENTS + NOTIFICATIONS ======== -->
+        <div class="slide">
+            <p class="overline accent anim">Fonctionnalites</p>
+            <h1 class="section-title anim d1">
+                Des evenements <span class="gradient-gold">visibles par tous</span>
+            </h1>
+            <div class="grid-2 anim d2">
+                <div class="panel glass-panel">
+                    <div class="panel-head">&#128197; Evenements geolocalises</div>
+                    <div class="feat"><span class="dot"></span><span>Conferences, cultes, concerts, prieres</span></div>
+                    <div class="feat"><span class="dot"></span><span>Date, heure, lieu sur la carte</span></div>
+                    <div class="feat"><span class="dot"></span><span>Intervenant et capacite maximale</span></div>
+                    <div class="feat"><span class="dot"></span><span>Lien YouTube Live integre</span></div>
+                    <div class="feat"><span class="dot"></span><span>Multilingue — 10 langues</span></div>
+                    <div class="feat"><span class="dot"></span><span>Gratuit ou payant avec inscription</span></div>
+                </div>
+                <div class="panel dark-panel">
+                    <div class="panel-head gold-head">&#128276; Notifications push</div>
+                    <div
+                        style="text-align: center; margin: 0.8vw 0; font-size: var(--fs-card-text); color: var(--white); font-weight: 600;">
+                        L'utilisateur clique "Je suis interesse"
+                    </div>
+                    <div style="text-align: center; font-size: 2vw; color: var(--gold); margin: 0.6vw 0;">&#8595;</div>
+                    <div
+                        style="text-align: center; margin-bottom: 1vw; font-size: var(--fs-card-text); color: var(--grey);">
+                        Il recoit automatiquement :</div>
+                    <div class="feat gold-dot"><span class="dot"></span><span>Rappel avant l'evenement</span></div>
+                    <div class="feat gold-dot"><span class="dot"></span><span>Modification de l'evenement</span></div>
+                    <div class="feat gold-dot"><span class="dot"></span><span>Annulation avec motif</span></div>
+                    <div class="feat gold-dot"><span class="dot"></span><span>Nouvelles informations</span></div>
+                    <div style="text-align: center; margin-top: 1vw; font-size: var(--fs-small); color: var(--grey);">
+                        iOS & Android via Expo Push</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 7 : ESPACE PASTEUR ======== -->
+        <div class="slide">
+            <p class="overline accent anim">Espace pasteur</p>
+            <h1 class="section-title anim d1">
+                Le pasteur est <span class="gradient-text">100% autonome</span>
+            </h1>
+            <div class="grid-3 anim d2">
+                <div class="panel glass-panel">
+                    <div class="panel-head">&#128203; Tableau de bord</div>
+                    <div class="feat"><span class="dot"></span><span>Gere sa fiche eglise</span></div>
+                    <div class="feat"><span class="dot"></span><span>Publie ses evenements</span></div>
+                    <div class="feat"><span class="dot"></span><span>Suit les statistiques</span></div>
+                    <div class="feat"><span class="dot"></span><span>Upload logo et images</span></div>
+                    <div class="feat"><span class="dot"></span><span>Gere horaires et reseaux sociaux</span></div>
+                </div>
+                <div class="panel blue-panel">
+                    <div class="panel-head" style="color: white;">&#128274; Securite</div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Verification document SIRENE</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Validation manuelle admin</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Authentification JWT</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>HTTPS + chiffrement</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Roles : Pasteur / Evangeliste /
+                            Admin</span></div>
+                </div>
+                <div class="panel green-panel">
+                    <div class="panel-head" style="color: white;">&#129309; Reseau pasteurs</div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Annuaire avec recherche</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Filtrage par ville</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Filtrage par denomination</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Visibilite controlee</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Decouvrir ses confreres</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 8 : ADMINISTRATION ======== -->
+        <div class="slide">
+            <p class="overline accent anim">Administration</p>
+            <h1 class="section-title anim d1">
+                Administration <span class="gradient-gold">centralisee</span>
+            </h1>
+            <p class="body-text anim d2">Un super admin supervise l'ensemble de la plateforme</p>
+            <div class="grid-4 anim d3">
+                <div class="admin-card" style="background: linear-gradient(145deg, #0A4DA6, #2997FF);">
+                    <div class="admin-icon">&#128100;</div>
+                    <div class="admin-name">Inscriptions</div>
+                    <div class="admin-desc">Valider ou rejeter les pasteurs via document SIRENE</div>
+                </div>
+                <div class="admin-card" style="background: linear-gradient(145deg, #1B6B35, #30B04E);">
+                    <div class="admin-icon">&#9962;</div>
+                    <div class="admin-name">Eglises</div>
+                    <div class="admin-desc">Voir, rechercher, filtrer et modifier toutes les eglises</div>
+                </div>
+                <div class="admin-card" style="background: linear-gradient(145deg, #BF6A00, #E8A000);">
+                    <div class="admin-icon">&#128197;</div>
+                    <div class="admin-name">Evenements</div>
+                    <div class="admin-desc">Superviser et annuler, notifier les interesses</div>
+                </div>
+                <div class="admin-card" style="background: linear-gradient(145deg, #6A1B9A, #9C27B0);">
+                    <div class="admin-icon">&#128101;</div>
+                    <div class="admin-name">Comptes</div>
+                    <div class="admin-desc">Gerer les utilisateurs, suspendre, filtrer par role</div>
+                </div>
+            </div>
+            <div class="workflow anim d4">
+                <span class="wf-step">Inscription</span>
+                <span class="wf-arrow">&#8594;</span>
+                <span class="wf-step">Upload SIRENE</span>
+                <span class="wf-arrow">&#8594;</span>
+                <span class="wf-step">Verification</span>
+                <span class="wf-arrow">&#8594;</span>
+                <span class="wf-step">Validation</span>
+                <span class="wf-arrow">&#8594;</span>
+                <span class="wf-step done">&#10003; Acces plateforme</span>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 9 : ARCHITECTURE TECHNIQUE ======== -->
+        <div class="slide">
+            <p class="overline anim" style="color: var(--accent-2);">Pour les developpeurs</p>
+            <h1 class="section-title anim d1">
+                Architecture <span class="gradient-text">technique</span>
+            </h1>
+            <div class="grid-3 anim d2">
+                <div class="tech-card" style="background: linear-gradient(145deg, #0A4DA6, #1976D2);">
+                    <div class="tech-name">&#9881; Frontend</div>
+                    <div class="tech-stack">React 19 + TypeScript<br>Vite + Material-UI v5<br>React Leaflet<br>Framer
+                        Motion<br>React Hook Form + Zod</div>
+                </div>
+                <div class="tech-card" style="background: linear-gradient(145deg, #1B6B35, #2E8B48);">
+                    <div class="tech-name">&#9889; Backend</div>
+                    <div class="tech-stack">Node.js + Express 5<br>API REST — 9 modules<br>JWT + bcrypt<br>Expo Push
+                        Notifications<br>node-cron</div>
+                </div>
+                <div class="tech-card" style="background: linear-gradient(145deg, #BF6A00, #D4A632);">
+                    <div class="tech-name">&#128451; Database</div>
+                    <div class="tech-stack">MySQL 8.0 + PostGIS<br>14 tables normalisees<br>Index spatiaux<br>Full-text
+                        search<br>Requetes geospatiales</div>
+                </div>
+            </div>
+            <div class="tech-row anim d3">
+                <div class="tech-bar" style="background: linear-gradient(145deg, #6A1B9A, #8E24AA);">
+                    <div class="tech-bar-title">&#128241; Mobile</div>
+                    <div class="tech-bar-list">React Native + Expo &bull; iOS & Android &bull; Push Notifications &bull;
+                        10 langues</div>
+                </div>
+                <div class="tech-bar"
+                    style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px;">
+                    <div class="tech-bar-title" style="color: var(--accent-2);">&#9729; DevOps</div>
+                    <div class="tech-bar-list">Docker &bull; GitHub Actions CI/CD &bull; Traefik + SSL auto &bull; VPS
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 10 : CHIFFRES ======== -->
+        <div class="slide">
+            <p class="overline accent anim">Impact</p>
+            <h1 class="section-title anim d1">
+                Light Church <span class="gradient-gold">en chiffres</span>
+            </h1>
+            <div class="grid-4 anim d2">
+                <div class="stat" style="background: linear-gradient(145deg, #0A4DA6, #2997FF);">
+                    <div class="stat-num">2 500+</div>
+                    <div class="stat-lbl">eglises evangeliques<br>en France</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #1B6B35, #30B04E);">
+                    <div class="stat-num">10</div>
+                    <div class="stat-lbl">langues<br>supportees</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #BF6A00, #D4A632);">
+                    <div class="stat-num">6</div>
+                    <div class="stat-lbl">reseaux sociaux<br>integres</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #6A1B9A, #9C27B0);">
+                    <div class="stat-num">14</div>
+                    <div class="stat-lbl">tables en<br>base de donnees</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #00695C, #00897B);">
+                    <div class="stat-num">6</div>
+                    <div class="stat-lbl">denominations<br>supportees</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #AD1457, #D81B60);">
+                    <div class="stat-num">4</div>
+                    <div class="stat-lbl">unions d'eglises<br>CNEF, FPF, ADD...</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #283593, #3F51B5);">
+                    <div class="stat-num" style="font-size: 2.2vw;">iOS &<br>Android</div>
+                    <div class="stat-lbl">application<br>mobile native</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #8B6914, #D4A632);">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-lbl">gratuit pour<br>toutes les eglises</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 11 : FEUILLE DE ROUTE ======== -->
+        <div class="slide">
+            <p class="overline accent anim">Vision</p>
+            <h1 class="section-title anim d1">
+                Feuille de <span class="gradient-gold">route</span>
+            </h1>
+            <div class="grid-3 anim d2">
+                <div class="phase" style="background: linear-gradient(145deg, #0A4DA6, #1976D2);">
+                    <div class="phase-over">Phase 1</div>
+                    <div class="phase-name">Court terme</div>
+                    <div class="phase-line"></div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Lancement beta</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Eglises pilotes</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Retours utilisateurs</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Amelioration UX/UI</div>
+                </div>
+                <div class="phase" style="background: linear-gradient(145deg, #1B6B35, #2E8B48);">
+                    <div class="phase-over">Phase 2</div>
+                    <div class="phase-name">Moyen terme</div>
+                    <div class="phase-line"></div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> App Store & Google Play</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Messagerie pasteurs</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Analytics avances</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Streaming integre</div>
+                </div>
+                <div class="phase" style="background: linear-gradient(145deg, #8B6914, #BF9B30);">
+                    <div class="phase-over">Phase 3</div>
+                    <div class="phase-name">Long terme</div>
+                    <div class="phase-line"></div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Partenariats CNEF / FPF</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Dons en ligne</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> API ouverte</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Expansion francophonie</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 12 : FERMETURE ======== -->
+        <div class="top-nav">
+            <div class="logo-area">
+                <span style="font-weight: 700; letter-spacing: 0.1vw;">LIGHT CHURCH</span>
+            </div>
+            <div class="nav-progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <svg id="themeIcon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 00-1.41-1.41l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 00-1.41-1.41l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="verse-text anim">
+                "Vous etes la lumiere du monde"
+            </div>
+            <div class="verse-source anim d1">— Matthieu 5:14</div>
+            <div class="close-line anim d2"></div>
+            <div class="close-name anim d2">Light Church</div>
+            <div class="close-url anim d3">lightchurch.fr</div>
+            <div class="close-cta anim d4">
+                <div class="cta-card blue-cta">
+                    <div class="cta-who" style="color: var(--accent-1);">Pasteurs</div>
+                    <div class="cta-what">Testez la plateforme</div>
+                </div>
+                <div class="cta-card gold-cta">
+                    <div class="cta-who" style="color: var(--gold-light);">Developpeurs</div>
+                    <div class="cta-what">Rejoignez le projet</div>
+                </div>
+            </div>
+            <div class="close-merci anim d5">Merci</div>
+        </div>
+
+    </div>
+
+    <!-- NAV -->
+    <div class="nav-bar">
+        <button class="nav-btn" id="prevBtn" onclick="prevSlide()">
+            <svg viewBox="0 0 24 24">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+            Precedent
+        </button>
+        <span class="slide-counter" id="slideCounter">1 / 13</span>
+        <button class="nav-btn" id="nextBtn" onclick="nextSlide()">
+            Suivant
+            <svg viewBox="0 0 24 24">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="hint">
+        <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> naviguer &nbsp;&bull;&nbsp; <kbd>F</kbd> plein ecran
+    </div>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const total = slides.length;
+        const bar = document.getElementById('progressBar');
+        const counter = document.getElementById('slideCounter');
+        const prev = document.getElementById('prevBtn');
+
+        function go(dir) {
+            if (dir === 1 && current >= total - 1) return;
+            if (dir === -1 && current <= 0) return;
+
+            slides[current].classList.remove('active');
+            current += dir;
+            slides[current].classList.add('active');
+
+            bar.style.width = ((current + 1) / total * 100) + '%';
+            counter.textContent = (current + 1) + ' / 13';
+            prev.style.opacity = current === 0 ? '0.3' : '1';
+            prev.style.pointerEvents = current === 0 ? 'none' : 'all';
+        }
+
+        function nextSlide() { go(1); }
+        function prevSlide() { go(-1); }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light');
+            const icon = document.getElementById('themeIcon');
+            if (document.body.classList.contains('light')) {
+                icon.innerHTML = '<path d="M10 2c-1.82 0-3.53.5-5 1.35C7.99 5.08 10 8.3 10 12s-2.01 6.92-5 8.65C6.47 21.5 8.18 22 10 22c5.52 0 10-4.48 10-10S15.52 2 10 2z"/>';
+            } else {
+                icon.innerHTML = '<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 00-1.41-1.41l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 00-1.41-1.41l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>';
+            }
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+            if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+            if (e.key === 't' || e.key === 'T') toggleTheme();
+        });
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+            else document.exitFullscreen();
+        }
+
+        bar.style.width = (1 / total * 100) + '%';
+        prev.style.opacity = '0.3';
+        prev.style.pointerEvents = 'none';
+    </script>
+
+</body>
+
+</html>
