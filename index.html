@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Light Church - Presentation</title>
-    <meta name="description" content="Light Church — L'annuaire intelligent des eglises evangeliques de France">
+    <meta name="description" content="Light Church — L'annuaire intelligent des églises évangéliques de France">
     <meta name="theme-color" content="#000000">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1003,8 +1003,8 @@
         /* ===== ORBIT SYSTEM (Slide 4) ===== */
         .orbit-scene {
             position: relative;
-            width: 70vw;
-            height: 34vw;
+            width: 92vw;
+            height: 38vw;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1020,25 +1020,47 @@
             text-align: center;
         }
 
+        /* === Multi-layer glow === */
         .hub-glow-bg {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 18vw;
-            height: 18vw;
-            background: radial-gradient(circle, rgba(41, 151, 255, 0.25) 0%, transparent 70%);
+            width: 28vw;
+            height: 28vw;
+            background: radial-gradient(circle,
+                rgba(41, 151, 255, 0.35) 0%,
+                rgba(41, 151, 255, 0.12) 40%,
+                transparent 70%);
             transform: translate(-50%, -50%);
-            filter: blur(40px);
+            filter: blur(30px);
             z-index: 0;
             pointer-events: none;
             animation: hub-breathe 4s infinite ease-in-out;
         }
 
-        @keyframes hub-breathe {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
-            50% { transform: translate(-50%, -50%) scale(1.4); opacity: 0.7; }
+        .hub-glow-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12vw;
+            height: 12vw;
+            background: radial-gradient(circle,
+                rgba(41, 151, 255, 0.5) 0%,
+                rgba(104, 220, 252, 0.2) 50%,
+                transparent 70%);
+            transform: translate(-50%, -50%);
+            filter: blur(15px);
+            z-index: 1;
+            pointer-events: none;
+            animation: hub-breathe 3s infinite ease-in-out 0.5s;
         }
 
+        @keyframes hub-breathe {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.9; }
+        }
+
+        /* === 3 orbit rings === */
         .orbit-ring {
             position: absolute;
             top: 50%;
@@ -1053,117 +1075,197 @@
             animation: ring-appear 1.2s ease forwards;
         }
 
-        .slide.active .orbit-ring-2 {
-            animation-delay: 0.2s;
-        }
+        .slide.active .orbit-ring-2 { animation-delay: 0.15s; }
+        .slide.active .orbit-ring-3 { animation-delay: 0.3s; }
 
         @keyframes ring-appear {
-            from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
             to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         }
 
         .orbit-ring-1 {
-            width: 26vw;
-            height: 26vw;
-            border: 1px solid rgba(41, 151, 255, 0.12);
+            width: 22vw;
+            height: 22vw;
+            border: 1.5px solid rgba(41, 151, 255, 0.2);
+            box-shadow: 0 0 15px rgba(41, 151, 255, 0.05), inset 0 0 15px rgba(41, 151, 255, 0.03);
         }
 
         .orbit-ring-2 {
-            width: 46vw;
-            height: 46vw;
-            border: 1px solid rgba(41, 151, 255, 0.06);
+            width: 38vw;
+            height: 38vw;
+            border: 1.5px solid rgba(41, 151, 255, 0.14);
+            box-shadow: 0 0 20px rgba(41, 151, 255, 0.04), inset 0 0 20px rgba(41, 151, 255, 0.02);
         }
 
+        .orbit-ring-3 {
+            width: 56vw;
+            height: 56vw;
+            border: 1px solid rgba(41, 151, 255, 0.07);
+            box-shadow: 0 0 25px rgba(41, 151, 255, 0.02);
+        }
+
+        /* Rotating dash on ring 2 for visual movement */
+        .orbit-ring-2::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            border: 1.5px dashed rgba(41, 151, 255, 0.08);
+            animation: ring-spin 60s linear infinite;
+        }
+
+        @keyframes ring-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* === Orbit churches === */
         .orbit-church {
             position: absolute;
             top: 50%;
             left: 50%;
-            font-size: 1.1vw;
+            font-size: 1.3vw;
             font-weight: 700;
-            padding: 0.5vw 1.4vw;
-            background: rgba(41, 151, 255, 0.08);
-            border: 1px solid rgba(41, 151, 255, 0.25);
+            padding: 0.5vw 1.6vw 0.5vw 1.2vw;
+            background: rgba(41, 151, 255, 0.1);
+            border: 1.5px solid rgba(41, 151, 255, 0.35);
             border-radius: 980px;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             white-space: nowrap;
             color: var(--text);
-            box-shadow: 0 0 20px rgba(41, 151, 255, 0.12);
+            box-shadow:
+                0 0 20px rgba(41, 151, 255, 0.15),
+                0 0 40px rgba(41, 151, 255, 0.05);
             opacity: 0;
             transition: opacity 0.8s ease 0.6s;
+            display: flex;
+            align-items: center;
+            gap: 0.4vw;
+        }
+
+        .oc-ico {
+            width: 1.3em;
+            height: 1.3em;
+            fill: var(--accent-1);
+            flex-shrink: 0;
         }
 
         .slide.active .orbit-church {
             opacity: 1;
         }
 
-        /* Inner orbit — clockwise, 14s */
+        /* Inner orbit — clockwise, 16s, radius 11vw */
         @keyframes orbit-cw {
             0% {
-                transform: translate(-50%, -50%) rotate(0deg) translateX(13vw) rotate(0deg) scale(1.08);
+                transform: translate(-50%, -50%) rotate(0deg) translateX(11vw) rotate(0deg) scale(1.1);
                 z-index: 10;
-                filter: blur(0);
+                filter: blur(0) brightness(1.1);
             }
             25% {
-                transform: translate(-50%, -50%) rotate(90deg) translateX(13vw) rotate(-90deg) scale(0.95);
+                transform: translate(-50%, -50%) rotate(90deg) translateX(11vw) rotate(-90deg) scale(0.95);
                 z-index: 1;
-                filter: blur(1px);
+                filter: blur(0.5px) brightness(0.9);
             }
             50% {
-                transform: translate(-50%, -50%) rotate(180deg) translateX(13vw) rotate(-180deg) scale(0.8);
+                transform: translate(-50%, -50%) rotate(180deg) translateX(11vw) rotate(-180deg) scale(0.78);
                 z-index: -1;
-                filter: blur(2px);
+                filter: blur(1.5px) brightness(0.7);
             }
             75% {
-                transform: translate(-50%, -50%) rotate(270deg) translateX(13vw) rotate(-270deg) scale(0.95);
+                transform: translate(-50%, -50%) rotate(270deg) translateX(11vw) rotate(-270deg) scale(0.95);
                 z-index: 1;
-                filter: blur(1px);
+                filter: blur(0.5px) brightness(0.9);
             }
             100% {
-                transform: translate(-50%, -50%) rotate(360deg) translateX(13vw) rotate(-360deg) scale(1.08);
+                transform: translate(-50%, -50%) rotate(360deg) translateX(11vw) rotate(-360deg) scale(1.1);
                 z-index: 10;
-                filter: blur(0);
+                filter: blur(0) brightness(1.1);
             }
         }
 
-        .oc-i { animation: orbit-cw 14s linear infinite; }
+        .oc-i { animation: orbit-cw 16s linear infinite; }
         .oc-i1 { animation-delay: 0s; }
-        .oc-i2 { animation-delay: -4.67s; }
-        .oc-i3 { animation-delay: -9.33s; }
+        .oc-i2 { animation-delay: -5.33s; }
+        .oc-i3 { animation-delay: -10.67s; }
 
-        /* Outer orbit — counter-clockwise, 22s */
+        /* Middle orbit — counter-clockwise, 24s, radius 19vw */
         @keyframes orbit-ccw {
             0% {
-                transform: translate(-50%, -50%) rotate(0deg) translateX(23vw) rotate(0deg) scale(1.05);
+                transform: translate(-50%, -50%) rotate(0deg) translateX(19vw) rotate(0deg) scale(1.08);
                 z-index: 10;
-                filter: blur(0);
+                filter: blur(0) brightness(1.1);
             }
             25% {
-                transform: translate(-50%, -50%) rotate(-90deg) translateX(23vw) rotate(90deg) scale(0.9);
+                transform: translate(-50%, -50%) rotate(-90deg) translateX(19vw) rotate(90deg) scale(0.92);
                 z-index: 1;
-                filter: blur(1.5px);
+                filter: blur(1px) brightness(0.85);
             }
             50% {
-                transform: translate(-50%, -50%) rotate(-180deg) translateX(23vw) rotate(180deg) scale(0.72);
+                transform: translate(-50%, -50%) rotate(-180deg) translateX(19vw) rotate(180deg) scale(0.72);
                 z-index: -1;
-                filter: blur(3px);
+                filter: blur(2px) brightness(0.65);
             }
             75% {
-                transform: translate(-50%, -50%) rotate(-270deg) translateX(23vw) rotate(270deg) scale(0.9);
+                transform: translate(-50%, -50%) rotate(-270deg) translateX(19vw) rotate(270deg) scale(0.92);
                 z-index: 1;
-                filter: blur(1.5px);
+                filter: blur(1px) brightness(0.85);
             }
             100% {
-                transform: translate(-50%, -50%) rotate(-360deg) translateX(23vw) rotate(360deg) scale(1.05);
+                transform: translate(-50%, -50%) rotate(-360deg) translateX(19vw) rotate(360deg) scale(1.08);
                 z-index: 10;
-                filter: blur(0);
+                filter: blur(0) brightness(1.1);
             }
         }
 
-        .oc-o { animation: orbit-ccw 22s linear infinite; font-size: 1vw; padding: 0.4vw 1.2vw; }
+        .oc-m { animation: orbit-ccw 24s linear infinite; }
+        .oc-m1 { animation-delay: 0s; }
+        .oc-m2 { animation-delay: -6s; }
+        .oc-m3 { animation-delay: -12s; }
+        .oc-m4 { animation-delay: -18s; }
+
+        /* Outer orbit — clockwise, 32s, radius 28vw */
+        @keyframes orbit-far {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) translateX(28vw) rotate(0deg) scale(1.05);
+                z-index: 10;
+                filter: blur(0) brightness(1);
+            }
+            25% {
+                transform: translate(-50%, -50%) rotate(90deg) translateX(28vw) rotate(-90deg) scale(0.88);
+                z-index: 1;
+                filter: blur(1.5px) brightness(0.8);
+            }
+            50% {
+                transform: translate(-50%, -50%) rotate(180deg) translateX(28vw) rotate(-180deg) scale(0.68);
+                z-index: -1;
+                filter: blur(3px) brightness(0.6);
+            }
+            75% {
+                transform: translate(-50%, -50%) rotate(270deg) translateX(28vw) rotate(-270deg) scale(0.88);
+                z-index: 1;
+                filter: blur(1.5px) brightness(0.8);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg) translateX(28vw) rotate(-360deg) scale(1.05);
+                z-index: 10;
+                filter: blur(0) brightness(1);
+            }
+        }
+
+        .oc-o {
+            animation: orbit-far 32s linear infinite;
+            font-size: 1.1vw;
+            padding: 0.5vw 1.4vw;
+            border-color: rgba(41, 151, 255, 0.2);
+            background: rgba(41, 151, 255, 0.06);
+        }
         .oc-o1 { animation-delay: 0s; }
-        .oc-o2 { animation-delay: -7.33s; }
-        .oc-o3 { animation-delay: -14.67s; }
+        .oc-o2 { animation-delay: -10.67s; }
+        .oc-o3 { animation-delay: -21.33s; }
 
         /* ===== MAP FRANCE ===== */
         .map-container {
@@ -1431,21 +1533,41 @@
         }
 
         body.light .orbit-ring-1 {
-            border-color: rgba(0, 113, 227, 0.15);
+            border-color: rgba(0, 113, 227, 0.2);
+            box-shadow: 0 0 15px rgba(0, 113, 227, 0.06), inset 0 0 15px rgba(0, 113, 227, 0.04);
         }
 
         body.light .orbit-ring-2 {
-            border-color: rgba(0, 113, 227, 0.08);
+            border-color: rgba(0, 113, 227, 0.12);
+            box-shadow: 0 0 20px rgba(0, 113, 227, 0.04);
+        }
+
+        body.light .orbit-ring-2::after {
+            border-color: rgba(0, 113, 227, 0.06);
+        }
+
+        body.light .orbit-ring-3 {
+            border-color: rgba(0, 113, 227, 0.06);
         }
 
         body.light .orbit-church {
-            background: rgba(0, 113, 227, 0.06);
-            border-color: rgba(0, 113, 227, 0.2);
-            box-shadow: 0 0 20px rgba(0, 113, 227, 0.08);
+            background: rgba(0, 113, 227, 0.07);
+            border-color: rgba(0, 113, 227, 0.25);
+            box-shadow: 0 0 20px rgba(0, 113, 227, 0.08), 0 0 40px rgba(0, 113, 227, 0.03);
         }
 
         body.light .hub-glow-bg {
-            background: radial-gradient(circle, rgba(0, 113, 227, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle,
+                rgba(0, 113, 227, 0.2) 0%,
+                rgba(0, 113, 227, 0.06) 40%,
+                transparent 70%);
+        }
+
+        body.light .hub-glow-inner {
+            background: radial-gradient(circle,
+                rgba(0, 113, 227, 0.3) 0%,
+                rgba(20, 124, 229, 0.1) 50%,
+                transparent 70%);
         }
 
         /* Lightning Bolt Central Hub Overlay */
@@ -1497,7 +1619,7 @@
         </svg>
     </button>
 
-    <button class="top-btn fullscreen-btn" onclick="toggleFullscreen()" title="Plein ecran (F)">
+    <button class="top-btn fullscreen-btn" onclick="toggleFullscreen()" title="Plein écran (F)">
         <svg viewBox="0 0 24 24">
             <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
         </svg>
@@ -1517,23 +1639,23 @@
             </h1>
 
             <h1 class="hero-title anim d2" style="font-size: 4vw; line-height: 1.1;">
-                2 500 eglises evangeliques<br>en France.
+                2 500 églises évangéliques<br>en France.
             </h1>
             <p class="anim d2" style="font-size: 3vw; font-weight: 500; margin-top: 1vw;">
                 <span class="gradient-gold">Combien sont invisibles en ligne ?</span>
             </p>
-            <p class="body-text anim d3" style="font-size: 1.6vw;">La plateforme numerique au service des eglises
-                evangeliques de France</p>
+            <p class="body-text anim d3" style="font-size: 1.6vw;">La plateforme numérique au service des églises
+                évangéliques de France</p>
         </div>
 
         <!-- ======== SLIDE 2 : LE PROBLEME ======== -->
         <div class="slide">
-            <p class="overline anim" style="color: #FF6B6B;">Le probleme</p>
+            <p class="overline anim" style="color: #FF6B6B;">Le problème</p>
             <h1 class="section-title anim d1">
-                L'information est <span class="gradient-red">dispersee partout</span>
+                L'information est <span class="gradient-red">dispersée partout</span>
             </h1>
-            <p class="body-text anim d2">Chaque eglise est eparpillee sur des dizaines de plateformes. Rien n'est
-                centralise.</p>
+            <p class="body-text anim d2">Chaque église est éparpillée sur des dizaines de plateformes. Rien n'est
+                centralisé.</p>
             <div class="grid-3 anim d3">
 
                 <!-- FACEBOOK -->
@@ -1545,7 +1667,7 @@
                         </svg>
                     </div>
                     <div class="problem-title">Facebook</div>
-                    <div class="problem-desc">Pages obsoletes, horaires jamais mis a jour, difficile a trouver</div>
+                    <div class="problem-desc">Pages obsolètes, horaires jamais mis à jour, difficile à trouver</div>
                 </div>
 
                 <!-- INSTAGRAM -->
@@ -1578,7 +1700,7 @@
                         </svg>
                     </div>
                     <div class="problem-title">YouTube</div>
-                    <div class="problem-desc">Des videos de culte mais aucune info concrete sur l'eglise</div>
+                    <div class="problem-desc">Des vidéos de culte mais aucune info concrète sur l'église</div>
                 </div>
 
                 <!-- GOOGLE MAPS -->
@@ -1591,7 +1713,7 @@
                         </svg>
                     </div>
                     <div class="problem-title">Google Maps</div>
-                    <div class="problem-desc">Fiches incompletes, horaires errones, aucun evenement</div>
+                    <div class="problem-desc">Fiches incomplètes, horaires erronés, aucun événement</div>
                 </div>
 
                 <!-- TIKTOK -->
@@ -1615,7 +1737,7 @@
                         </svg>
                     </div>
                     <div class="problem-title">WhatsApp</div>
-                    <div class="problem-desc">Groupes fermes, info limitee au cercle existant</div>
+                    <div class="problem-desc">Groupes fermés, info limitée au cercle existant</div>
                 </div>
 
             </div>
@@ -1623,19 +1745,19 @@
 
         <!-- ======== SLIDE 3 : CONSEQUENCES ======== -->
         <div class="slide">
-            <p class="overline anim" style="color: #FF6B6B;">Les consequences</p>
+            <p class="overline anim" style="color: #FF6B6B;">Les conséquences</p>
             <h1 class="section-title anim d1">
-                Des situations <span class="gradient-red">concretes</span>
+                Des situations <span class="gradient-red">concrètes</span>
             </h1>
             <div class="grid-4 anim d2">
                 <div class="consequence-card">
                     <div class="c-number">1</div>
-                    <div class="c-title">Un fidele demenage</div>
-                    <div class="c-text">Il ne trouve pas d'eglise dans sa nouvelle ville. Il s'isole.</div>
+                    <div class="c-title">Un fidèle déménage</div>
+                    <div class="c-text">Il ne trouve pas d'église dans sa nouvelle ville. Il s'isole.</div>
                 </div>
                 <div class="consequence-card">
                     <div class="c-number">2</div>
-                    <div class="c-title">Un pasteur organise un evenement</div>
+                    <div class="c-title">Un pasteur organise un événement</div>
                     <div class="c-text">Personne en dehors de son cercle n'en entend parler. 50 places vides.</div>
                 </div>
                 <div class="consequence-card">
@@ -1645,12 +1767,12 @@
                 </div>
                 <div class="consequence-card">
                     <div class="c-number">4</div>
-                    <div class="c-title">Pasteurs d'une meme ville</div>
-                    <div class="c-text">Ne se connaissent pas. Aucun reseau. Pas de synergie.</div>
+                    <div class="c-title">Pasteurs d'une même ville</div>
+                    <div class="c-text">Ne se connaissent pas. Aucun réseau. Pas de synergie.</div>
                 </div>
             </div>
             <p class="anim d3" style="margin-top: 2vw; font-size: 1.8vw; text-align: center;">
-                <span class="gradient-gold">Il manque un outil centralise, simple et accessible a tous.</span>
+                <span class="gradient-gold">Il manque un outil centralisé, simple et accessible à tous.</span>
             </p>
         </div>
 
@@ -1659,37 +1781,45 @@
             <p class="overline accent anim">La solution</p>
 
             <div class="orbit-scene anim d1">
-                <!-- Orbit rings visibles -->
+                <!-- 3 orbit rings -->
                 <div class="orbit-ring orbit-ring-1"></div>
                 <div class="orbit-ring orbit-ring-2"></div>
+                <div class="orbit-ring orbit-ring-3"></div>
 
-                <!-- Glow derriere le hub -->
+                <!-- Double glow -->
                 <div class="hub-glow-bg"></div>
+                <div class="hub-glow-inner"></div>
 
                 <!-- Hub central -->
                 <div class="hub-core">
-                    <svg class="bolt-icon" viewBox="0 0 24 24">
+                    <svg class="bolt-icon" viewBox="0 0 24 24" style="width: 4.5vw; height: 4.5vw;">
                         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                     </svg>
                     <span class="gradient-text shimmer-text"
-                        style="font-size: 4.5vw; font-weight: 800; letter-spacing: -0.03em;">Light Church</span>
-                    <span class="hub-label-sub">Hub Central</span>
+                        style="font-size: 5vw; font-weight: 900; letter-spacing: -0.04em;">Light Church</span>
+                    <span class="hub-label-sub" style="font-size: 1vw; margin-top: 0.6vw;">Hub Central</span>
                 </div>
 
-                <!-- Inner orbit — 3 eglises, sens horaire -->
-                <div class="orbit-church oc-i oc-i1">Paris</div>
-                <div class="orbit-church oc-i oc-i2">Lyon</div>
-                <div class="orbit-church oc-i oc-i3">Marseille</div>
+                <!-- Inner orbit — 3 eglises, sens horaire, 16s -->
+                <div class="orbit-church oc-i oc-i1"><svg class="oc-ico" viewBox="0 0 24 24"><path d="M11 2h2v3h-2zM9 3.5h6v1.5H9zM12 7L4 13v9h5.5v-5h5v5H20v-9z"/></svg>Paris</div>
+                <div class="orbit-church oc-i oc-i2"><svg class="oc-ico" viewBox="0 0 24 24"><path d="M11 2h2v3h-2zM9 3.5h6v1.5H9zM12 7L4 13v9h5.5v-5h5v5H20v-9z"/></svg>Lyon</div>
+                <div class="orbit-church oc-i oc-i3"><svg class="oc-ico" viewBox="0 0 24 24"><path d="M11 2h2v3h-2zM9 3.5h6v1.5H9zM12 7L4 13v9h5.5v-5h5v5H20v-9z"/></svg>Marseille</div>
 
-                <!-- Outer orbit — 3 eglises, sens anti-horaire -->
-                <div class="orbit-church oc-o oc-o1">Bordeaux</div>
-                <div class="orbit-church oc-o oc-o2">Lille</div>
-                <div class="orbit-church oc-o oc-o3">Toulouse</div>
+                <!-- Middle orbit — 4 eglises, sens anti-horaire, 24s -->
+                <div class="orbit-church oc-m oc-m1"><svg class="oc-ico" viewBox="0 0 24 24"><path d="M11 2h2v3h-2zM9 3.5h6v1.5H9zM12 7L4 13v9h5.5v-5h5v5H20v-9z"/></svg>Bordeaux</div>
+                <div class="orbit-church oc-m oc-m2"><svg class="oc-ico" viewBox="0 0 24 24"><path d="M11 2h2v3h-2zM9 3.5h6v1.5H9zM12 7L4 13v9h5.5v-5h5v5H20v-9z"/></svg>Lille</div>
+                <div class="orbit-church oc-m oc-m3"><svg class="oc-ico" viewBox="0 0 24 24"><path d="M11 2h2v3h-2zM9 3.5h6v1.5H9zM12 7L4 13v9h5.5v-5h5v5H20v-9z"/></svg>Toulouse</div>
+                <div class="orbit-church oc-m oc-m4"><svg class="oc-ico" viewBox="0 0 24 24"><path d="M11 2h2v3h-2zM9 3.5h6v1.5H9zM12 7L4 13v9h5.5v-5h5v5H20v-9z"/></svg>Strasbourg</div>
+
+                <!-- Outer orbit — 3 eglises, sens horaire, 32s -->
+                <div class="orbit-church oc-o oc-o1"><svg class="oc-ico" viewBox="0 0 24 24"><path d="M11 2h2v3h-2zM9 3.5h6v1.5H9zM12 7L4 13v9h5.5v-5h5v5H20v-9z"/></svg>Nantes</div>
+                <div class="orbit-church oc-o oc-o2"><svg class="oc-ico" viewBox="0 0 24 24"><path d="M11 2h2v3h-2zM9 3.5h6v1.5H9zM12 7L4 13v9h5.5v-5h5v5H20v-9z"/></svg>Nice</div>
+                <div class="orbit-church oc-o oc-o3"><svg class="oc-ico" viewBox="0 0 24 24"><path d="M11 2h2v3h-2zM9 3.5h6v1.5H9zM12 7L4 13v9h5.5v-5h5v5H20v-9z"/></svg>Montpellier</div>
             </div>
 
-            <p class="anim d2" style="font-size: 2.2vw; text-align: center; margin-top: 1.5vw; font-weight: 500;">
+            <p class="anim d2" style="font-size: 2.5vw; text-align: center; margin-top: 1vw; font-weight: 600;">
                 Une seule plateforme.
-                <span class="gradient-gold">Toutes les eglises connectees.</span>
+                <span class="gradient-gold">Toutes les églises connectées.</span>
             </p>
         </div>
 
@@ -1704,14 +1834,14 @@
                     <div class="pillar-emoji">&#128205;</div>
                     <div class="pillar-name">Trouver</div>
                     <div class="pillar-line"></div>
-                    <div class="pillar-desc">Une eglise pres de chez soi<br>sur une carte interactive<br>par
-                        denomination, ville, proximite</div>
+                    <div class="pillar-desc">Une église près de chez soi<br>sur une carte interactive<br>par
+                        dénomination, ville, proximité</div>
                 </div>
                 <div class="pillar green">
                     <div class="pillar-emoji">&#128197;</div>
                     <div class="pillar-name">Participer</div>
                     <div class="pillar-line"></div>
-                    <div class="pillar-desc">Decouvrir les evenements<br>recevoir des notifications push<br>suivre
+                    <div class="pillar-desc">Découvrir les événements<br>recevoir des notifications push<br>suivre
                         en
                         direct sur YouTube</div>
                 </div>
@@ -1719,7 +1849,7 @@
                     <div class="pillar-emoji">&#129309;</div>
                     <div class="pillar-name">Connecter</div>
                     <div class="pillar-line"></div>
-                    <div class="pillar-desc">Les pasteurs entre eux<br>via un reseau dedie<br>avec annuaire et
+                    <div class="pillar-desc">Les pasteurs entre eux<br>via un réseau dédié<br>avec annuaire et
                         filtres
                     </div>
                 </div>
@@ -1730,7 +1860,7 @@
         <div class="slide">
             <p class="overline accent anim">Fonctionnalites</p>
             <h1 class="section-title anim d1">
-                Une carte, <span class="gradient-gold">toutes les eglises</span>
+                Une carte, <span class="gradient-gold">toutes les églises</span>
             </h1>
             <div class="map-grid anim d2">
                 <!-- Carte de France -->
@@ -1842,7 +1972,7 @@
 
                     <!-- Popup fiche eglise -->
                     <div class="map-popup">
-                        <div class="popup-name">Eglise Evangélique de Paris</div>
+                        <div class="popup-name">Église Évangélique de Paris</div>
                         <div class="popup-denom">Assemblée de Dieu</div>
                         <div class="popup-row">
                             <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
@@ -1870,36 +2000,36 @@
                     <div class="map-feat-card">
                         <div class="map-feat-icon blue">&#128205;</div>
                         <div>
-                            <div class="map-feat-text">Geolocalisation</div>
-                            <div class="map-feat-sub">Trouve les eglises autour de soi</div>
+                            <div class="map-feat-text">Géolocalisation</div>
+                            <div class="map-feat-sub">Trouve les églises autour de soi</div>
                         </div>
                     </div>
                     <div class="map-feat-card">
                         <div class="map-feat-icon green">&#128209;</div>
                         <div>
-                            <div class="map-feat-text">Fiche complete</div>
-                            <div class="map-feat-sub">Horaires, adresse, reseaux sociaux, denomination</div>
+                            <div class="map-feat-text">Fiche complète</div>
+                            <div class="map-feat-sub">Horaires, adresse, réseaux sociaux, dénomination</div>
                         </div>
                     </div>
                     <div class="map-feat-card">
                         <div class="map-feat-icon gold">&#128269;</div>
                         <div>
-                            <div class="map-feat-text">Filtrage avance</div>
-                            <div class="map-feat-sub">Par ville, denomination, union, rayon km</div>
+                            <div class="map-feat-text">Filtrage avancé</div>
+                            <div class="map-feat-sub">Par ville, dénomination, union, rayon km</div>
                         </div>
                     </div>
                     <div class="map-feat-card">
                         <div class="map-feat-icon purple">&#127760;</div>
                         <div>
                             <div class="map-feat-text">Clustering intelligent</div>
-                            <div class="map-feat-sub">Regroupement automatique au dezoom</div>
+                            <div class="map-feat-sub">Regroupement automatique au dézoom</div>
                         </div>
                     </div>
                     <div class="map-feat-card">
                         <div class="map-feat-icon red">&#128276;</div>
                         <div>
                             <div class="map-feat-text">Notifications push</div>
-                            <div class="map-feat-sub">Alertes evenements des eglises suivies</div>
+                            <div class="map-feat-sub">Alertes événements des églises suivies</div>
                         </div>
                     </div>
                 </div>
@@ -1910,15 +2040,15 @@
         <div class="slide">
             <p class="overline accent anim">Fonctionnalites</p>
             <h1 class="section-title anim d1">
-                Des evenements <span class="gradient-gold">visibles par tous</span>
+                Des événements <span class="gradient-gold">visibles par tous</span>
             </h1>
             <div class="grid-2 anim d2">
                 <div class="panel glass-panel">
-                    <div class="panel-head">&#128197; Evenements geolocalises</div>
-                    <div class="feat"><span class="dot"></span><span>Conferences, cultes, concerts, prieres</span></div>
+                    <div class="panel-head">&#128197; Événements géolocalisés</div>
+                    <div class="feat"><span class="dot"></span><span>Conférences, cultes, concerts, prières</span></div>
                     <div class="feat"><span class="dot"></span><span>Date, heure, lieu sur la carte</span></div>
-                    <div class="feat"><span class="dot"></span><span>Intervenant et capacite maximale</span></div>
-                    <div class="feat"><span class="dot"></span><span>Lien YouTube Live integre</span></div>
+                    <div class="feat"><span class="dot"></span><span>Intervenant et capacité maximale</span></div>
+                    <div class="feat"><span class="dot"></span><span>Lien YouTube Live intégré</span></div>
                     <div class="feat"><span class="dot"></span><span>Multilingue — 10 langues</span></div>
                     <div class="feat"><span class="dot"></span><span>Gratuit ou payant avec inscription</span></div>
                 </div>
@@ -1926,14 +2056,14 @@
                     <div class="panel-head gold-head">&#128276; Notifications push</div>
                     <div
                         style="text-align: center; margin: 0.8vw 0; font-size: var(--fs-card-text); color: var(--text); font-weight: 600;">
-                        L'utilisateur clique "Je suis interesse"
+                        L'utilisateur clique "Je suis intéressé"
                     </div>
                     <div style="text-align: center; font-size: 2vw; color: var(--gold); margin: 0.6vw 0;">&#8595;</div>
                     <div
                         style="text-align: center; margin-bottom: 1vw; font-size: var(--fs-card-text); color: var(--grey);">
                         Il recoit automatiquement :</div>
-                    <div class="feat gold-dot"><span class="dot"></span><span>Rappel avant l'evenement</span></div>
-                    <div class="feat gold-dot"><span class="dot"></span><span>Modification de l'evenement</span></div>
+                    <div class="feat gold-dot"><span class="dot"></span><span>Rappel avant l'événement</span></div>
+                    <div class="feat gold-dot"><span class="dot"></span><span>Modification de l'événement</span></div>
                     <div class="feat gold-dot"><span class="dot"></span><span>Annulation avec motif</span></div>
                     <div class="feat gold-dot"><span class="dot"></span><span>Nouvelles informations</span></div>
                     <div style="text-align: center; margin-top: 1vw; font-size: var(--fs-small); color: var(--grey);">
@@ -1951,15 +2081,15 @@
             <div class="grid-3 anim d2">
                 <div class="panel glass-panel">
                     <div class="panel-head">&#128203; Tableau de bord</div>
-                    <div class="feat"><span class="dot"></span><span>Gere sa fiche eglise</span></div>
-                    <div class="feat"><span class="dot"></span><span>Publie ses evenements</span></div>
+                    <div class="feat"><span class="dot"></span><span>Gère sa fiche église</span></div>
+                    <div class="feat"><span class="dot"></span><span>Publie ses événements</span></div>
                     <div class="feat"><span class="dot"></span><span>Suit les statistiques</span></div>
                     <div class="feat"><span class="dot"></span><span>Upload logo et images</span></div>
-                    <div class="feat"><span class="dot"></span><span>Gere horaires et reseaux sociaux</span></div>
+                    <div class="feat"><span class="dot"></span><span>Gère horaires et réseaux sociaux</span></div>
                 </div>
                 <div class="panel blue-panel">
-                    <div class="panel-head" style="color: white;">&#128274; Securite</div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Verification document SIRENE</span></div>
+                    <div class="panel-head" style="color: white;">&#128274; Sécurité</div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Vérification document SIRENE</span></div>
                     <div class="feat white-dot"><span class="dot"></span><span>Validation manuelle admin</span></div>
                     <div class="feat white-dot"><span class="dot"></span><span>Authentification JWT</span></div>
                     <div class="feat white-dot"><span class="dot"></span><span>HTTPS + chiffrement</span></div>
@@ -1967,12 +2097,12 @@
                             Admin</span></div>
                 </div>
                 <div class="panel green-panel">
-                    <div class="panel-head" style="color: white;">&#129309; Reseau pasteurs</div>
+                    <div class="panel-head" style="color: white;">&#129309; Réseau pasteurs</div>
                     <div class="feat white-dot"><span class="dot"></span><span>Annuaire avec recherche</span></div>
                     <div class="feat white-dot"><span class="dot"></span><span>Filtrage par ville</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Filtrage par denomination</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Visibilite controlee</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Decouvrir ses confreres</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Filtrage par dénomination</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Visibilité contrôlée</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Découvrir ses confrères</span></div>
                 </div>
             </div>
         </div>
@@ -1981,7 +2111,7 @@
         <div class="slide">
             <p class="overline accent anim">Administration</p>
             <h1 class="section-title anim d1">
-                Administration <span class="gradient-gold">centralisee</span>
+                Administration <span class="gradient-gold">centralisée</span>
             </h1>
             <p class="body-text anim d2">Un super admin supervise l'ensemble de la plateforme</p>
             <div class="grid-4 anim d3">
@@ -1993,17 +2123,17 @@
                 <div class="admin-card" style="background: linear-gradient(145deg, #1B6B35, #30B04E);">
                     <div class="admin-icon">&#9962;</div>
                     <div class="admin-name">Eglises</div>
-                    <div class="admin-desc">Voir, rechercher, filtrer et modifier toutes les eglises</div>
+                    <div class="admin-desc">Voir, rechercher, filtrer et modifier toutes les églises</div>
                 </div>
                 <div class="admin-card" style="background: linear-gradient(145deg, #BF6A00, #E8A000);">
                     <div class="admin-icon">&#128197;</div>
-                    <div class="admin-name">Evenements</div>
-                    <div class="admin-desc">Superviser et annuler, notifier les interesses</div>
+                    <div class="admin-name">Événements</div>
+                    <div class="admin-desc">Superviser et annuler, notifier les intéressés</div>
                 </div>
                 <div class="admin-card" style="background: linear-gradient(145deg, #6A1B9A, #9C27B0);">
                     <div class="admin-icon">&#128101;</div>
                     <div class="admin-name">Comptes</div>
-                    <div class="admin-desc">Gerer les utilisateurs, suspendre, filtrer par role</div>
+                    <div class="admin-desc">Gérer les utilisateurs, suspendre, filtrer par rôle</div>
                 </div>
             </div>
             <div class="workflow anim d4">
@@ -2011,17 +2141,17 @@
                 <span class="wf-arrow">&#8594;</span>
                 <span class="wf-step">Upload SIRENE</span>
                 <span class="wf-arrow">&#8594;</span>
-                <span class="wf-step">Verification</span>
+                <span class="wf-step">Vérification</span>
                 <span class="wf-arrow">&#8594;</span>
                 <span class="wf-step">Validation</span>
                 <span class="wf-arrow">&#8594;</span>
-                <span class="wf-step done">&#10003; Acces plateforme</span>
+                <span class="wf-step done">&#10003; Accès plateforme</span>
             </div>
         </div>
 
         <!-- ======== SLIDE 9 : ARCHITECTURE TECHNIQUE ======== -->
         <div class="slide">
-            <p class="overline anim" style="color: var(--accent-2);">Pour les developpeurs</p>
+            <p class="overline anim" style="color: var(--accent-2);">Pour les développeurs</p>
             <h1 class="section-title anim d1">
                 Architecture <span class="gradient-text">technique</span>
             </h1>
@@ -2038,8 +2168,8 @@
                 </div>
                 <div class="tech-card" style="background: linear-gradient(145deg, #BF6A00, #D4A632);">
                     <div class="tech-name">&#128451; Database</div>
-                    <div class="tech-stack">MySQL 8.0 + PostGIS<br>14 tables normalisees<br>Index spatiaux<br>Full-text
-                        search<br>Requetes geospatiales</div>
+                    <div class="tech-stack">MySQL 8.0 + PostGIS<br>14 tables normalisées<br>Index spatiaux<br>Full-text
+                        search<br>Requêtes géospatiales</div>
                 </div>
             </div>
             <div class="tech-row anim d3">
@@ -2066,27 +2196,27 @@
             <div class="grid-4 anim d2">
                 <div class="stat" style="background: linear-gradient(145deg, #0A4DA6, #2997FF);">
                     <div class="stat-num">2 500+</div>
-                    <div class="stat-lbl">eglises evangeliques<br>en France</div>
+                    <div class="stat-lbl">églises évangéliques<br>en France</div>
                 </div>
                 <div class="stat" style="background: linear-gradient(145deg, #1B6B35, #30B04E);">
                     <div class="stat-num">10</div>
-                    <div class="stat-lbl">langues<br>supportees</div>
+                    <div class="stat-lbl">langues<br>supportées</div>
                 </div>
                 <div class="stat" style="background: linear-gradient(145deg, #BF6A00, #D4A632);">
                     <div class="stat-num">6</div>
-                    <div class="stat-lbl">reseaux sociaux<br>integres</div>
+                    <div class="stat-lbl">réseaux sociaux<br>intégrés</div>
                 </div>
                 <div class="stat" style="background: linear-gradient(145deg, #6A1B9A, #9C27B0);">
                     <div class="stat-num">14</div>
-                    <div class="stat-lbl">tables en<br>base de donnees</div>
+                    <div class="stat-lbl">tables en<br>base de données</div>
                 </div>
                 <div class="stat" style="background: linear-gradient(145deg, #00695C, #00897B);">
                     <div class="stat-num">6</div>
-                    <div class="stat-lbl">denominations<br>supportees</div>
+                    <div class="stat-lbl">dénominations<br>supportées</div>
                 </div>
                 <div class="stat" style="background: linear-gradient(145deg, #AD1457, #D81B60);">
                     <div class="stat-num">4</div>
-                    <div class="stat-lbl">unions d'eglises<br>CNEF, FPF, ADD...</div>
+                    <div class="stat-lbl">unions d'églises<br>CNEF, FPF, ADD...</div>
                 </div>
                 <div class="stat" style="background: linear-gradient(145deg, #283593, #3F51B5);">
                     <div class="stat-num" style="font-size: 2.2vw;">iOS &<br>Android</div>
@@ -2094,7 +2224,7 @@
                 </div>
                 <div class="stat" style="background: linear-gradient(145deg, #8B6914, #D4A632);">
                     <div class="stat-num">100%</div>
-                    <div class="stat-lbl">gratuit pour<br>toutes les eglises</div>
+                    <div class="stat-lbl">gratuit pour<br>toutes les églises</div>
                 </div>
             </div>
         </div>
@@ -2110,10 +2240,10 @@
                     <div class="phase-over">Phase 1</div>
                     <div class="phase-name">Court terme</div>
                     <div class="phase-line"></div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Lancement beta</div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Eglises pilotes</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Lancement bêta</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Églises pilotes</div>
                     <div class="phase-row"><span class="arr">&#8594;</span> Retours utilisateurs</div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Amelioration UX/UI</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Amélioration UX/UI</div>
                 </div>
                 <div class="phase" style="background: linear-gradient(145deg, #1B6B35, #2E8B48);">
                     <div class="phase-over">Phase 2</div>
@@ -2121,8 +2251,8 @@
                     <div class="phase-line"></div>
                     <div class="phase-row"><span class="arr">&#8594;</span> App Store & Google Play</div>
                     <div class="phase-row"><span class="arr">&#8594;</span> Messagerie pasteurs</div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Analytics avances</div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Streaming integre</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Analytics avancés</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Streaming intégré</div>
                 </div>
                 <div class="phase" style="background: linear-gradient(145deg, #8B6914, #BF9B30);">
                     <div class="phase-over">Phase 3</div>
@@ -2139,7 +2269,7 @@
         <!-- ======== SLIDE 12 : FERMETURE ======== -->
         <div class="slide">
             <div class="verse-text anim">
-                "Vous etes la lumiere du monde"
+                "Vous êtes la lumière du monde"
             </div>
             <div class="verse-source anim d1">— Matthieu 5:14</div>
             <div class="close-line anim d2"></div>
@@ -2151,7 +2281,7 @@
                     <div class="cta-what">Testez la plateforme</div>
                 </div>
                 <div class="cta-card gold-cta">
-                    <div class="cta-who" style="color: var(--gold-light);">Developpeurs</div>
+                    <div class="cta-who" style="color: var(--gold-light);">Développeurs</div>
                     <div class="cta-what">Rejoignez le projet</div>
                 </div>
             </div>
@@ -2166,7 +2296,7 @@
             <svg viewBox="0 0 24 24">
                 <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
             </svg>
-            Precedent
+            Précédent
         </button>
         <span class="slide-counter" id="slideCounter"></span>
         <button class="nav-btn" id="nextBtn" onclick="nextSlide()">
@@ -2178,7 +2308,7 @@
     </div>
 
     <div class="hint">
-        <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> naviguer &nbsp;&bull;&nbsp; <kbd>F</kbd> plein ecran &nbsp;&bull;&nbsp; <kbd>T</kbd> theme
+        <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> naviguer &nbsp;&bull;&nbsp; <kbd>F</kbd> plein écran &nbsp;&bull;&nbsp; <kbd>T</kbd> thème
     </div>
 
     <script>
