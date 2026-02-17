@@ -1362,31 +1362,74 @@
 
         /* Map popup card */
         .map-popup {
+            display: none;
+        }
+
+        .map-mini-card {
             position: absolute;
-            top: 15%;
-            right: 5%;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(41, 151, 255, 0.3);
-            border-radius: 0.8vw;
-            padding: 0.8vw 1vw;
-            width: 11vw;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 0.5vw;
+            padding: 0.35vw 0.55vw;
             opacity: 0;
-            transform: translateY(8px);
-            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            z-index: 2;
+            transform: translateY(6px);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 3;
+            white-space: nowrap;
         }
 
-        body.light .map-popup {
-            background: rgba(255, 255, 255, 0.85);
-            border-color: rgba(0, 113, 227, 0.25);
+        body.light .map-mini-card {
+            background: rgba(255, 255, 255, 0.9);
         }
 
-        .slide.active .map-popup {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.8s;
+        .map-mini-card.church-card {
+            border: 1px solid rgba(41, 151, 255, 0.35);
+        }
+
+        .map-mini-card.event-card {
+            border: 1px solid rgba(191, 155, 48, 0.45);
+        }
+
+        .slide.active .map-mini-card { opacity: 1; transform: translateY(0); }
+        .slide.active .mc1 { transition-delay: 0.6s; }
+        .slide.active .mc2 { transition-delay: 0.8s; }
+        .slide.active .mc3 { transition-delay: 1.0s; }
+        .slide.active .mc4 { transition-delay: 1.2s; }
+        .slide.active .mc5 { transition-delay: 1.4s; }
+        .slide.active .mc6 { transition-delay: 1.6s; }
+
+        .mini-card-title {
+            font-size: 0.55vw;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .mini-card-sub {
+            font-size: 0.4vw;
+            color: var(--grey);
+            margin-top: 0.05vw;
+        }
+
+        .mini-card-badge {
+            display: inline-block;
+            font-size: 0.35vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03vw;
+            padding: 0.08vw 0.25vw;
+            border-radius: 0.2vw;
+            margin-bottom: 0.1vw;
+        }
+
+        .mini-card-badge.badge-church {
+            background: rgba(41, 151, 255, 0.15);
+            color: var(--accent-1);
+        }
+
+        .mini-card-badge.badge-event {
+            background: rgba(191, 155, 48, 0.15);
+            color: var(--gold);
         }
 
         .popup-name {
@@ -2802,34 +2845,79 @@
                             <text class="map-label" x="88" y="153">Montpellier</text>
                         </g>
 
+                        <!-- Événements sur la carte (marqueurs dorés) -->
+                        <g class="map-marker">
+                            <circle cx="105" cy="48" r="4" fill="rgba(191, 155, 48, 0.2)" stroke="none">
+                                <animate attributeName="r" values="4;7;4" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.6;0;0.6" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <rect x="101" y="44" width="8" height="8" rx="2" fill="#BF9B30" opacity="0.9"/>
+                            <text x="105" y="50" text-anchor="middle" fill="#fff" font-size="5" font-weight="700">E</text>
+                            <text class="map-label" x="89" y="47" fill="#BF9B30" font-size="4.5">Conférence</text>
+                        </g>
+
+                        <g class="map-marker">
+                            <circle cx="125" cy="106" r="4" fill="rgba(191, 155, 48, 0.2)" stroke="none">
+                                <animate attributeName="r" values="4;7;4" dur="2.5s" begin="0.8s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.6;0;0.6" dur="2.5s" begin="0.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <rect x="121" y="102" width="8" height="8" rx="2" fill="#BF9B30" opacity="0.9"/>
+                            <text x="125" y="108" text-anchor="middle" fill="#fff" font-size="5" font-weight="700">E</text>
+                            <text class="map-label" x="131" y="107" fill="#BF9B30" font-size="4.5">Concert</text>
+                        </g>
+
+                        <g class="map-marker">
+                            <circle cx="78" cy="150" r="4" fill="rgba(191, 155, 48, 0.2)" stroke="none">
+                                <animate attributeName="r" values="4;7;4" dur="2.5s" begin="1.6s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.6;0;0.6" dur="2.5s" begin="1.6s" repeatCount="indefinite"/>
+                            </circle>
+                            <rect x="74" y="146" width="8" height="8" rx="2" fill="#BF9B30" opacity="0.9"/>
+                            <text x="78" y="152" text-anchor="middle" fill="#fff" font-size="5" font-weight="700">E</text>
+                            <text class="map-label" x="62" y="155" fill="#BF9B30" font-size="4.5">Séminaire</text>
+                        </g>
+
                         <!-- Corse (petit point) -->
                         <g class="map-marker">
                             <circle class="marker-dot" cx="178" cy="158" r="1.5" opacity="0.5"/>
                         </g>
                     </svg>
 
-                    <!-- Popup fiche eglise -->
-                    <div class="map-popup">
-                        <div class="popup-name">Église Évangélique de Paris</div>
-                        <div class="popup-denom">Assemblée de Dieu</div>
-                        <div class="popup-row">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-                            <span>15 Rue de la Paix, 75002</span>
-                        </div>
-                        <div class="popup-row">
-                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                            <span>Dim. 10h00 — 12h30</span>
-                        </div>
-                        <div class="popup-row">
-                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                            <span>01 42 00 00 00</span>
-                        </div>
-                        <div class="popup-socials">
-                            <div class="popup-social-dot" style="background: #1877F2;"></div>
-                            <div class="popup-social-dot" style="background: #E4405F;"></div>
-                            <div class="popup-social-dot" style="background: #FF0000;"></div>
-                            <div class="popup-social-dot" style="background: #25D366;"></div>
-                        </div>
+                    <!-- Mini-cartes églises (bleu) -->
+                    <div class="map-mini-card church-card mc1" style="top: 14%; right: 8%;">
+                        <div class="mini-card-badge badge-church">⛪ Église</div>
+                        <div class="mini-card-title">Église Évangélique de Paris</div>
+                        <div class="mini-card-sub">Assemblée de Dieu • Dim. 10h • 0.8 km</div>
+                    </div>
+
+                    <div class="map-mini-card church-card mc2" style="top: 50%; left: 3%;">
+                        <div class="mini-card-badge badge-church">⛪ Église</div>
+                        <div class="mini-card-title">Église de la Bonne Nouvelle</div>
+                        <div class="mini-card-sub">UEELF • Dim. 10h30 • 2.3 km</div>
+                    </div>
+
+                    <div class="map-mini-card church-card mc3" style="bottom: 8%; right: 2%;">
+                        <div class="mini-card-badge badge-church">⛪ Église</div>
+                        <div class="mini-card-title">Église Protestante de Nice</div>
+                        <div class="mini-card-sub">EPUdF • Dim. 10h • 1.5 km</div>
+                    </div>
+
+                    <!-- Mini-cartes événements (doré) -->
+                    <div class="map-mini-card event-card mc4" style="top: 22%; left: 2%;">
+                        <div class="mini-card-badge badge-event">📅 Événement</div>
+                        <div class="mini-card-title">Conférence Louange</div>
+                        <div class="mini-card-sub">Sam. 15 Mars • 19h — Paris</div>
+                    </div>
+
+                    <div class="map-mini-card event-card mc5" style="top: 55%; right: 3%;">
+                        <div class="mini-card-badge badge-event">📅 Événement</div>
+                        <div class="mini-card-title">Concert Gospel</div>
+                        <div class="mini-card-sub">Ven. 21 Mars • 20h — Lyon</div>
+                    </div>
+
+                    <div class="map-mini-card event-card mc6" style="bottom: 15%; left: 5%;">
+                        <div class="mini-card-badge badge-event">📅 Événement</div>
+                        <div class="mini-card-title">Séminaire Jeunesse</div>
+                        <div class="mini-card-sub">Sam. 22 Mars • 14h — Toulouse</div>
                     </div>
                 </div>
 
@@ -2839,7 +2927,7 @@
                         <div class="map-feat-icon blue">&#128205;</div>
                         <div>
                             <div class="map-feat-text">Autour de moi</div>
-                            <div class="map-feat-sub">Les églises les plus proches s'affichent instantanément</div>
+                            <div class="map-feat-sub">Les églises et événements les plus proches s'affichent instantanément</div>
                         </div>
                     </div>
                     <div class="map-feat-card">
@@ -2864,10 +2952,10 @@
                         </div>
                     </div>
                     <div class="map-feat-card">
-                        <div class="map-feat-icon red">&#128260;</div>
+                        <div class="map-feat-icon red">&#128197;</div>
                         <div>
-                            <div class="map-feat-text">Toujours à jour</div>
-                            <div class="map-feat-sub">Le pasteur met à jour sa fiche en temps réel depuis son espace</div>
+                            <div class="map-feat-text">Ses événements aussi</div>
+                            <div class="map-feat-sub">Conférences, cultes spéciaux, concerts — tout apparaît sur la fiche</div>
                         </div>
                     </div>
                 </div>
@@ -2876,19 +2964,17 @@
 
         <!-- ======== SLIDE 7 : EVENEMENTS + NOTIFICATIONS ======== -->
         <div class="slide">
-            <p class="overline accent anim">Le pilier Participer en action</p>
+            <p class="overline accent anim">La visibilité des événements</p>
             <h1 class="section-title anim d1">
-                Les 162 places vides du pasteur Marc ? <span class="gradient-gold">C'est fini.</span>
+                162 places vides. L'événement existait. <span class="gradient-gold">L'information, non.</span>
             </h1>
             <div class="grid-2 anim d2">
                 <div class="panel glass-panel">
-                    <div class="panel-head">&#128197; Chaque événement devient visible</div>
+                    <div class="panel-head">&#128197; Un événement publié = toute la France informée</div>
                     <div class="feat"><span class="dot"></span><span>Conférences, cultes, concerts, prières — tout est référencé</span></div>
-                    <div class="feat"><span class="dot"></span><span>Visible sur la carte par toute la France, pas juste un groupe WhatsApp</span></div>
-                    <div class="feat"><span class="dot"></span><span>Nom de l'intervenant, nombre de places disponibles</span></div>
+                    <div class="feat"><span class="dot"></span><span>Visible par toute la France — pas juste un groupe WhatsApp</span></div>
                     <div class="feat"><span class="dot"></span><span>Suivi en direct via YouTube Live intégré</span></div>
-                    <div class="feat"><span class="dot"></span><span>Accessible en 10 langues pour les communautés internationales</span></div>
-                    <div class="feat"><span class="dot"></span><span>Inscription en ligne pour les événements payants ou sur réservation</span></div>
+                    <div class="feat"><span class="dot"></span><span>Infos pratiques : parking, accès, places disponibles</span></div>
                 </div>
                 <div class="panel dark-panel">
                     <div class="panel-head gold-head">&#128276; Plus personne n'oublie un événement</div>
@@ -2904,8 +2990,6 @@
                     <div class="feat gold-dot"><span class="dot"></span><span>Une alerte si l'événement est modifié</span></div>
                     <div class="feat gold-dot"><span class="dot"></span><span>Une notification si l'événement est annulé, avec le motif</span></div>
                     <div class="feat gold-dot"><span class="dot"></span><span>Les nouvelles informations ajoutées par le pasteur</span></div>
-                    <div style="text-align: center; margin-top: 1vw; font-size: var(--fs-small); color: var(--grey);">
-                        Fonctionne sur tous les téléphones — iPhone et Android</div>
                 </div>
             </div>
             <p class="anim d3" style="margin-top: 1.5vw; font-size: 1.4vw; text-align: center; color: var(--grey);">
@@ -2915,41 +2999,33 @@
 
         <!-- ======== SLIDE 8 : ESPACE PASTEUR ======== -->
         <div class="slide">
-            <p class="overline accent anim">Le pilier Connecter en action</p>
+            <p class="overline accent anim">L'espace pasteur</p>
             <h1 class="section-title anim d1">
-                Les deux pasteurs de Marseille ? <span class="gradient-text">Ils se connaissent enfin.</span>
+                Tout gérer depuis <span class="gradient-text">un seul espace.</span>
             </h1>
-            <div class="grid-3 anim d2">
+            <div class="grid-2 anim d2">
                 <div class="panel glass-panel">
-                    <div class="panel-head">&#128203; Le pasteur gère tout, tout seul</div>
+                    <div class="panel-head">&#128203; Il gère son église en autonomie</div>
                     <div class="feat"><span class="dot"></span><span>Il crée et met à jour sa fiche église en 5 minutes</span></div>
                     <div class="feat"><span class="dot"></span><span>Il publie ses événements en quelques clics</span></div>
                     <div class="feat"><span class="dot"></span><span>Il voit combien de personnes sont intéressées</span></div>
                     <div class="feat"><span class="dot"></span><span>Il personnalise son logo et ses images</span></div>
                     <div class="feat"><span class="dot"></span><span>Il met à jour ses horaires et réseaux sociaux à tout moment</span></div>
                 </div>
-                <div class="panel blue-panel">
-                    <div class="panel-head" style="color: white;">&#128274; Aucune fausse église sur la plateforme</div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Chaque pasteur fournit un document SIRENE officiel</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Un administrateur valide manuellement chaque inscription</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Connexion sécurisée et données chiffrées</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Chaque donnée transite via un canal protégé (HTTPS)</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Trois niveaux d'accès : Pasteur, Évangéliste, Administrateur</span></div>
-                </div>
                 <div class="panel green-panel">
-                    <div class="panel-head" style="color: white;">&#129309; Fini l'isolement entre pasteurs</div>
+                    <div class="panel-head" style="color: white;">&#129309; Il voit ce que font les autres</div>
                     <div class="feat white-dot"><span class="dot"></span><span>Voir tous les pasteurs de sa ville en un clic</span></div>
                     <div class="feat white-dot"><span class="dot"></span><span>Chercher par dénomination pour trouver des confrères proches</span></div>
                     <div class="feat white-dot"><span class="dot"></span><span>Consulter les événements des autres églises</span></div>
                     <div class="feat white-dot"><span class="dot"></span><span>Chaque pasteur choisit s'il veut être visible ou non</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Créer des synergies locales pour des événements communs</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Coordonner des événements communs entre églises</span></div>
                 </div>
             </div>
         </div>
 
         <!-- ======== SLIDE 9 : ADMINISTRATION ======== -->
         <div class="slide">
-            <p class="overline accent anim">Gouvernance & qualité</p>
+            <p class="overline accent anim">Confiance & vérification</p>
             <h1 class="section-title anim d1">
                 Qui garantit la fiabilité ? <span class="gradient-gold">Un contrôle rigoureux.</span>
             </h1>
