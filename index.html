@@ -236,12 +236,14 @@
             transform: scale(0.98) translateY(10px);
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             pointer-events: none;
+            z-index: 100;
         }
 
         .slide.active {
             opacity: 1;
             transform: scale(1) translateY(0);
             pointer-events: all;
+            z-index: 999;
         }
 
         /* ===== APPLE TYPOGRAPHY (RESPONSIVE) ===== */
@@ -1643,79 +1645,94 @@
         /* ===== iPHONE MOCKUP ===== */
         .iphone-frame {
             position: relative;
-            width: 13vw;
-            height: 26vw;
-            background: #1a1a1a;
-            border-radius: 2.8vw;
-            border: 2px solid #3a3a3a;
+            width: 14.5vw;
+            height: 29vw;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 3.2vw;
+            border: 1.2px solid rgba(255, 255, 255, 0.1);
             box-shadow:
-                0 0.5vw 3vw rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(255, 255, 255, 0.05),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+                0 0 0 0.1vw rgba(255, 255, 255, 0.15),
+                0 0 0 0.4vw rgba(0, 0, 0, 0.8),
+                0 2vw 8vw rgba(0, 0, 0, 0.6),
+                inset 0 1px 1px rgba(255, 255, 255, 0.08),
+                inset 0 -1px 1px rgba(0, 0, 0, 0.4);
             overflow: hidden;
             animation: phone-float-left 6s ease-in-out infinite;
+            backdrop-filter: blur(0.5px);
         }
 
         body.light .iphone-frame {
-            background: #e2e2e7;
-            border-color: #c8c8cc;
+            background: linear-gradient(135deg, #f5f5f7 0%, #efefef 100%);
+            border-color: rgba(0, 0, 0, 0.08);
             box-shadow:
-                0 0.5vw 3vw rgba(0, 0, 0, 0.2),
-                0 0 0 1px rgba(0, 0, 0, 0.05),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+                0 0 0 0.1vw rgba(0, 0, 0, 0.05),
+                0 0 0 0.4vw rgba(255, 255, 255, 0.8),
+                0 2vw 8vw rgba(0, 0, 0, 0.15),
+                inset 0 1px 1px rgba(255, 255, 255, 0.5),
+                inset 0 -1px 1px rgba(0, 0, 0, 0.05);
         }
 
-        /* Dynamic Island */
+        /* Dynamic Island - iPhone 15/16 Pro Style */
         .iphone-dynamic-island {
-            width: 5vw;
-            height: 1vw;
+            width: 4.5vw;
+            height: 0.85vw;
             background: #000;
-            border-radius: 0.5vw;
+            border-radius: 0.8vw;
             margin: 0.5vw auto 0;
             position: relative;
             z-index: 3;
+            box-shadow: 0 0 0.8vw rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.05);
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
         }
 
         body.light .iphone-dynamic-island {
             background: #1d1d1f;
         }
 
-        /* Side buttons iPhone */
+        /* Stainless Steel Bezel Effect */
         .iphone-frame::before {
             content: '';
             position: absolute;
-            right: -3.5px;
-            top: 7vw;
-            width: 2.5px;
-            height: 2.2vw;
-            background: #3a3a3a;
-            border-radius: 0 2px 2px 0;
+            right: -2.5px;
+            top: 6vw;
+            width: 2px;
+            height: 2.8vw;
+            background: linear-gradient(90deg, #454545, #2a2a2a, #454545);
+            border-radius: 0 1px 1px 0;
+            box-shadow: inset 0 0 1px rgba(255, 255, 255, 0.3);
         }
 
         body.light .iphone-frame::before {
-            background: #c8c8cc;
+            background: linear-gradient(90deg, #d0d0d0, #b8b8b8, #d0d0d0);
+            box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.1);
         }
 
         .iphone-frame::after {
             content: '';
             position: absolute;
-            left: -3.5px;
-            top: 5.5vw;
-            width: 2.5px;
-            height: 1.4vw;
-            background: #3a3a3a;
-            border-radius: 2px 0 0 2px;
-            box-shadow: 0 2.2vw 0 #3a3a3a, 0 4vw 0 #3a3a3a;
+            left: -2.5px;
+            top: 5vw;
+            width: 2px;
+            height: 1.8vw;
+            background: linear-gradient(90deg, #2a2a2a, #454545, #2a2a2a);
+            border-radius: 1px 0 0 1px;
+            box-shadow: 
+                inset 0 0 1px rgba(255, 255, 255, 0.3),
+                0 2.5vw 0 linear-gradient(90deg, #2a2a2a, #454545, #2a2a2a),
+                0 4.2vw 0 linear-gradient(90deg, #2a2a2a, #454545, #2a2a2a);
         }
 
         body.light .iphone-frame::after {
-            background: #c8c8cc;
-            box-shadow: 0 2.2vw 0 #c8c8cc, 0 4vw 0 #c8c8cc;
+            background: linear-gradient(90deg, #b8b8b8, #d0d0d0, #b8b8b8);
+            box-shadow: 
+                inset 0 0 1px rgba(0, 0, 0, 0.1),
+                0 2.5vw 0 linear-gradient(90deg, #b8b8b8, #d0d0d0, #b8b8b8),
+                0 4.2vw 0 linear-gradient(90deg, #b8b8b8, #d0d0d0, #b8b8b8);
         }
 
         @keyframes phone-float-left {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-0.8vw); }
+            50% { transform: translateY(-1vw); }
         }
 
         /* ===== ANDROID MOCKUP ===== */
@@ -2165,51 +2182,193 @@
         /* ===== STORE BADGES ===== */
         .store-badges {
             display: flex;
-            flex-direction: column;
-            gap: 0.8vw;
-            margin-top: 1.5vw;
+            flex-direction: row;
+            gap: 1.2vw;
+            margin-top: -0.5vw;
+            align-items: center;
+            justify-content: center;
         }
 
         .store-badge {
-            width: 11vw;
-            height: 3.3vw;
-            background-size: 110% auto;
-            background-repeat: no-repeat;
-            background-image: url('https://img.freepik.com/vecteurs-premium/disponible-app-store-obtenez-google-play-boutons-pour-aller-dans-magasins-applications-fond-blanc-logotype-logo-ios-applications-android-telecharger-installer-utilisateur-redactionnel_661108-8070.jpg');
-            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5vw;
+            min-width: 8.5vw;
+            width: auto;
+            height: 2.8vw;
+            padding: 0 1.2vw;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.05));
+            border: 1.2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 0.8vw;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            font-size: 0.9vw;
+            color: #ffffff;
             position: relative;
             overflow: hidden;
-            background-color: #fff;
-            /* In dark mode by default, we invert to get black background from the white source */
-            filter: invert(1) hue-rotate(180deg) brightness(1.2);
+            white-space: nowrap;
+            line-height: 1;
         }
 
-        .store-badge::after {
+        .store-badge::before {
             content: '';
             position: absolute;
             inset: 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
             pointer-events: none;
         }
 
         .store-badge:hover {
-            transform: scale(1.05) translateY(-2px);
-            filter: invert(1) hue-rotate(180deg) brightness(1.4);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.08));
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
 
-        .app-store-badge {
-            background-position: center 22%;
-            background-size: 110% auto;
+        .store-badge:hover::before {
+            opacity: 1;
         }
 
-        .google-play-badge {
-            background-position: center 78%;
-            background-size: 110% auto;
+        .store-badge:active {
+            transform: translateY(-1px);
+        }
+
+        .app-store-badge::after {
+            content: '🍎 App Store';
+            position: relative;
+            z-index: 1;
+        }
+
+        .google-play-badge::after {
+            content: '▶ Google Play';
+            position: relative;
+            z-index: 1;
+        }
+
+        .coming-soon-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5vw;
+            min-width: 8.5vw;
+            width: auto;
+            height: 2.8vw;
+            padding: 0 1.2vw;
+            border-radius: 0.8vw;
+            background: linear-gradient(135deg, rgba(41, 151, 255, 0.2), rgba(104, 220, 252, 0.08));
+            border: 1.2px solid rgba(41, 151, 255, 0.3);
+            color: rgba(41, 151, 255, 1);
+            font-weight: 700;
+            font-size: 0.9vw;
+            box-shadow: 0 8px 24px rgba(41, 151, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: visible;
+            white-space: nowrap;
+            line-height: 1;
+            flex-wrap: nowrap;
+        }
+
+        .coming-soon-badge::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .coming-soon-badge:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, rgba(41, 151, 255, 0.3), rgba(104, 220, 252, 0.12));
+            border-color: rgba(41, 151, 255, 0.5);
+            box-shadow: 0 12px 32px rgba(41, 151, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            color: rgba(41, 151, 255, 1.2);
+        }
+
+        .coming-soon-badge:hover::before {
+            opacity: 1;
+        }
+
+        .coming-soon-badge:active {
+            transform: translateY(-1px);
+        }
+
+        .coming-soon-badge .cs-icon { 
+            font-size: 1.2vw;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            height: 2.8vw;
+            line-height: 1;
+        }
+
+        .coming-soon-badge .cs-text { 
+            display: flex; 
+            flex-direction: column; 
+            line-height: 0.95;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            height: 2.8vw;
+        }
+
+        .coming-soon-badge .cs-label {
+            font-size: 0.62vw;
+            opacity: 0.8;
+            line-height: 1;
+        }
+
+        .coming-soon-badge .cs-date {
+            font-size: 0.95vw;
+            font-weight: 800;
+            background: linear-gradient(90deg, #2997FF, #68DCFC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Light mode adjustments for buttons */
+        body.light .store-badge {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+            border-color: rgba(0, 0, 0, 0.12);
+            color: #1D1D1F;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        body.light .store-badge:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.35));
+            border-color: rgba(0, 0, 0, 0.18);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        body.light .coming-soon-badge {
+            background: linear-gradient(135deg, rgba(0, 113, 227, 0.12), rgba(20, 124, 229, 0.06));
+            border-color: rgba(0, 113, 227, 0.25);
+            color: #0071E3;
+            box-shadow: 0 8px 24px rgba(0, 113, 227, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        body.light .coming-soon-badge:hover {
+            background: linear-gradient(135deg, rgba(0, 113, 227, 0.2), rgba(20, 124, 229, 0.1));
+            border-color: rgba(0, 113, 227, 0.4);
+            box-shadow: 0 12px 32px rgba(0, 113, 227, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        body.light .coming-soon-badge .cs-date {
+            background: linear-gradient(90deg, #0071E3, #147CE5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* ===== SLIDE 3 SPECIFIC ===== */
@@ -2850,52 +3009,13 @@
                 <div class="phone-showcase">
                     <div class="device-wrapper">
                         <div class="iphone-frame">
-                            <div class="phone-screen">
-                                <div class="iphone-dynamic-island"></div>
-                                <div class="phone-status-bar">
-                                    <span>9:41</span>
-                                    <div class="phone-status-icons">
-                                        <svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-                                    </div>
-                                </div>
-                                <div class="phone-header">
-                                    <span class="phone-header-logo">Light Church</span>
-                                </div>
-                                <div class="phone-search">
-                                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14z"/></svg>
-                                    Rechercher une église...
-                                </div>
-                                <div class="phone-map">
-                                    <div class="phone-map-user" style="top: 50%; left: 48%;"></div>
-                                    <div class="phone-map-dot" style="top: 25%; left: 55%;"></div>
-                                    <div class="phone-map-dot" style="top: 42%; left: 30%;"></div>
-                                    <div class="phone-map-dot" style="top: 62%; left: 68%;"></div>
-                                    <div class="phone-map-dot" style="top: 33%; left: 72%;"></div>
-                                    <div class="phone-map-dot" style="top: 72%; left: 38%;"></div>
-                                </div>
-                                <div class="phone-card">
-                                    <div class="phone-card-icon">⛪</div>
-                                    <div class="phone-card-text">
-                                        <div class="phone-card-name">Église Évangélique Paris</div>
-                                        <div class="phone-card-sub">Assemblée de Dieu • 0.8 km</div>
-                                    </div>
-                                </div>
-                                <div class="phone-nav">
-                                    <div class="phone-nav-item active-nav">
-                                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-                                        Carte
-                                    </div>
-                                    <div class="phone-nav-item">
-                                        <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
-                                        Events
-                                    </div>
-                                    <div class="phone-nav-item">
-                                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                                        Profil
-                                    </div>
-                                </div>
-                                <div class="iphone-home-indicator"></div>
+                            <div class="phone-screen" style="overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;">
+                                <video width="100%" height="100%" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 2.5vw; display: block;">
+                                    <source src="ScreenRecording_01-22-2026 09-10-08_1.MP4" type="video/mp4">
+                                    Votre navigateur ne supporte pas la vidéo.
+                                </video>
+                                <div class="iphone-dynamic-island" style="position: absolute; top: 0.6vw; left: 50%; transform: translateX(-50%); z-index: 10;"></div>
+                                <div class="iphone-home-indicator" style="position: absolute; bottom: 0; z-index: 10;"></div>
                             </div>
                         </div>
 
@@ -2905,6 +3025,14 @@
                             <div class="store-badge app-store-badge" title="Disponible sur l'App Store"></div>
                             <!-- Google Play Badge (Cropped from image) -->
                             <div class="store-badge google-play-badge" title="Disponible sur Google Play"></div>
+                            <!-- Coming Soon compact badge -->
+                            <div class="coming-soon-badge" title="Disponible bientôt">
+                                <div class="cs-icon">🚀</div>
+                                <div class="cs-text">
+                                    <span class="cs-label">Disponible</span>
+                                    <span class="cs-date">S2 2026</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2947,13 +3075,7 @@
                     </div>
                 </div>
             </div>
-            <div class="coming-soon-badge anim d3">
-                <div class="cs-icon">🚀</div>
-                <div class="cs-text">
-                    <span class="cs-label">Lancement prévu</span>
-                    <span class="cs-date">Second semestre 2026</span>
-                </div>
-            </div>
+            
         </div>
 
         <!-- ======== SLIDE 11 : COMPARATIF ======== -->
