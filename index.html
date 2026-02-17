@@ -1613,7 +1613,7 @@
             gap: 2.5vw;
             width: 100%;
             max-width: 88vw;
-            margin-top: 1.2vw;
+            margin-top: 0.5vw; /* Reduced from 1.2vw */
             align-items: center;
         }
 
@@ -2008,14 +2008,14 @@
         .app-features {
             display: flex;
             flex-direction: column;
-            gap: 0.6vw;
+            gap: 0.5vw; /* Reduced from 0.6vw */
         }
 
         .app-feat-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 0.8vw;
-            padding: 0.7vw 1.1vw;
+            padding: 0.6vw 1vw; /* Reduced padding */
             display: flex;
             align-items: center;
             gap: 1vw;
@@ -2061,21 +2061,85 @@
         .coming-soon-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5vw;
-            padding: 0.6vw 2vw;
+            gap: 1.2vw;
+            padding: 0.8vw 1.8vw;
             border-radius: 980px;
-            background: linear-gradient(135deg, rgba(191, 155, 48, 0.12), rgba(232, 212, 139, 0.08));
-            border: 1.5px solid rgba(191, 155, 48, 0.3);
-            font-size: 1vw;
-            font-weight: 700;
-            color: var(--gold-light);
-            margin-top: 0.8vw;
-            animation: badge-glow 3s ease-in-out infinite;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-top: 1vw; /* Reduced from 2vw */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes badge-glow {
-            0%, 100% { box-shadow: 0 0 15px rgba(191, 155, 48, 0.1); }
-            50% { box-shadow: 0 0 30px rgba(191, 155, 48, 0.25); }
+        .coming-soon-badge::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .coming-soon-badge:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .coming-soon-badge:hover::before {
+            opacity: 1;
+        }
+
+        .cs-icon {
+            font-size: 1.8vw;
+            filter: drop-shadow(0 0 12px rgba(255, 107, 107, 0.4));
+        }
+
+        .cs-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.2;
+            text-align: left;
+        }
+
+        .cs-label {
+            font-size: 0.7vw;
+            text-transform: uppercase;
+            letter-spacing: 0.15vw;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            margin-bottom: 0.1vw;
+        }
+
+        .cs-date {
+            font-size: 1.1vw;
+            font-weight: 700;
+            background: linear-gradient(90deg, #FFFFFF, #E0E0E0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.01em;
+        }
+
+        /* Light mode adjustments */
+        body.light .coming-soon-badge {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light .cs-label {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        body.light .cs-date {
+            background: linear-gradient(90deg, #1D1D1F, #424245);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .tech-pill {
@@ -2096,6 +2160,127 @@
             gap: 0.5vw;
             margin-top: 0.5vw;
             justify-content: center;
+        }
+
+        /* ===== STORE BADGES ===== */
+        .store-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8vw;
+            margin-top: 1.5vw;
+        }
+
+        .store-badge {
+            width: 11vw;
+            height: 3.3vw;
+            background-size: 110% auto;
+            background-repeat: no-repeat;
+            background-image: url('https://img.freepik.com/vecteurs-premium/disponible-app-store-obtenez-google-play-boutons-pour-aller-dans-magasins-applications-fond-blanc-logotype-logo-ios-applications-android-telecharger-installer-utilisateur-redactionnel_661108-8070.jpg');
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+            /* In dark mode by default, we invert to get black background from the white source */
+            filter: invert(1) hue-rotate(180deg) brightness(1.2);
+        }
+
+        .store-badge::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        .store-badge:hover {
+            transform: scale(1.05) translateY(-2px);
+            filter: invert(1) hue-rotate(180deg) brightness(1.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .app-store-badge {
+            background-position: center 22%;
+            background-size: 110% auto;
+        }
+
+        .google-play-badge {
+            background-position: center 78%;
+            background-size: 110% auto;
+        }
+
+        /* ===== SLIDE 3 SPECIFIC ===== */
+        .slide-consequences {
+            justify-content: center; /* Center content vertically */
+            padding-top: 2vh; /* Reduced top padding */
+            padding-bottom: 2vh;
+        }
+
+        .slide-consequences .section-title {
+            margin-bottom: 0.5vw; /* Reduce space after title */
+        }
+
+        .slide-consequences .grid-4 {
+            margin-top: 0.5vw; /* Further reduce space before grid */
+            gap: 0.6vw;
+            margin-bottom: 0.5vw;
+        }
+
+        .slide-consequences .consequence-card {
+            padding: 1vw 0.8vw; /* Compact card padding */
+        }
+
+        .slide-consequences .c-number {
+             font-size: 2.5vw; /* Slightly smaller numbers */
+             margin-bottom: 0.3vw;
+        }
+
+        .slide-consequences .c-title {
+             font-size: 1.4vw;
+             margin-bottom: 0.3vw;
+        }
+
+        .slide-consequences .c-text {
+             font-size: 1.1vw;
+             line-height: 1.35;
+        }
+
+        /* Target the specific evangelist card (d3) */
+        .slide-consequences .anim.d3 {
+            margin-top: 0.4vw !important;
+            padding: 0.6vw 1.5vw !important;
+            gap: 1.2vw !important;
+        }
+        
+        .slide-consequences .anim.d3 > div:first-child {
+            font-size: 2.2vw !important; /* Smaller emoji */
+        }
+
+        /* Target the reliability card (d4) */
+        .slide-consequences .anim.d4 {
+            margin-top: 0.4vw !important;
+            padding: 0.6vw 1.5vw !important;
+        }
+
+        /* Target the final sentence */
+        .slide-consequences p.anim.d4 {
+            margin-top: 0.8vw !important;
+            font-size: 1.5vw !important;
+            margin-bottom: 0 !important;
+            padding-bottom: 0.5vh !important;
+        }
+
+        body.light .store-badge {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            filter: none; /* No inversion in light mode */
+        }
+
+        body.light .store-badge:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            filter: brightness(1.05);
         }
     </style>
 </head>
@@ -2235,7 +2420,7 @@
         </div>
 
         <!-- ======== SLIDE 3 : CONSEQUENCES ======== -->
-        <div class="slide">
+        <div class="slide slide-consequences">
             <p class="overline anim" style="color: #FF6B6B;">Ce qui se passe aujourd'hui</p>
             <h1 class="section-title anim d1">
                 Ces histoires arrivent <span class="gradient-red">chaque jour</span>
@@ -2716,22 +2901,10 @@
 
                         <!-- Store Badges -->
                         <div class="store-badges">
-                            <!-- App Store Badge -->
-                            <div class="store-badge app-store-badge">
-                                <svg class="store-badge-icon" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                                <div class="store-badge-text">
-                                    <span class="store-badge-small">Disponible sur</span>
-                                    <span class="store-badge-big">App Store</span>
-                                </div>
-                            </div>
-                            <!-- Google Play Badge -->
-                            <div class="store-badge google-play-badge">
-                                <svg class="store-badge-icon" viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 12l2.302-2.302v-.19zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
-                                <div class="store-badge-text">
-                                    <span class="store-badge-small">Disponible sur</span>
-                                    <span class="store-badge-big">Google Play</span>
-                                </div>
-                            </div>
+                            <!-- App Store Badge (Cropped from image) -->
+                            <div class="store-badge app-store-badge" title="Disponible sur l'App Store"></div>
+                            <!-- Google Play Badge (Cropped from image) -->
+                            <div class="store-badge google-play-badge" title="Disponible sur Google Play"></div>
                         </div>
                     </div>
                 </div>
@@ -2775,7 +2948,11 @@
                 </div>
             </div>
             <div class="coming-soon-badge anim d3">
-                🚀 Lancement prévu — second semestre 2026
+                <div class="cs-icon">🚀</div>
+                <div class="cs-text">
+                    <span class="cs-label">Lancement prévu</span>
+                    <span class="cs-date">Second semestre 2026</span>
+                </div>
             </div>
         </div>
 
