@@ -2976,15 +2976,12 @@
                 <!-- Phone Mockup -->
                 <div class="phone-showcase">
                     <div class="device-wrapper">
-                        <div class="iphone-frame">
-                            <div class="phone-screen" style="overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;">
-                                <video width="100%" height="100%" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 2.5vw; display: block;">
-                                    <source src="ScreenRecording_01-22-2026 09-10-08_1.MP4" type="video/mp4">
-                                    Votre navigateur ne supporte pas la vidéo.
-                                </video>
-                                <div class="iphone-dynamic-island" style="position: absolute; top: 0.6vw; left: 50%; transform: translateX(-50%); z-index: 10;"></div>
-                                <div class="iphone-home-indicator" style="position: absolute; bottom: 0; z-index: 10;"></div>
-                            </div>
+                        <div class="iphone-frame" style="padding: 0;">
+                            <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 3vw; z-index: 1;">
+                                <source src="ScreenRecording_01-22-2026 09-10-08_1.MP4" type="video/mp4">
+                            </video>
+                            <div class="iphone-dynamic-island" style="position: absolute; top: 0.5vw; left: 50%; transform: translateX(-50%); z-index: 5;"></div>
+                            <div class="iphone-home-indicator" style="position: absolute; bottom: 0.3vw; left: 50%; transform: translateX(-50%); z-index: 5;"></div>
                         </div>
 
                         <!-- Store Badges -->
@@ -3065,9 +3062,7 @@
                     <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Sarah</strong> cherche une église pendant 3 semaines. Elle abandonne.</span></div>
                     <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Pasteur Marc</strong> organise une conférence. 162 places restent vides.</span></div>
                     <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">David</strong> cherche un culte à Paris. Google ne montre rien de fiable.</span></div>
-                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Deux pasteurs</strong> dans la même rue ne connaissent pas leurs événements.</span></div>
-                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span>Personne ne vérifie si une église en ligne est fiable.</span></div>
-                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span>Aucune application mobile dédiée aux églises évangéliques.</span></div>
+                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Deux pasteurs</strong> dans la même ville ne connaissent pas leurs événements.</span></div>
                     <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Un évangéliste</strong> donne un prospectus avec l'adresse de son église à 15 km. La personne ne s'y rendra jamais.</span></div>
                 </div>
                 <div class="panel" style="background: rgba(48, 176, 78, 0.04); border: 1px solid rgba(48, 176, 78, 0.15); border-radius: 1.5vw; padding: 2vw;">
@@ -3076,14 +3071,9 @@
                     <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>Pasteur Marc</strong> publie son événement. Toute la France le voit. Salle comble.</span></div>
                     <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>David</strong> ouvre l'app, le GPS le guide jusqu'au culte le plus proche.</span></div>
                     <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>Les deux pasteurs</strong> voient leurs événements et organisent ensemble.</span></div>
-                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);">Chaque église est vérifiée par document SIRENE et validée manuellement.</span></div>
-                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);">Une app dédiée sur iPhone et Android, avec notifications et calendrier.</span></div>
                     <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>L'évangéliste</strong> écrit lightchurch.fr sur le prospectus. La personne trouve une église à 500 m de chez elle.</span></div>
                 </div>
             </div>
-            <p class="anim d3" style="margin-top: 2vw; font-size: 1.6vw; text-align: center; color: var(--grey);">
-                Light Church ne remplace pas les initiatives existantes — il les <span style="color: var(--text); font-weight: 700;">unifie et les amplifie</span>.
-            </p>
         </div>
 
         <!-- ======== SLIDE 12 : ARCHITECTURE TECHNIQUE ======== -->
@@ -3120,9 +3110,6 @@
                     <div class="tech-bar-list">Déploiement automatisé (Docker) &bull; Certificat SSL renouvelé automatiquement &bull; Hébergement VPS européen</div>
                 </div>
             </div>
-            <p class="anim d4" style="margin-top: 1.2vw; font-size: 1.2vw; text-align: center; color: var(--grey);">
-                Technologies open source, standards industriels, <span style="color: var(--text); font-weight: 600;">zéro dépendance propriétaire</span>.
-            </p>
         </div>
 
         <!-- ======== SLIDE 13 : CHIFFRES ======== -->
