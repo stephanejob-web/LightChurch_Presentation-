@@ -1619,70 +1619,206 @@
 
         .phone-showcase {
             display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 2.5vw;
+        }
+
+        /* ===== DEVICE COMMUN ===== */
+        .device-wrapper {
+            display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.8vw;
+            gap: 0.6vw;
         }
 
-        .phone-mockup {
+        .device-label {
+            font-size: 0.85vw;
+            font-weight: 600;
+            letter-spacing: 0.05vw;
+            text-transform: uppercase;
+        }
+
+        /* ===== iPHONE MOCKUP ===== */
+        .iphone-frame {
             position: relative;
-            width: 14vw;
+            width: 13vw;
             height: 26vw;
-            background: linear-gradient(145deg, #1a1a2e, #16213e);
-            border-radius: 2.5vw;
-            border: 2.5px solid rgba(255, 255, 255, 0.15);
+            background: #1a1a1a;
+            border-radius: 2.8vw;
+            border: 2px solid #3a3a3a;
             box-shadow:
-                0 0 40px rgba(41, 151, 255, 0.15),
-                0 20px 60px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 0.5vw 3vw rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.05);
             overflow: hidden;
-            animation: phone-float 5s ease-in-out infinite;
+            animation: phone-float-left 6s ease-in-out infinite;
         }
 
-        body.light .phone-mockup {
-            background: linear-gradient(145deg, #e8edf5, #f0f4fa);
-            border-color: rgba(0, 0, 0, 0.12);
+        body.light .iphone-frame {
+            background: #e2e2e7;
+            border-color: #c8c8cc;
             box-shadow:
-                0 0 40px rgba(0, 113, 227, 0.1),
-                0 20px 60px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                0 0.5vw 3vw rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(0, 0, 0, 0.05),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.6);
         }
 
-        @keyframes phone-float {
-            0%, 100% { transform: translateY(0) rotateY(-3deg) rotateX(2deg); }
-            50% { transform: translateY(-1.2vw) rotateY(3deg) rotateX(-2deg); }
-        }
-
-        .phone-notch {
-            width: 8vw;
-            height: 1.4vw;
+        /* Dynamic Island */
+        .iphone-dynamic-island {
+            width: 5vw;
+            height: 1vw;
             background: #000;
-            border-radius: 0 0 1vw 1vw;
-            margin: 0 auto;
+            border-radius: 0.5vw;
+            margin: 0.5vw auto 0;
             position: relative;
-            z-index: 2;
+            z-index: 3;
         }
 
-        body.light .phone-notch {
+        body.light .iphone-dynamic-island {
             background: #1d1d1f;
         }
 
+        /* Side buttons iPhone */
+        .iphone-frame::before {
+            content: '';
+            position: absolute;
+            right: -3.5px;
+            top: 7vw;
+            width: 2.5px;
+            height: 2.2vw;
+            background: #3a3a3a;
+            border-radius: 0 2px 2px 0;
+        }
+
+        body.light .iphone-frame::before {
+            background: #c8c8cc;
+        }
+
+        .iphone-frame::after {
+            content: '';
+            position: absolute;
+            left: -3.5px;
+            top: 5.5vw;
+            width: 2.5px;
+            height: 1.4vw;
+            background: #3a3a3a;
+            border-radius: 2px 0 0 2px;
+            box-shadow: 0 2.2vw 0 #3a3a3a, 0 4vw 0 #3a3a3a;
+        }
+
+        body.light .iphone-frame::after {
+            background: #c8c8cc;
+            box-shadow: 0 2.2vw 0 #c8c8cc, 0 4vw 0 #c8c8cc;
+        }
+
+        @keyframes phone-float-left {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-0.8vw); }
+        }
+
+        /* ===== ANDROID MOCKUP ===== */
+        .android-frame {
+            position: relative;
+            width: 13vw;
+            height: 25.5vw;
+            background: #1a1a1a;
+            border-radius: 1.8vw;
+            border: 2px solid #3a3a3a;
+            box-shadow:
+                0 0.5vw 3vw rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            animation: phone-float-right 6s ease-in-out infinite 0.5s;
+        }
+
+        body.light .android-frame {
+            background: #e2e2e7;
+            border-color: #c8c8cc;
+            box-shadow:
+                0 0.5vw 3vw rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(0, 0, 0, 0.05),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Punch-hole camera */
+        .android-punch-hole {
+            width: 0.5vw;
+            height: 0.5vw;
+            background: #000;
+            border-radius: 50%;
+            margin: 0.6vw auto 0;
+            position: relative;
+            z-index: 3;
+            box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.1);
+        }
+
+        body.light .android-punch-hole {
+            background: #1d1d1f;
+        }
+
+        /* Side button Android */
+        .android-frame::before {
+            content: '';
+            position: absolute;
+            right: -3.5px;
+            top: 5.5vw;
+            width: 2.5px;
+            height: 3vw;
+            background: #3a3a3a;
+            border-radius: 0 2px 2px 0;
+        }
+
+        body.light .android-frame::before {
+            background: #c8c8cc;
+        }
+
+        @keyframes phone-float-right {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-0.8vw); }
+        }
+
+        /* ===== ÉCRAN PARTAGÉ ===== */
         .phone-screen {
-            padding: 0.5vw 0.8vw;
-            height: calc(100% - 1.4vw);
+            padding: 0.4vw 0.6vw;
+            height: calc(100% - 1.6vw);
             display: flex;
             flex-direction: column;
-            gap: 0.4vw;
-            background: linear-gradient(180deg, rgba(41, 151, 255, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
+            gap: 0.35vw;
+            background: linear-gradient(180deg, rgba(41, 151, 255, 0.06) 0%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        .phone-status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.15vw 0.2vw;
+            font-size: 0.4vw;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .phone-status-icons {
+            display: flex;
+            gap: 0.2vw;
+            align-items: center;
+        }
+
+        .phone-status-icons svg {
+            width: 0.5vw;
+            height: 0.5vw;
+            fill: var(--text);
         }
 
         .phone-header {
             text-align: center;
-            padding: 0.5vw 0;
+            padding: 0.3vw 0;
         }
 
         .phone-header-logo {
-            font-size: 1.2vw;
+            font-size: 1vw;
             font-weight: 800;
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
             -webkit-background-clip: text;
@@ -1693,13 +1829,13 @@
         .phone-search {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 0.6vw;
-            padding: 0.4vw 0.6vw;
-            font-size: 0.6vw;
+            border-radius: 0.5vw;
+            padding: 0.3vw 0.5vw;
+            font-size: 0.5vw;
             color: var(--grey);
             display: flex;
             align-items: center;
-            gap: 0.3vw;
+            gap: 0.25vw;
         }
 
         body.light .phone-search {
@@ -1708,8 +1844,8 @@
         }
 
         .phone-search svg {
-            width: 0.7vw;
-            height: 0.7vw;
+            width: 0.55vw;
+            height: 0.55vw;
             fill: var(--grey);
             flex-shrink: 0;
         }
@@ -1717,14 +1853,25 @@
         .phone-map {
             flex: 1;
             background: linear-gradient(145deg, #0a1628, #0f2035);
-            border-radius: 0.5vw;
+            border-radius: 0.4vw;
             position: relative;
             overflow: hidden;
-            min-height: 10vw;
+            min-height: 8vw;
         }
 
         body.light .phone-map {
             background: linear-gradient(145deg, #dce6f0, #e5ecf5);
+        }
+
+        /* Map grid lines for realism */
+        .phone-map::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(rgba(41, 151, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(41, 151, 255, 0.03) 1px, transparent 1px);
+            background-size: 1.5vw 1.5vw;
         }
 
         .phone-map-dot {
@@ -1749,6 +1896,18 @@
             animation: dot-ping 2s ease-out infinite;
         }
 
+        /* User position dot */
+        .phone-map-user {
+            position: absolute;
+            width: 0.5vw;
+            height: 0.5vw;
+            background: #4285F4;
+            border: 1.5px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(66, 133, 244, 0.6);
+            z-index: 2;
+        }
+
         @keyframes dot-ping {
             0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.8; }
             100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
@@ -1757,11 +1916,11 @@
         .phone-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 0.5vw;
-            padding: 0.5vw;
+            border-radius: 0.4vw;
+            padding: 0.35vw;
             display: flex;
             align-items: center;
-            gap: 0.4vw;
+            gap: 0.35vw;
         }
 
         body.light .phone-card {
@@ -1770,19 +1929,19 @@
         }
 
         .phone-card-icon {
-            width: 1.8vw;
-            height: 1.8vw;
+            width: 1.5vw;
+            height: 1.5vw;
             border-radius: 0.3vw;
             background: rgba(41, 151, 255, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8vw;
+            font-size: 0.65vw;
             flex-shrink: 0;
         }
 
         .phone-card-text {
-            font-size: 0.55vw;
+            font-size: 0.5vw;
             line-height: 1.3;
         }
 
@@ -1793,7 +1952,27 @@
 
         .phone-card-sub {
             color: var(--grey);
-            font-size: 0.45vw;
+            font-size: 0.4vw;
+        }
+
+        /* Android bottom nav bar */
+        .android-nav-bar {
+            width: 4vw;
+            height: 0.2vw;
+            background: var(--text);
+            border-radius: 0.1vw;
+            margin: 0.3vw auto 0.2vw;
+            opacity: 0.5;
+        }
+
+        /* iPhone home indicator */
+        .iphone-home-indicator {
+            width: 4.5vw;
+            height: 0.2vw;
+            background: var(--text);
+            border-radius: 0.1vw;
+            margin: 0.3vw auto 0.2vw;
+            opacity: 0.4;
         }
 
         .phone-nav {
@@ -1821,49 +2000,8 @@
         }
 
         .phone-nav-item svg {
-            width: 0.8vw;
-            height: 0.8vw;
-            fill: currentColor;
-        }
-
-        .platform-badges {
-            display: flex;
-            gap: 0.8vw;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .platform-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.4vw;
-            padding: 0.4vw 1vw;
-            border-radius: 980px;
-            font-size: 0.9vw;
-            font-weight: 600;
-            border: 1.5px solid;
-        }
-
-        .platform-badge.apple-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.15);
-            color: var(--text);
-        }
-
-        body.light .platform-badge.apple-badge {
-            background: rgba(0, 0, 0, 0.04);
-            border-color: rgba(0, 0, 0, 0.12);
-        }
-
-        .platform-badge.android-badge {
-            background: rgba(48, 176, 78, 0.08);
-            border-color: rgba(48, 176, 78, 0.25);
-            color: #30B04E;
-        }
-
-        .platform-badge svg {
-            width: 1.1vw;
-            height: 1.1vw;
+            width: 0.65vw;
+            height: 0.65vw;
             fill: currentColor;
         }
 
@@ -1987,19 +2125,18 @@
                 style="background: radial-gradient(circle, var(--accent-1) 0%, transparent 70%); opacity:0.4; width:40vw; height:40vw;">
             </div>
 
+            <p class="overline anim" style="letter-spacing: 0.3vw;">Présentation au LECNEF</p>
+
             <h1 class="hero-title anim d1" style="margin-bottom: 3vw;">
                 <span class="gradient-text shimmer-text" style="font-size: 8vw; letter-spacing: -0.05em;">Light
                     Church</span>
             </h1>
 
-            <h1 class="hero-title anim d2" style="font-size: 4vw; line-height: 1.1;">
-                2 500 églises évangéliques<br>en France.
+            <h1 class="hero-title anim d2" style="font-size: 3.8vw; line-height: 1.1;">
+                2 500 églises évangéliques en France.<br>
+                <span class="gradient-gold" style="font-size: 3.2vw;">La majorité reste invisible en ligne.</span>
             </h1>
-            <p class="anim d2" style="font-size: 3vw; font-weight: 500; margin-top: 1vw;">
-                <span class="gradient-gold">Combien sont invisibles en ligne ?</span>
-            </p>
-            <p class="body-text anim d3" style="font-size: 1.6vw;">La plateforme numérique au service des églises
-                évangéliques de France</p>
+            <p class="body-text anim d3" style="font-size: 1.6vw; max-width: 50vw;">L'annuaire intelligent et la plateforme numérique<br>qui centralisent l'information chrétienne en France</p>
         </div>
 
         <!-- ======== SLIDE 2 : LE PROBLEME ======== -->
@@ -2099,34 +2236,45 @@
 
         <!-- ======== SLIDE 3 : CONSEQUENCES ======== -->
         <div class="slide">
-            <p class="overline anim" style="color: #FF6B6B;">Les conséquences</p>
+            <p class="overline anim" style="color: #FF6B6B;">Ce qui se passe aujourd'hui</p>
             <h1 class="section-title anim d1">
-                Des situations <span class="gradient-red">concrètes</span>
+                Ces histoires arrivent <span class="gradient-red">chaque jour</span>
             </h1>
             <div class="grid-4 anim d2">
                 <div class="consequence-card">
                     <div class="c-number">1</div>
-                    <div class="c-title">Un fidèle déménage</div>
-                    <div class="c-text">Il ne trouve pas d'église dans sa nouvelle ville. Il s'isole.</div>
+                    <div class="c-title">Sarah, 28 ans, mutée à Lyon</div>
+                    <div class="c-text">Elle cherche une église évangélique. Google affiche des fiches sans horaires, des pages Facebook mortes. Après 3 semaines, elle abandonne. <span style="color: #FF6B6B; font-weight: 600;">Elle ne va plus au culte.</span></div>
                 </div>
                 <div class="consequence-card">
                     <div class="c-number">2</div>
-                    <div class="c-title">Un pasteur organise un événement</div>
-                    <div class="c-text">Personne en dehors de son cercle n'en entend parler. 50 places vides.</div>
+                    <div class="c-title">Pasteur Marc, conférence à Toulon</div>
+                    <div class="c-text">Il a organisé une conférence pendant 4 mois. Le jour J : 200 chaises, 38 personnes. L'info n'est jamais sortie de son groupe WhatsApp. <span style="color: #FF6B6B; font-weight: 600;">162 places vides.</span></div>
                 </div>
                 <div class="consequence-card">
                     <div class="c-number">3</div>
-                    <div class="c-title">Un touriste cherche un culte</div>
-                    <div class="c-text">Google ne montre rien de fiable. Il renonce.</div>
+                    <div class="c-title">David, touriste américain à Paris</div>
+                    <div class="c-text">Dimanche matin. Il tape "evangelical church near me". Google montre 3 résultats, 2 ont fermé, le 3e n'a pas d'horaire. <span style="color: #FF6B6B; font-weight: 600;">Il reste à l'hôtel.</span></div>
                 </div>
                 <div class="consequence-card">
                     <div class="c-number">4</div>
-                    <div class="c-title">Pasteurs d'une même ville</div>
-                    <div class="c-text">Ne se connaissent pas. Aucun réseau. Pas de synergie.</div>
+                    <div class="c-title">Deux pasteurs, même rue à Marseille</div>
+                    <div class="c-text">Ils ont chacun 80 membres. Ils ne connaissent pas les événements que l'autre organise. Résultat : deux événements identiques, le même week-end. <span style="color: #FF6B6B; font-weight: 600;">Zéro coordination. Deux fois moins d'impact.</span></div>
                 </div>
             </div>
-            <p class="anim d3" style="margin-top: 2vw; font-size: 1.8vw; text-align: center;">
-                <span class="gradient-gold">Il manque un outil centralisé, simple et accessible à tous.</span>
+            <div class="anim d3" style="margin-top: 1.2vw; width: 100%; max-width: 92vw; background: linear-gradient(145deg, rgba(255, 59, 48, 0.06), rgba(255, 107, 107, 0.03)); border: 1.5px solid rgba(255, 107, 107, 0.25); border-radius: 1.2vw; padding: 1.3vw 2.5vw; display: flex; align-items: center; gap: 2vw;">
+                <div style="font-size: 3vw; flex-shrink: 0;">📖</div>
+                <div>
+                    <div style="font-size: var(--fs-card-title); font-weight: 700; color: #FF6B6B; margin-bottom: 0.3vw;">Un évangéliste de La Seyne distribue des prospectus à Toulon</div>
+                    <div style="font-size: var(--fs-card-text); color: var(--grey); line-height: 1.5;">Il donne un Évangile avec le tampon de son église. Mais la personne habite Toulon — elle ne se déplacera jamais à 15 km. <span style="color: var(--text); font-weight: 600;">Et si on remplaçait l'adresse par lightchurch.fr ? La personne trouve une église à 500 m de chez elle.</span></div>
+                </div>
+            </div>
+            <div class="anim d4" style="margin-top: 1vw; width: 100%; max-width: 92vw; background: var(--problem-bg); border: 1px solid var(--problem-border); border-radius: 1.2vw; padding: 1.3vw 2vw; text-align: center;">
+                <div style="font-size: var(--fs-card-title); font-weight: 700; color: #FF6B6B; margin-bottom: 0.4vw;">Et surtout : aucune garantie de fiabilité</div>
+                <div style="font-size: var(--fs-card-text); color: var(--grey); line-height: 1.5;">Des centaines d'églises apparaissent en ligne. Mais lesquelles sont fiables ? Que prêchent-elles vraiment ? Personne ne vérifie. <span style="color: var(--text); font-weight: 600;">Light Church authentifie chaque église via un document SIRENE et une validation manuelle.</span></div>
+            </div>
+            <p class="anim d4" style="margin-top: 1.5vw; font-size: 2vw; text-align: center; font-weight: 600;">
+                <span class="gradient-gold">Ces situations ont une seule cause : l'absence d'un outil centralisé et vérifié.</span>
             </p>
         </div>
 
@@ -2181,40 +2329,38 @@
         <div class="slide">
             <p class="overline accent anim">Notre approche</p>
             <h1 class="section-title anim d1">
-                Trois piliers <span class="gradient-blue">fondamentaux</span>
+                Trois réponses <span class="gradient-blue">concrètes</span>
             </h1>
             <div class="grid-3 anim d2 glow-blue" style="margin-top: 5vh;">
                 <div class="pillar blue">
                     <div class="pillar-emoji">&#128205;</div>
                     <div class="pillar-name">Trouver</div>
                     <div class="pillar-line"></div>
-                    <div class="pillar-desc">Une église près de chez soi<br>sur une carte interactive<br>par
-                        dénomination, ville, proximité</div>
+                    <div style="font-size: 1.2vw; font-style: italic; color: rgba(255,255,255,0.7); margin-bottom: 1vw; line-height: 1.4;">Pour que plus personne ne cherche une église en vain</div>
+                    <div class="pillar-desc">Carte interactive géolocalisée<br>Recherche par ville, dénomination, proximité<br>Fiches vérifiées et complètes</div>
                 </div>
                 <div class="pillar green">
                     <div class="pillar-emoji">&#128197;</div>
                     <div class="pillar-name">Participer</div>
                     <div class="pillar-line"></div>
-                    <div class="pillar-desc">Découvrir les événements<br>recevoir des notifications push<br>suivre
-                        en
-                        direct sur YouTube</div>
+                    <div style="font-size: 1.2vw; font-style: italic; color: rgba(255,255,255,0.7); margin-bottom: 1vw; line-height: 1.4;">Pour que plus aucun événement ne reste invisible</div>
+                    <div class="pillar-desc">Événements visibles par tous sur la carte<br>Notifications push automatiques<br>Lien direct YouTube Live</div>
                 </div>
                 <div class="pillar gold">
                     <div class="pillar-emoji">&#129309;</div>
                     <div class="pillar-name">Connecter</div>
                     <div class="pillar-line"></div>
-                    <div class="pillar-desc">Les pasteurs entre eux<br>via un réseau dédié<br>avec annuaire et
-                        filtres
-                    </div>
+                    <div style="font-size: 1.2vw; font-style: italic; color: rgba(255,255,255,0.7); margin-bottom: 1vw; line-height: 1.4;">Pour que les pasteurs ne travaillent plus seuls</div>
+                    <div class="pillar-desc">Réseau dédié entre pasteurs<br>Annuaire par ville et dénomination<br>Visibilité des événements mutuels</div>
                 </div>
             </div>
         </div>
 
         <!-- ======== SLIDE 6 : CARTE + FICHE ======== -->
         <div class="slide">
-            <p class="overline accent anim">Fonctionnalites</p>
+            <p class="overline accent anim">Le pilier Trouver en action</p>
             <h1 class="section-title anim d1">
-                Une carte, <span class="gradient-gold">toutes les églises</span>
+                Sarah ne chercherait <span class="gradient-gold">plus en vain</span>
             </h1>
             <div class="map-grid anim d2">
                 <!-- Carte de France -->
@@ -2354,225 +2500,239 @@
                     <div class="map-feat-card">
                         <div class="map-feat-icon blue">&#128205;</div>
                         <div>
-                            <div class="map-feat-text">Géolocalisation</div>
-                            <div class="map-feat-sub">Trouve les églises autour de soi</div>
+                            <div class="map-feat-text">Autour de moi</div>
+                            <div class="map-feat-sub">Les églises les plus proches s'affichent instantanément</div>
                         </div>
                     </div>
                     <div class="map-feat-card">
-                        <div class="map-feat-icon green">&#128209;</div>
+                        <div class="map-feat-icon green">&#9989;</div>
                         <div>
-                            <div class="map-feat-text">Fiche complète</div>
-                            <div class="map-feat-sub">Horaires, adresse, réseaux sociaux, dénomination</div>
+                            <div class="map-feat-text">Fiches vérifiées</div>
+                            <div class="map-feat-sub">Chaque église est authentifiée via document SIRENE</div>
                         </div>
                     </div>
                     <div class="map-feat-card">
-                        <div class="map-feat-icon gold">&#128269;</div>
+                        <div class="map-feat-icon gold">&#128209;</div>
                         <div>
-                            <div class="map-feat-text">Filtrage avancé</div>
-                            <div class="map-feat-sub">Par ville, dénomination, union, rayon km</div>
+                            <div class="map-feat-text">Tout en un coup d'oeil</div>
+                            <div class="map-feat-sub">Horaires, adresse, téléphone, réseaux sociaux, dénomination</div>
                         </div>
                     </div>
                     <div class="map-feat-card">
-                        <div class="map-feat-icon purple">&#127760;</div>
+                        <div class="map-feat-icon purple">&#128269;</div>
                         <div>
-                            <div class="map-feat-text">Clustering intelligent</div>
-                            <div class="map-feat-sub">Regroupement automatique au dézoom</div>
+                            <div class="map-feat-text">Recherche sur mesure</div>
+                            <div class="map-feat-sub">Filtrer par ville, dénomination, union ou rayon kilométrique</div>
                         </div>
                     </div>
                     <div class="map-feat-card">
-                        <div class="map-feat-icon red">&#128276;</div>
+                        <div class="map-feat-icon red">&#128260;</div>
                         <div>
-                            <div class="map-feat-text">Notifications push</div>
-                            <div class="map-feat-sub">Alertes événements des églises suivies</div>
+                            <div class="map-feat-text">Toujours à jour</div>
+                            <div class="map-feat-sub">Le pasteur met à jour sa fiche en temps réel depuis son espace</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ======== SLIDE 6 : EVENEMENTS + NOTIFICATIONS ======== -->
+        <!-- ======== SLIDE 7 : EVENEMENTS + NOTIFICATIONS ======== -->
         <div class="slide">
-            <p class="overline accent anim">Fonctionnalites</p>
+            <p class="overline accent anim">Le pilier Participer en action</p>
             <h1 class="section-title anim d1">
-                Des événements <span class="gradient-gold">visibles par tous</span>
+                Les 162 places vides du pasteur Marc ? <span class="gradient-gold">C'est fini.</span>
             </h1>
             <div class="grid-2 anim d2">
                 <div class="panel glass-panel">
-                    <div class="panel-head">&#128197; Événements géolocalisés</div>
-                    <div class="feat"><span class="dot"></span><span>Conférences, cultes, concerts, prières</span></div>
-                    <div class="feat"><span class="dot"></span><span>Date, heure, lieu sur la carte</span></div>
-                    <div class="feat"><span class="dot"></span><span>Intervenant et capacité maximale</span></div>
-                    <div class="feat"><span class="dot"></span><span>Lien YouTube Live intégré</span></div>
-                    <div class="feat"><span class="dot"></span><span>Multilingue — 10 langues</span></div>
-                    <div class="feat"><span class="dot"></span><span>Gratuit ou payant avec inscription</span></div>
+                    <div class="panel-head">&#128197; Chaque événement devient visible</div>
+                    <div class="feat"><span class="dot"></span><span>Conférences, cultes, concerts, prières — tout est référencé</span></div>
+                    <div class="feat"><span class="dot"></span><span>Visible sur la carte par toute la France, pas juste un groupe WhatsApp</span></div>
+                    <div class="feat"><span class="dot"></span><span>Nom de l'intervenant, nombre de places disponibles</span></div>
+                    <div class="feat"><span class="dot"></span><span>Suivi en direct via YouTube Live intégré</span></div>
+                    <div class="feat"><span class="dot"></span><span>Accessible en 10 langues pour les communautés internationales</span></div>
+                    <div class="feat"><span class="dot"></span><span>Inscription en ligne pour les événements payants ou sur réservation</span></div>
                 </div>
                 <div class="panel dark-panel">
-                    <div class="panel-head gold-head">&#128276; Notifications push</div>
+                    <div class="panel-head gold-head">&#128276; Plus personne n'oublie un événement</div>
                     <div
                         style="text-align: center; margin: 0.8vw 0; font-size: var(--fs-card-text); color: var(--text); font-weight: 600;">
-                        L'utilisateur clique "Je suis intéressé"
+                        Un visiteur clique "Ça m'intéresse"
                     </div>
                     <div style="text-align: center; font-size: 2vw; color: var(--gold); margin: 0.6vw 0;">&#8595;</div>
                     <div
                         style="text-align: center; margin-bottom: 1vw; font-size: var(--fs-card-text); color: var(--grey);">
-                        Il recoit automatiquement :</div>
-                    <div class="feat gold-dot"><span class="dot"></span><span>Rappel avant l'événement</span></div>
-                    <div class="feat gold-dot"><span class="dot"></span><span>Modification de l'événement</span></div>
-                    <div class="feat gold-dot"><span class="dot"></span><span>Annulation avec motif</span></div>
-                    <div class="feat gold-dot"><span class="dot"></span><span>Nouvelles informations</span></div>
+                        Il reçoit automatiquement sur son téléphone :</div>
+                    <div class="feat gold-dot"><span class="dot"></span><span>Un rappel la veille et le jour J</span></div>
+                    <div class="feat gold-dot"><span class="dot"></span><span>Une alerte si l'événement est modifié</span></div>
+                    <div class="feat gold-dot"><span class="dot"></span><span>Une notification si l'événement est annulé, avec le motif</span></div>
+                    <div class="feat gold-dot"><span class="dot"></span><span>Les nouvelles informations ajoutées par le pasteur</span></div>
                     <div style="text-align: center; margin-top: 1vw; font-size: var(--fs-small); color: var(--grey);">
-                        iOS & Android via Expo Push</div>
+                        Fonctionne sur tous les téléphones — iPhone et Android</div>
                 </div>
             </div>
+            <p class="anim d3" style="margin-top: 1.5vw; font-size: 1.4vw; text-align: center; color: var(--grey);">
+                Le pasteur Marc publie une fois. <span style="color: var(--text); font-weight: 600;">Toute la France le voit.</span>
+            </p>
         </div>
 
-        <!-- ======== SLIDE 7 : ESPACE PASTEUR ======== -->
+        <!-- ======== SLIDE 8 : ESPACE PASTEUR ======== -->
         <div class="slide">
-            <p class="overline accent anim">Espace pasteur</p>
+            <p class="overline accent anim">Le pilier Connecter en action</p>
             <h1 class="section-title anim d1">
-                Le pasteur est <span class="gradient-text">100% autonome</span>
+                Les deux pasteurs de Marseille ? <span class="gradient-text">Ils se connaissent enfin.</span>
             </h1>
             <div class="grid-3 anim d2">
                 <div class="panel glass-panel">
-                    <div class="panel-head">&#128203; Tableau de bord</div>
-                    <div class="feat"><span class="dot"></span><span>Gère sa fiche église</span></div>
-                    <div class="feat"><span class="dot"></span><span>Publie ses événements</span></div>
-                    <div class="feat"><span class="dot"></span><span>Suit les statistiques</span></div>
-                    <div class="feat"><span class="dot"></span><span>Upload logo et images</span></div>
-                    <div class="feat"><span class="dot"></span><span>Gère horaires et réseaux sociaux</span></div>
+                    <div class="panel-head">&#128203; Le pasteur gère tout, tout seul</div>
+                    <div class="feat"><span class="dot"></span><span>Il crée et met à jour sa fiche église en 5 minutes</span></div>
+                    <div class="feat"><span class="dot"></span><span>Il publie ses événements en quelques clics</span></div>
+                    <div class="feat"><span class="dot"></span><span>Il voit combien de personnes sont intéressées</span></div>
+                    <div class="feat"><span class="dot"></span><span>Il personnalise son logo et ses images</span></div>
+                    <div class="feat"><span class="dot"></span><span>Il met à jour ses horaires et réseaux sociaux à tout moment</span></div>
                 </div>
                 <div class="panel blue-panel">
-                    <div class="panel-head" style="color: white;">&#128274; Sécurité</div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Vérification document SIRENE</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Validation manuelle admin</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Authentification JWT</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>HTTPS + chiffrement</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Roles : Pasteur / Evangeliste /
-                            Admin</span></div>
+                    <div class="panel-head" style="color: white;">&#128274; Aucune fausse église sur la plateforme</div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Chaque pasteur fournit un document SIRENE officiel</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Un administrateur valide manuellement chaque inscription</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Connexion sécurisée et données chiffrées</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Chaque donnée transite via un canal protégé (HTTPS)</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Trois niveaux d'accès : Pasteur, Évangéliste, Administrateur</span></div>
                 </div>
                 <div class="panel green-panel">
-                    <div class="panel-head" style="color: white;">&#129309; Réseau pasteurs</div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Annuaire avec recherche</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Filtrage par ville</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Filtrage par dénomination</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Visibilité contrôlée</span></div>
-                    <div class="feat white-dot"><span class="dot"></span><span>Découvrir ses confrères</span></div>
+                    <div class="panel-head" style="color: white;">&#129309; Fini l'isolement entre pasteurs</div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Voir tous les pasteurs de sa ville en un clic</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Chercher par dénomination pour trouver des confrères proches</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Consulter les événements des autres églises</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Chaque pasteur choisit s'il veut être visible ou non</span></div>
+                    <div class="feat white-dot"><span class="dot"></span><span>Créer des synergies locales pour des événements communs</span></div>
                 </div>
             </div>
         </div>
 
-        <!-- ======== SLIDE 8 : ADMINISTRATION ======== -->
+        <!-- ======== SLIDE 9 : ADMINISTRATION ======== -->
         <div class="slide">
-            <p class="overline accent anim">Administration</p>
+            <p class="overline accent anim">Gouvernance & qualité</p>
             <h1 class="section-title anim d1">
-                Administration <span class="gradient-gold">centralisée</span>
+                Qui garantit la fiabilité ? <span class="gradient-gold">Un contrôle rigoureux.</span>
             </h1>
-            <p class="body-text anim d2">Un super admin supervise l'ensemble de la plateforme</p>
+            <p class="body-text anim d2">Chaque église présente sur Light Church a été vérifiée. Rien n'est publié sans validation.</p>
             <div class="grid-4 anim d3">
                 <div class="admin-card" style="background: linear-gradient(145deg, #0A4DA6, #2997FF);">
                     <div class="admin-icon">&#128100;</div>
-                    <div class="admin-name">Inscriptions</div>
-                    <div class="admin-desc">Valider ou rejeter les pasteurs via document SIRENE</div>
+                    <div class="admin-name">Qui peut s'inscrire ?</div>
+                    <div class="admin-desc">Seuls les pasteurs avec un document SIRENE valide sont acceptés</div>
                 </div>
                 <div class="admin-card" style="background: linear-gradient(145deg, #1B6B35, #30B04E);">
                     <div class="admin-icon">&#9962;</div>
-                    <div class="admin-name">Eglises</div>
-                    <div class="admin-desc">Voir, rechercher, filtrer et modifier toutes les églises</div>
+                    <div class="admin-name">Qui vérifie les églises ?</div>
+                    <div class="admin-desc">Un administrateur contrôle chaque fiche avant qu'elle soit visible au public</div>
                 </div>
                 <div class="admin-card" style="background: linear-gradient(145deg, #BF6A00, #E8A000);">
                     <div class="admin-icon">&#128197;</div>
-                    <div class="admin-name">Événements</div>
-                    <div class="admin-desc">Superviser et annuler, notifier les intéressés</div>
+                    <div class="admin-name">Qui surveille les événements ?</div>
+                    <div class="admin-desc">Tout événement peut être modéré, annulé, et les intéressés sont notifiés automatiquement</div>
                 </div>
                 <div class="admin-card" style="background: linear-gradient(145deg, #6A1B9A, #9C27B0);">
                     <div class="admin-icon">&#128101;</div>
-                    <div class="admin-name">Comptes</div>
-                    <div class="admin-desc">Gérer les utilisateurs, suspendre, filtrer par rôle</div>
+                    <div class="admin-name">Qui protège la plateforme ?</div>
+                    <div class="admin-desc">Un compte peut être suspendu à tout moment en cas d'abus ou de contenu non conforme</div>
                 </div>
             </div>
             <div class="workflow anim d4">
-                <span class="wf-step">Inscription</span>
+                <span class="wf-step">Inscription pasteur</span>
                 <span class="wf-arrow">&#8594;</span>
-                <span class="wf-step">Upload SIRENE</span>
+                <span class="wf-step">Document SIRENE</span>
                 <span class="wf-arrow">&#8594;</span>
-                <span class="wf-step">Vérification</span>
+                <span class="wf-step">Vérification admin</span>
                 <span class="wf-arrow">&#8594;</span>
                 <span class="wf-step">Validation</span>
                 <span class="wf-arrow">&#8594;</span>
-                <span class="wf-step done">&#10003; Accès plateforme</span>
+                <span class="wf-step done">&#10003; Église visible</span>
             </div>
+            <p class="anim d5" style="margin-top: 1.2vw; font-size: 1.2vw; text-align: center; color: var(--grey);">
+                Demain, ce rôle de validation pourrait être <span style="color: var(--text); font-weight: 600;">partagé avec le CNEF</span>.
+            </p>
         </div>
 
-        <!-- ======== SLIDE 9 : APPLICATION MOBILE ======== -->
+        <!-- ======== SLIDE 10 : APPLICATION MOBILE ======== -->
         <div class="slide">
-            <p class="overline anim" style="color: #9C27B0;">Application Mobile</p>
+            <p class="overline anim" style="color: #9C27B0;">L'expérience mobile</p>
             <h1 class="section-title anim d1">
-                L'église dans <span class="gradient-text">votre poche</span>
+                David à Paris, dimanche matin ? <span class="gradient-text">Il ouvre l'app.</span>
             </h1>
             <div class="mobile-slide-grid anim d2">
-                <!-- Phone mockup -->
+                <!-- Phone Mockup -->
                 <div class="phone-showcase">
-                    <div class="phone-mockup">
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                            <div class="phone-header">
-                                <span class="phone-header-logo">⚡ Light Church</span>
+                    <div class="device-wrapper">
+                        <div class="iphone-frame">
+                            <div class="phone-screen">
+                                <div class="iphone-dynamic-island"></div>
+                                <div class="phone-status-bar">
+                                    <span>9:41</span>
+                                    <div class="phone-status-icons">
+                                        <svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                                        <svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+                                    </div>
+                                </div>
+                                <div class="phone-header">
+                                    <span class="phone-header-logo">Light Church</span>
+                                </div>
+                                <div class="phone-search">
+                                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14z"/></svg>
+                                    Rechercher une église...
+                                </div>
+                                <div class="phone-map">
+                                    <div class="phone-map-user" style="top: 50%; left: 48%;"></div>
+                                    <div class="phone-map-dot" style="top: 25%; left: 55%;"></div>
+                                    <div class="phone-map-dot" style="top: 42%; left: 30%;"></div>
+                                    <div class="phone-map-dot" style="top: 62%; left: 68%;"></div>
+                                    <div class="phone-map-dot" style="top: 33%; left: 72%;"></div>
+                                    <div class="phone-map-dot" style="top: 72%; left: 38%;"></div>
+                                </div>
+                                <div class="phone-card">
+                                    <div class="phone-card-icon">⛪</div>
+                                    <div class="phone-card-text">
+                                        <div class="phone-card-name">Église Évangélique Paris</div>
+                                        <div class="phone-card-sub">Assemblée de Dieu • 0.8 km</div>
+                                    </div>
+                                </div>
+                                <div class="phone-nav">
+                                    <div class="phone-nav-item active-nav">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                                        Carte
+                                    </div>
+                                    <div class="phone-nav-item">
+                                        <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+                                        Events
+                                    </div>
+                                    <div class="phone-nav-item">
+                                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                                        Profil
+                                    </div>
+                                </div>
+                                <div class="iphone-home-indicator"></div>
                             </div>
-                            <div class="phone-search">
-                                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14z"/></svg>
-                                Rechercher une église...
-                            </div>
-                            <div class="phone-map">
-                                <div class="phone-map-dot" style="top: 25%; left: 55%;"></div>
-                                <div class="phone-map-dot" style="top: 45%; left: 35%;"></div>
-                                <div class="phone-map-dot" style="top: 60%; left: 65%;"></div>
-                                <div class="phone-map-dot" style="top: 35%; left: 70%;"></div>
-                                <div class="phone-map-dot" style="top: 70%; left: 40%;"></div>
-                            </div>
-                            <div class="phone-card">
-                                <div class="phone-card-icon">⛪</div>
-                                <div class="phone-card-text">
-                                    <div class="phone-card-name">Église Évangélique Paris</div>
-                                    <div class="phone-card-sub">Assemblée de Dieu • 0.8 km</div>
+                        </div>
+
+                        <!-- Store Badges -->
+                        <div class="store-badges">
+                            <!-- App Store Badge -->
+                            <div class="store-badge app-store-badge">
+                                <svg class="store-badge-icon" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                                <div class="store-badge-text">
+                                    <span class="store-badge-small">Disponible sur</span>
+                                    <span class="store-badge-big">App Store</span>
                                 </div>
                             </div>
-                            <div class="phone-card">
-                                <div class="phone-card-icon">📅</div>
-                                <div class="phone-card-text">
-                                    <div class="phone-card-name">Conférence Louange</div>
-                                    <div class="phone-card-sub">Sam. 15 Mars • 19h00</div>
-                                </div>
-                            </div>
-                            <div class="phone-nav">
-                                <div class="phone-nav-item active-nav">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-                                    Carte
-                                </div>
-                                <div class="phone-nav-item">
-                                    <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
-                                    Événements
-                                </div>
-                                <div class="phone-nav-item">
-                                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                                    Profil
+                            <!-- Google Play Badge -->
+                            <div class="store-badge google-play-badge">
+                                <svg class="store-badge-icon" viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 12l2.302-2.302v-.19zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+                                <div class="store-badge-text">
+                                    <span class="store-badge-small">Disponible sur</span>
+                                    <span class="store-badge-big">Google Play</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="platform-badges">
-                        <div class="platform-badge apple-badge">
-                            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                            iOS
-                        </div>
-                        <div class="platform-badge android-badge">
-                            <svg viewBox="0 0 24 24"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V7H6v11zM3.5 7C2.67 7 2 7.67 2 8.5v7c0 .83.67 1.5 1.5 1.5S5 16.33 5 15.5v-7C5 7.67 4.33 7 3.5 7zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/></svg>
-                            Android
-                        </div>
-                    </div>
-                    <div class="tech-pills">
-                        <span class="tech-pill">⚛️ React Native</span>
-                        <span class="tech-pill">📦 Expo</span>
-                        <span class="tech-pill">🔔 Push</span>
                     </div>
                 </div>
                 <!-- Features -->
@@ -2580,178 +2740,230 @@
                     <div class="app-feat-card">
                         <div class="app-feat-icon af-blue">📍</div>
                         <div>
-                            <div class="app-feat-title">Carte interactive</div>
-                            <div class="app-feat-desc">Géolocalisation en temps réel, recherche par ville et rayon</div>
-                        </div>
-                    </div>
-                    <div class="app-feat-card">
-                        <div class="app-feat-icon af-purple">🧩</div>
-                        <div>
-                            <div class="app-feat-title">Clustering intelligent</div>
-                            <div class="app-feat-desc">Regroupement dynamique de 2 500+ églises pour une navigation fluide</div>
+                            <div class="app-feat-title">Le GPS fait le travail</div>
+                            <div class="app-feat-desc">L'app détecte la position et affiche les églises les plus proches automatiquement</div>
                         </div>
                     </div>
                     <div class="app-feat-card">
                         <div class="app-feat-icon af-green">⚡</div>
                         <div>
-                            <div class="app-feat-title">Ultra-rapide</div>
-                            <div class="app-feat-desc">Chargement instantané, rendu optimisé et expérience native</div>
+                            <div class="app-feat-title">2 500+ églises, zéro lenteur</div>
+                            <div class="app-feat-desc">Navigation fluide même avec des milliers d'églises affichées sur la carte</div>
                         </div>
                     </div>
                     <div class="app-feat-card">
                         <div class="app-feat-icon af-gold">🔔</div>
                         <div>
-                            <div class="app-feat-title">Notifications push</div>
-                            <div class="app-feat-desc">Rappels d'événements et alertes en temps réel</div>
+                            <div class="app-feat-title">Alerté directement sur son écran</div>
+                            <div class="app-feat-desc">Les rappels et modifications d'événements arrivent sur l'écran de verrouillage</div>
                         </div>
                     </div>
                     <div class="app-feat-card">
                         <div class="app-feat-icon af-red">📅</div>
                         <div>
-                            <div class="app-feat-title">Événements géolocalisés</div>
-                            <div class="app-feat-desc">Conférences, cultes et concerts près de chez vous</div>
+                            <div class="app-feat-title">Un clic, c'est dans le calendrier</div>
+                            <div class="app-feat-desc">L'événement s'ajoute directement au calendrier du téléphone avec date et lieu</div>
+                        </div>
+                    </div>
+                    <div class="app-feat-card">
+                        <div class="app-feat-icon af-purple">🗺️</div>
+                        <div>
+                            <div class="app-feat-title">Itinéraire en un clic</div>
+                            <div class="app-feat-desc">L'app ouvre directement le GPS du téléphone pour guider jusqu'à l'église</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="coming-soon-badge anim d3">
-                🚀 Coming Soon — H2 2026
+                🚀 Lancement prévu — second semestre 2026
             </div>
         </div>
 
-        <!-- ======== SLIDE 10 : ARCHITECTURE TECHNIQUE ======== -->
+        <!-- ======== SLIDE 11 : COMPARATIF ======== -->
         <div class="slide">
-            <p class="overline anim" style="color: var(--accent-2);">Pour les développeurs</p>
+            <p class="overline anim" style="color: var(--gold);">Pourquoi Light Church ?</p>
             <h1 class="section-title anim d1">
-                Architecture <span class="gradient-text">technique</span>
+                Ce qui change <span class="gradient-gold">concrètement</span>
+            </h1>
+            <div class="grid-2 anim d2" style="margin-top: 3vw;">
+                <div class="panel" style="background: var(--problem-bg); border: 1px solid var(--problem-border); border-radius: 1.5vw; padding: 2vw;">
+                    <div class="panel-head" style="color: #FF6B6B; font-size: 2vw; margin-bottom: 1.8vw; justify-content: center;">&#10060; Sans Light Church</div>
+                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Sarah</strong> cherche une église pendant 3 semaines. Elle abandonne.</span></div>
+                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Pasteur Marc</strong> organise une conférence. 162 places restent vides.</span></div>
+                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">David</strong> cherche un culte à Paris. Google ne montre rien de fiable.</span></div>
+                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Deux pasteurs</strong> dans la même rue ne connaissent pas leurs événements.</span></div>
+                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span>Personne ne vérifie si une église en ligne est fiable.</span></div>
+                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span>Aucune application mobile dédiée aux églises évangéliques.</span></div>
+                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Un évangéliste</strong> donne un prospectus avec l'adresse de son église à 15 km. La personne ne s'y rendra jamais.</span></div>
+                </div>
+                <div class="panel" style="background: rgba(48, 176, 78, 0.04); border: 1px solid rgba(48, 176, 78, 0.15); border-radius: 1.5vw; padding: 2vw;">
+                    <div class="panel-head" style="color: #30B04E; font-size: 2vw; margin-bottom: 1.8vw; justify-content: center;">&#9889; Avec Light Church</div>
+                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>Sarah</strong> ouvre la carte, trouve 4 églises à 2 km. Elle y va dimanche.</span></div>
+                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>Pasteur Marc</strong> publie son événement. Toute la France le voit. Salle comble.</span></div>
+                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>David</strong> ouvre l'app, le GPS le guide jusqu'au culte le plus proche.</span></div>
+                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>Les deux pasteurs</strong> voient leurs événements et organisent ensemble.</span></div>
+                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);">Chaque église est vérifiée par document SIRENE et validée manuellement.</span></div>
+                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);">Une app dédiée sur iPhone et Android, avec notifications et calendrier.</span></div>
+                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>L'évangéliste</strong> écrit lightchurch.fr sur le prospectus. La personne trouve une église à 500 m de chez elle.</span></div>
+                </div>
+            </div>
+            <p class="anim d3" style="margin-top: 2vw; font-size: 1.6vw; text-align: center; color: var(--grey);">
+                Light Church ne remplace pas les initiatives existantes — il les <span style="color: var(--text); font-weight: 700;">unifie et les amplifie</span>.
+            </p>
+        </div>
+
+        <!-- ======== SLIDE 12 : ARCHITECTURE TECHNIQUE ======== -->
+        <div class="slide">
+            <p class="overline anim" style="color: var(--accent-2);">Sous le capot</p>
+            <h1 class="section-title anim d1">
+                Une architecture <span class="gradient-text">pensée pour durer</span>
             </h1>
             <div class="grid-3 anim d2">
                 <div class="tech-card" style="background: linear-gradient(145deg, #0A4DA6, #1976D2);">
-                    <div class="tech-name">&#9881; Frontend</div>
-                    <div class="tech-stack">React 19 + TypeScript<br>Vite + Material-UI v5<br>React Leaflet<br>Framer
-                        Motion<br>React Hook Form + Zod</div>
+                    <div class="tech-name">&#9881; Interface web</div>
+                    <div style="font-size: 1vw; color: rgba(255,255,255,0.6); margin-bottom: 0.8vw;">Ce que voit l'utilisateur</div>
+                    <div class="tech-stack">React 19 + TypeScript<br>Design responsive (Material-UI)<br>Carte interactive (Leaflet)<br>Animations fluides<br>Formulaires validés en temps réel</div>
                 </div>
                 <div class="tech-card" style="background: linear-gradient(145deg, #1B6B35, #2E8B48);">
-                    <div class="tech-name">&#9889; Backend</div>
-                    <div class="tech-stack">Node.js + Express 5<br>API REST — 9 modules<br>JWT + bcrypt<br>Expo Push
-                        Notifications<br>node-cron</div>
+                    <div class="tech-name">&#9889; Serveur</div>
+                    <div style="font-size: 1vw; color: rgba(255,255,255,0.6); margin-bottom: 0.8vw;">Le moteur de la plateforme</div>
+                    <div class="tech-stack">Node.js + Express 5<br>API REST — 9 modules<br>Connexions sécurisées et chiffrées<br>Notifications push automatisées<br>Tâches planifiées (rappels, mises à jour)</div>
                 </div>
                 <div class="tech-card" style="background: linear-gradient(145deg, #BF6A00, #D4A632);">
-                    <div class="tech-name">&#128451; Database</div>
-                    <div class="tech-stack">MySQL 8.0 + PostGIS<br>14 tables normalisées<br>Index spatiaux<br>Full-text
-                        search<br>Requêtes géospatiales</div>
+                    <div class="tech-name">&#128451; Base de données</div>
+                    <div style="font-size: 1vw; color: rgba(255,255,255,0.6); margin-bottom: 0.8vw;">Là où tout est stocké</div>
+                    <div class="tech-stack">MySQL 8.0 avec géolocalisation<br>14 tables structurées<br>Recherche rapide par localisation<br>Recherche par texte intégral<br>Données relationnelles normalisées</div>
                 </div>
             </div>
             <div class="tech-row anim d3">
                 <div class="tech-bar" style="background: linear-gradient(145deg, #6A1B9A, #8E24AA);">
-                    <div class="tech-bar-title">&#128241; Mobile</div>
-                    <div class="tech-bar-list">React Native + Expo &bull; iOS & Android &bull; Push Notifications &bull;
-                        10 langues</div>
+                    <div class="tech-bar-title">&#128241; Application mobile</div>
+                    <div class="tech-bar-list">React Native + Expo &bull; iPhone & Android &bull; Notifications natives &bull; 10 langues</div>
                 </div>
                 <div class="tech-bar"
                     style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px;">
-                    <div class="tech-bar-title" style="color: var(--accent-2);">&#9729; DevOps</div>
-                    <div class="tech-bar-list">Docker &bull; GitHub Actions CI/CD &bull; Traefik + SSL auto &bull; VPS
-                    </div>
+                    <div class="tech-bar-title" style="color: var(--accent-2);">&#128274; Infrastructure & sécurité</div>
+                    <div class="tech-bar-list">Déploiement automatisé (Docker) &bull; Certificat SSL renouvelé automatiquement &bull; Hébergement VPS européen</div>
                 </div>
             </div>
+            <p class="anim d4" style="margin-top: 1.2vw; font-size: 1.2vw; text-align: center; color: var(--grey);">
+                Technologies open source, standards industriels, <span style="color: var(--text); font-weight: 600;">zéro dépendance propriétaire</span>.
+            </p>
         </div>
 
-        <!-- ======== SLIDE 10 : CHIFFRES ======== -->
+        <!-- ======== SLIDE 13 : CHIFFRES ======== -->
         <div class="slide">
-            <p class="overline accent anim">Impact</p>
+            <p class="overline accent anim">Le projet en un coup d'oeil</p>
             <h1 class="section-title anim d1">
-                Light Church <span class="gradient-gold">en chiffres</span>
+                Light Church <span class="gradient-gold">aujourd'hui</span>
             </h1>
             <div class="grid-4 anim d2">
                 <div class="stat" style="background: linear-gradient(145deg, #0A4DA6, #2997FF);">
                     <div class="stat-num">2 500+</div>
-                    <div class="stat-lbl">églises évangéliques<br>en France</div>
-                </div>
-
-                <div class="stat" style="background: linear-gradient(145deg, #BF6A00, #D4A632);">
-                    <div class="stat-num">6</div>
-                    <div class="stat-lbl">réseaux sociaux<br>intégrés</div>
-                </div>
-                <div class="stat" style="background: linear-gradient(145deg, #6A1B9A, #9C27B0);">
-                    <div class="stat-num">14</div>
-                    <div class="stat-lbl">tables en<br>base de données</div>
-                </div>
-                <div class="stat" style="background: linear-gradient(145deg, #00695C, #00897B);">
-                    <div class="stat-num">6</div>
-                    <div class="stat-lbl">dénominations<br>supportées</div>
-                </div>
-                <div class="stat" style="background: linear-gradient(145deg, #AD1457, #D81B60);">
-                    <div class="stat-num">4</div>
-                    <div class="stat-lbl">unions d'églises<br>CNEF, FPF, ADD...</div>
-                </div>
-                <div class="stat" style="background: linear-gradient(145deg, #283593, #3F51B5);">
-                    <div class="stat-num" style="font-size: 2.2vw;">iOS &<br>Android</div>
-                    <div class="stat-lbl">application<br>mobile native</div>
+                    <div class="stat-lbl">églises évangéliques<br>à référencer en France</div>
                 </div>
                 <div class="stat" style="background: linear-gradient(145deg, #8B6914, #D4A632);">
                     <div class="stat-num">100%</div>
                     <div class="stat-lbl">gratuit pour<br>toutes les églises</div>
                 </div>
+                <div class="stat" style="background: linear-gradient(145deg, #283593, #3F51B5);">
+                    <div class="stat-num" style="font-size: 2.2vw;">iOS &<br>Android</div>
+                    <div class="stat-lbl">application<br>mobile native</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #AD1457, #D81B60);">
+                    <div class="stat-num">700K</div>
+                    <div class="stat-lbl">évangéliques en France<br>à connecter</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #BF6A00, #D4A632);">
+                    <div class="stat-num">1</div>
+                    <div class="stat-lbl">seule plateforme<br>pour tout centraliser</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #00695C, #00897B);">
+                    <div class="stat-num">6</div>
+                    <div class="stat-lbl">dénominations<br>supportées</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #6A1B9A, #9C27B0);">
+                    <div class="stat-num">4</div>
+                    <div class="stat-lbl">unions d'églises<br>CNEF, FPF, ADD...</div>
+                </div>
+                <div class="stat" style="background: linear-gradient(145deg, #37474F, #546E7A);">
+                    <div class="stat-num">10+</div>
+                    <div class="stat-lbl">langues<br>supportées</div>
+                </div>
             </div>
         </div>
 
-        <!-- ======== SLIDE 11 : FEUILLE DE ROUTE ======== -->
+        <!-- ======== SLIDE 14 : FEUILLE DE ROUTE ======== -->
         <div class="slide">
-            <p class="overline accent anim">Vision</p>
+            <p class="overline accent anim">Vision & Partenariat</p>
             <h1 class="section-title anim d1">
                 Feuille de <span class="gradient-gold">route</span>
             </h1>
+            <p class="body-text anim d2" style="margin-bottom: 1vw;">Un projet construit par étapes, ouvert à la collaboration</p>
             <div class="grid-3 anim d2">
                 <div class="phase" style="background: linear-gradient(145deg, #0A4DA6, #1976D2);">
-                    <div class="phase-over">Phase 1</div>
-                    <div class="phase-name">Court terme</div>
+                    <div class="phase-over">Phase 1 — 2026</div>
+                    <div class="phase-name">Lancement</div>
                     <div class="phase-line"></div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Lancement bêta</div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Églises pilotes</div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Retours utilisateurs</div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Amélioration UX/UI</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Version bêta avec églises pilotes</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Retours terrain des pasteurs</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Amélioration continue de l'expérience</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Publication de l'app mobile</div>
                 </div>
                 <div class="phase" style="background: linear-gradient(145deg, #1B6B35, #2E8B48);">
-                    <div class="phase-over">Phase 2</div>
-                    <div class="phase-name">Moyen terme</div>
+                    <div class="phase-over">Phase 2 — 2027</div>
+                    <div class="phase-name">Croissance</div>
                     <div class="phase-line"></div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> App Store & Google Play</div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Messagerie pasteurs</div>
-
+                    <div class="phase-row"><span class="arr">&#8594;</span> Partenariat officiel avec le CNEF</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Messagerie entre pasteurs</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Tableau de bord statistiques</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Déploiement national</div>
                 </div>
                 <div class="phase" style="background: linear-gradient(145deg, #8B6914, #BF9B30);">
-                    <div class="phase-over">Phase 3</div>
-                    <div class="phase-name">Long terme</div>
+                    <div class="phase-over">Phase 3 — 2028+</div>
+                    <div class="phase-name">Expansion</div>
                     <div class="phase-line"></div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Partenariats CNEF / FPF</div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Dons en ligne</div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> API ouverte</div>
-                    <div class="phase-row"><span class="arr">&#8594;</span> Expansion francophonie</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Dons en ligne pour les églises</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Connexion avec des outils tiers</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Belgique, Suisse, Canada, Afrique francophone</div>
+                    <div class="phase-row"><span class="arr">&#8594;</span> Devenir la référence francophone</div>
                 </div>
             </div>
+            <p class="anim d3" style="margin-top: 1.5vw; font-size: 1.5vw; text-align: center; font-weight: 600;">
+                <span class="gradient-gold">La question n'est pas si cela va se faire — mais avec qui.</span>
+            </p>
         </div>
 
-        <!-- ======== SLIDE 12 : FERMETURE ======== -->
+        <!-- ======== SLIDE 15 : FERMETURE ======== -->
         <div class="slide">
-            <div class="verse-text anim">
+            <div class="verse-text anim" style="font-size: 4vw;">
                 "Vous êtes la lumière du monde"
             </div>
             <div class="verse-source anim d1">— Matthieu 5:14</div>
             <div class="close-line anim d2"></div>
             <div class="close-name anim d2">Light Church</div>
             <div class="close-url anim d3">lightchurch.fr</div>
-            <div class="close-cta anim d4">
+            <div class="close-cta anim d4" style="gap: 1.5vw;">
                 <div class="cta-card blue-cta">
-                    <div class="cta-who" style="color: var(--accent-1);">Pasteurs</div>
-                    <div class="cta-what">Testez la plateforme</div>
+                    <div class="cta-who" style="color: var(--accent-1);">LECNEF</div>
+                    <div class="cta-what">Construisons cette vision ensemble</div>
                 </div>
                 <div class="cta-card gold-cta">
-                    <div class="cta-who" style="color: var(--gold-light);">Développeurs</div>
-                    <div class="cta-what">Rejoignez le projet</div>
+                    <div class="cta-who" style="color: var(--gold-light);">Pasteurs</div>
+                    <div class="cta-what">Inscrivez votre église sur lightchurch.fr</div>
+                </div>
+                <div class="cta-card" style="background: rgba(48, 176, 78, 0.1); border: 1px solid rgba(48, 176, 78, 0.2); padding: 1.3vw 2.8vw; border-radius: 1.2vw; text-align: center;">
+                    <div class="cta-who" style="color: #30B04E;">Développeurs</div>
+                    <div class="cta-what">Le projet est open source — contribuez</div>
                 </div>
             </div>
-            <div class="close-merci anim d5">Merci</div>
+            <p class="anim d5" style="margin-top: 1.8vw; font-size: 1.3vw; color: var(--grey); text-align: center;">
+                contact@lightchurch.fr
+            </p>
+            <p class="anim d5" style="margin-top: 1vw; font-size: 1.5vw; text-align: center; font-weight: 500; color: var(--text);">
+                Ensemble, rendons chaque église visible et chaque événement accessible.
+            </p>
+            <div class="close-merci anim d5" style="margin-top: 1.5vw;">Merci de votre écoute</div>
         </div>
 
     </div>
