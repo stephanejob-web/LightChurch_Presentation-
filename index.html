@@ -2841,12 +2841,12 @@
         </div>
 
         <!-- ======== SLIDE 6 : CARTE + FICHE ======== -->
-        <div class="slide">
+        <div class="slide" style="padding-top: 2vw; padding-bottom: 4.5vw;">
             <p class="overline accent anim">Le pilier Trouver en action</p>
-            <h1 class="section-title anim d1">
+            <h1 class="section-title anim d1" style="font-size: 3.2vw;">
                 Sarah ne chercherait <span class="gradient-gold">plus en vain</span>
             </h1>
-            <div class="map-grid anim d2">
+            <div class="map-grid anim d2" style="height: 26vw; margin-top: 1.5vw;">
                 <!-- Carte de France -->
                 <div class="map-container">
                     <svg class="france-svg" viewBox="0 0 200 195" xmlns="http://www.w3.org/2000/svg">
@@ -3063,13 +3063,61 @@
                     </div>
                 </div>
             </div>
+            <!-- Mini galerie captures carte -->
+            <div class="anim d3" style="display: flex; gap: 0.6vw; margin-top: 0.8vw; width: 100%; max-width: 92vw; justify-content: center;">
+                <div class="browser-mockup" style="flex: 1; max-width: 20%;">
+                    <div class="browser-bar">
+                        <span class="browser-dot red"></span>
+                        <span class="browser-dot yellow"></span>
+                        <span class="browser-dot green"></span>
+                        <div class="browser-url">Recherche Paris</div>
+                    </div>
+                    <img src="captures-map/map-1.png" alt="Recherche d'églises à Paris">
+                </div>
+                <div class="browser-mockup" style="flex: 1; max-width: 20%;">
+                    <div class="browser-bar">
+                        <span class="browser-dot red"></span>
+                        <span class="browser-dot yellow"></span>
+                        <span class="browser-dot green"></span>
+                        <div class="browser-url">Fiche événement</div>
+                    </div>
+                    <img src="captures-map/map-2.png" alt="Fiche détaillée d'un événement">
+                </div>
+                <div class="browser-mockup" style="flex: 1; max-width: 20%;">
+                    <div class="browser-bar">
+                        <span class="browser-dot red"></span>
+                        <span class="browser-dot yellow"></span>
+                        <span class="browser-dot green"></span>
+                        <div class="browser-url">Fiche église</div>
+                    </div>
+                    <img src="captures-map/map-3.png" alt="Fiche détaillée d'une église">
+                </div>
+                <div class="browser-mockup" style="flex: 1; max-width: 20%;">
+                    <div class="browser-bar">
+                        <span class="browser-dot red"></span>
+                        <span class="browser-dot yellow"></span>
+                        <span class="browser-dot green"></span>
+                        <div class="browser-url">Vue France</div>
+                    </div>
+                    <img src="captures-map/map-4.png" alt="Carte de France — toutes les églises">
+                </div>
+                <div class="browser-mockup" style="flex: 1; max-width: 20%;">
+                    <div class="browser-bar">
+                        <span class="browser-dot red"></span>
+                        <span class="browser-dot yellow"></span>
+                        <span class="browser-dot green"></span>
+                        <div class="browser-url">Mode sombre</div>
+                    </div>
+                    <img src="captures-map/map-5.png" alt="Carte de France — mode sombre">
+                </div>
+            </div>
         </div>
 
         <!-- ======== SLIDE 7 : EVENEMENTS + NOTIFICATIONS ======== -->
         <div class="slide">
             <p class="overline accent anim">La visibilité des événements</p>
             <h1 class="section-title anim d1">
-                162 places vides. L'événement existait. <span class="gradient-gold">L'information, non.</span>
+                L'événement existe. <span class="gradient-gold">Encore faut-il que quelqu'un le sache.</span>
             </h1>
             <div class="grid-2 anim d2">
                 <div class="panel glass-panel">
@@ -3101,7 +3149,7 @@
         </div>
 
         <!-- ======== SLIDE 8 : ESPACE PASTEUR ======== -->
-        <div class="slide">
+        <div class="slide" style="padding-top: 2vw; padding-bottom: 4.5vw;">
             <p class="overline accent anim">L'espace pasteur</p>
             <h1 class="section-title anim d1" style="font-size: 3.2vw;">
                 Tout gérer depuis <span class="gradient-text">un seul espace.</span>
@@ -3581,11 +3629,12 @@
         let lbImages = [];
         let lbIndex = 0;
 
-        // Collect all browser-mockup images
+        // Collect browser-mockup images — scoped per slide
         document.querySelectorAll('.browser-mockup img').forEach(img => {
             img.addEventListener('click', function(e) {
                 e.stopPropagation();
-                lbImages = Array.from(document.querySelectorAll('.browser-mockup img'));
+                const parentSlide = this.closest('.slide');
+                lbImages = Array.from(parentSlide.querySelectorAll('.browser-mockup img'));
                 lbIndex = lbImages.indexOf(this);
                 openLightbox(this.src, this.alt);
             });
