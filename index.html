@@ -2611,21 +2611,22 @@
     <div class="slides-container">
 
         <!-- ======== SLIDE 1 : INTRO ======== -->
-        <div class="slide active">
+        <div class="slide active" style="overflow: hidden;">
+            <canvas id="particlesCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
             <div class="core-glow"
                 style="background: radial-gradient(circle, var(--accent-1) 0%, transparent 70%); opacity:0.4; width:40vw; height:40vw;">
             </div>
 
-            <h1 class="hero-title anim d1" style="margin-bottom: 3vw;">
+            <h1 class="hero-title anim d1" style="margin-bottom: 3vw; position: relative; z-index: 2;">
                 <span class="gradient-text shimmer-text" style="font-size: 8vw; letter-spacing: -0.05em;">Light
                     Church</span>
             </h1>
 
-            <h1 class="hero-title anim d2" style="font-size: 3.8vw; line-height: 1.1;">
+            <h1 class="hero-title anim d2" style="font-size: 3.8vw; line-height: 1.1; position: relative; z-index: 2;">
                 2 500 églises évangéliques en France.<br>
                 <span class="gradient-gold" style="font-size: 3.2vw;">La plupart sont introuvables.</span>
             </h1>
-            <p class="body-text anim d3" style="font-size: 1.6vw; max-width: 50vw;">La plateforme qui rend visible chaque église évangélique de France.</p>
+            <p class="body-text anim d3" style="font-size: 1.6vw; max-width: 50vw; position: relative; z-index: 2;">La plateforme qui rend visible chaque église évangélique de France.</p>
         </div>
 
         <!-- ======== SLIDE 2 : LE PROBLEME ======== -->
@@ -3664,6 +3665,145 @@
             if (e.key === 'ArrowLeft') { e.stopPropagation(); navLightbox(-1, e); }
             if (e.key === 'ArrowRight') { e.stopPropagation(); navLightbox(1, e); }
         }, true);
+
+        /* ===== PARTICLES NETWORK — SLIDE 1 ===== */
+        (function() {
+            const canvas = document.getElementById('particlesCanvas');
+            const ctx = canvas.getContext('2d');
+            let w, h, particles, mouse, animId;
+            const PARTICLE_COUNT = 120;
+            const CONNECTION_DIST = 150;
+            const MOUSE_DIST = 200;
+
+            mouse = { x: -9999, y: -9999 };
+
+            function resize() {
+                const slide = canvas.parentElement;
+                w = canvas.width = slide.offsetWidth;
+                h = canvas.height = slide.offsetHeight;
+            }
+
+            function createParticles() {
+                particles = [];
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    particles.push({
+                        x: Math.random() * w,
+                        y: Math.random() * h,
+                        vx: (Math.random() - 0.5) * 0.6,
+                        vy: (Math.random() - 0.5) * 0.6,
+                        r: Math.random() * 2 + 1,
+                        baseAlpha: Math.random() * 0.5 + 0.3,
+                        pulse: Math.random() * Math.PI * 2
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, w, h);
+                const isLight = document.body.classList.contains('light');
+                const baseColor = isLight ? '0, 113, 227' : '41, 151, 255';
+                const glowColor = isLight ? '0, 113, 227' : '104, 220, 252';
+
+                // Update & draw particles
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    p.pulse += 0.02;
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    // Mouse attraction
+                    const dxm = mouse.x - p.x;
+                    const dym = mouse.y - p.y;
+                    const distM = Math.sqrt(dxm * dxm + dym * dym);
+                    if (distM < MOUSE_DIST) {
+                        const force = (MOUSE_DIST - distM) / MOUSE_DIST * 0.02;
+                        p.vx += dxm * force;
+                        p.vy += dym * force;
+                    }
+
+                    // Damping
+                    p.vx *= 0.99;
+                    p.vy *= 0.99;
+
+                    // Wrap edges
+                    if (p.x < -10) p.x = w + 10;
+                    if (p.x > w + 10) p.x = -10;
+                    if (p.y < -10) p.y = h + 10;
+                    if (p.y > h + 10) p.y = -10;
+
+                    // Draw particle with pulse glow
+                    const alpha = p.baseAlpha + Math.sin(p.pulse) * 0.2;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(' + baseColor + ',' + alpha + ')';
+                    ctx.fill();
+
+                    // Glow effect on larger particles
+                    if (p.r > 1.8) {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+                        ctx.fillStyle = 'rgba(' + glowColor + ',' + (alpha * 0.15) + ')';
+                        ctx.fill();
+                    }
+                }
+
+                // Draw connections
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < CONNECTION_DIST) {
+                            const opacity = (1 - dist / CONNECTION_DIST) * 0.25;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = 'rgba(' + baseColor + ',' + opacity + ')';
+                            ctx.lineWidth = 0.6;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // Mouse connections
+                for (let i = 0; i < particles.length; i++) {
+                    const dx = mouse.x - particles[i].x;
+                    const dy = mouse.y - particles[i].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < MOUSE_DIST) {
+                        const opacity = (1 - dist / MOUSE_DIST) * 0.4;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.strokeStyle = 'rgba(' + glowColor + ',' + opacity + ')';
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+
+                animId = requestAnimationFrame(draw);
+            }
+
+            // Mouse tracking on slide 1 only
+            canvas.parentElement.addEventListener('mousemove', function(e) {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = e.clientX - rect.left;
+                mouse.y = e.clientY - rect.top;
+            });
+
+            canvas.parentElement.addEventListener('mouseleave', function() {
+                mouse.x = -9999;
+                mouse.y = -9999;
+            });
+
+            window.addEventListener('resize', function() {
+                resize();
+            });
+
+            resize();
+            createParticles();
+            draw();
+        })();
     </script>
 
 </body>
