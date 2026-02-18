@@ -2382,6 +2382,212 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             filter: brightness(1.05);
         }
+
+        /* ===== BROWSER MOCKUP ===== */
+        .browser-mockup {
+            border-radius: 0.8vw;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 1vw 4vw rgba(0, 0, 0, 0.4);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .browser-mockup:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 1.5vw 5vw rgba(0, 0, 0, 0.5);
+        }
+
+        .browser-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.4vw;
+            padding: 0.4vw 0.8vw;
+            background: #1a1a2e;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        body.light .browser-bar {
+            background: #e8e8ed;
+            border-bottom-color: rgba(0, 0, 0, 0.08);
+        }
+
+        .browser-dot {
+            width: 0.45vw;
+            height: 0.45vw;
+            border-radius: 50%;
+        }
+
+        .browser-dot.red { background: #FF5F57; }
+        .browser-dot.yellow { background: #FEBC2E; }
+        .browser-dot.green { background: #28C840; }
+
+        .browser-url {
+            flex: 1;
+            margin-left: 0.6vw;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 0.3vw;
+            padding: 0.2vw 0.6vw;
+            font-size: 0.5vw;
+            color: var(--grey);
+            font-family: 'Inter', monospace;
+        }
+
+        body.light .browser-url {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .browser-mockup img {
+            width: 100%;
+            display: block;
+            cursor: zoom-in;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: zoom-out;
+        }
+
+        body.light .lightbox-overlay {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lightbox-overlay img {
+            max-width: 88vw;
+            max-height: 85vh;
+            border-radius: 1vw;
+            box-shadow: 0 2vw 8vw rgba(0, 0, 0, 0.6);
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .lightbox-overlay.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1.5vw;
+            right: 1.5vw;
+            width: 2.5vw;
+            height: 2.5vw;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1.2vw;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        body.light .lightbox-close {
+            background: rgba(0, 0, 0, 0.08);
+            color: #1D1D1F;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.1);
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 2vw;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1vw;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.4vw 1.5vw;
+            border-radius: 980px;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+        }
+
+        body.light .lightbox-caption {
+            color: rgba(0, 0, 0, 0.7);
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2.5vw;
+            height: 2.5vw;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1.2vw;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        body.light .lightbox-nav {
+            background: rgba(0, 0, 0, 0.08);
+            color: #1D1D1F;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev { left: 1.5vw; }
+        .lightbox-next { right: 1.5vw; }
+
+        .pastor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2vw;
+            width: 100%;
+            max-width: 92vw;
+            margin-top: 1.5vw;
+        }
+
+        .pastor-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8vw;
+        }
+
+        .pastor-col-title {
+            font-size: 1.4vw;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5vw;
+            margin-bottom: 0.2vw;
+        }
     </style>
 </head>
 
@@ -2897,25 +3103,73 @@
         <!-- ======== SLIDE 8 : ESPACE PASTEUR ======== -->
         <div class="slide">
             <p class="overline accent anim">L'espace pasteur</p>
-            <h1 class="section-title anim d1">
+            <h1 class="section-title anim d1" style="font-size: 3.2vw;">
                 Tout gérer depuis <span class="gradient-text">un seul espace.</span>
             </h1>
-            <div class="grid-2 anim d2">
-                <div class="panel glass-panel">
-                    <div class="panel-head">&#128203; Il gère son église en autonomie</div>
+            <div class="grid-2 anim d2" style="margin-top: 1.5vw;">
+                <div class="panel glass-panel" style="padding: 1.5vw 1.5vw;">
+                    <div class="panel-head" style="margin-bottom: 1vw;">&#128203; Il gère son église en autonomie</div>
                     <div class="feat"><span class="dot"></span><span>Il crée et met à jour sa fiche église en 5 minutes</span></div>
                     <div class="feat"><span class="dot"></span><span>Il publie ses événements en quelques clics</span></div>
                     <div class="feat"><span class="dot"></span><span>Il voit combien de personnes sont intéressées</span></div>
                     <div class="feat"><span class="dot"></span><span>Il personnalise son logo et ses images</span></div>
                     <div class="feat"><span class="dot"></span><span>Il met à jour ses horaires et réseaux sociaux à tout moment</span></div>
                 </div>
-                <div class="panel green-panel">
-                    <div class="panel-head" style="color: white;">&#129309; Il voit ce que font les autres</div>
+                <div class="panel green-panel" style="padding: 1.5vw 1.5vw;">
+                    <div class="panel-head" style="color: white; margin-bottom: 1vw;">&#129309; Il voit ce que font les autres</div>
                     <div class="feat white-dot"><span class="dot"></span><span>Voir tous les pasteurs de sa ville en un clic</span></div>
                     <div class="feat white-dot"><span class="dot"></span><span>Chercher par dénomination pour trouver des confrères proches</span></div>
                     <div class="feat white-dot"><span class="dot"></span><span>Consulter les événements des autres églises</span></div>
                     <div class="feat white-dot"><span class="dot"></span><span>Chaque pasteur choisit s'il veut être visible ou non</span></div>
                     <div class="feat white-dot"><span class="dot"></span><span>Coordonner des événements communs entre églises</span></div>
+                </div>
+            </div>
+            <!-- Mini galerie captures -->
+            <div class="anim d3" style="display: flex; gap: 0.8vw; margin-top: 1.2vw; width: 100%; max-width: 92vw; justify-content: center;">
+                <div class="browser-mockup" style="flex: 1; max-width: 18.4%;">
+                    <div class="browser-bar">
+                        <span class="browser-dot red"></span>
+                        <span class="browser-dot yellow"></span>
+                        <span class="browser-dot green"></span>
+                        <div class="browser-url">Événements</div>
+                    </div>
+                    <img src="captures-pastor/pastor-1.png" alt="Liste événements">
+                </div>
+                <div class="browser-mockup" style="flex: 1; max-width: 18.4%;">
+                    <div class="browser-bar">
+                        <span class="browser-dot red"></span>
+                        <span class="browser-dot yellow"></span>
+                        <span class="browser-dot green"></span>
+                        <div class="browser-url">Vue cartes</div>
+                    </div>
+                    <img src="captures-pastor/pastor-2.png" alt="Vue cartes événements">
+                </div>
+                <div class="browser-mockup" style="flex: 1; max-width: 18.4%;">
+                    <div class="browser-bar">
+                        <span class="browser-dot red"></span>
+                        <span class="browser-dot yellow"></span>
+                        <span class="browser-dot green"></span>
+                        <div class="browser-url">Horaires</div>
+                    </div>
+                    <img src="captures-pastor/pastor-3.png" alt="Gestion horaires">
+                </div>
+                <div class="browser-mockup" style="flex: 1; max-width: 18.4%;">
+                    <div class="browser-bar">
+                        <span class="browser-dot red"></span>
+                        <span class="browser-dot yellow"></span>
+                        <span class="browser-dot green"></span>
+                        <div class="browser-url">Réseau pastoral</div>
+                    </div>
+                    <img src="captures-pastor/pastor-4.png" alt="Réseau Pastoral">
+                </div>
+                <div class="browser-mockup" style="flex: 1; max-width: 18.4%;">
+                    <div class="browser-bar">
+                        <span class="browser-dot red"></span>
+                        <span class="browser-dot yellow"></span>
+                        <span class="browser-dot green"></span>
+                        <div class="browser-url">Nouvel événement</div>
+                    </div>
+                    <img src="captures-pastor/pastor-5.png" alt="Créer événement">
                 </div>
             </div>
         </div>
@@ -3230,6 +3484,15 @@
 
     </div>
 
+    <!-- LIGHTBOX -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)">&#10005;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1, event)">&#8249;</button>
+        <img id="lightboxImg" src="" alt="">
+        <button class="lightbox-nav lightbox-next" onclick="navLightbox(1, event)">&#8250;</button>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
     <!-- NAV -->
     <div class="nav-bar">
         <button class="nav-btn" id="prevBtn" onclick="prevSlide()">
@@ -3310,6 +3573,48 @@
         counter.textContent = '1 / ' + total;
         prev.style.opacity = '0.3';
         prev.style.pointerEvents = 'none';
+
+        /* ===== LIGHTBOX ===== */
+        const lbOverlay = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightboxImg');
+        const lbCaption = document.getElementById('lightboxCaption');
+        let lbImages = [];
+        let lbIndex = 0;
+
+        // Collect all browser-mockup images
+        document.querySelectorAll('.browser-mockup img').forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lbImages = Array.from(document.querySelectorAll('.browser-mockup img'));
+                lbIndex = lbImages.indexOf(this);
+                openLightbox(this.src, this.alt);
+            });
+        });
+
+        function openLightbox(src, alt) {
+            lbImg.src = src;
+            lbCaption.textContent = alt;
+            lbOverlay.classList.add('active');
+        }
+
+        function closeLightbox(e) {
+            if (e.target === lbImg) return;
+            lbOverlay.classList.remove('active');
+        }
+
+        function navLightbox(dir, e) {
+            e.stopPropagation();
+            lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+            lbImg.src = lbImages[lbIndex].src;
+            lbCaption.textContent = lbImages[lbIndex].alt;
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (!lbOverlay.classList.contains('active')) return;
+            if (e.key === 'Escape') lbOverlay.classList.remove('active');
+            if (e.key === 'ArrowLeft') { e.stopPropagation(); navLightbox(-1, e); }
+            if (e.key === 'ArrowRight') { e.stopPropagation(); navLightbox(1, e); }
+        }, true);
     </script>
 
 </body>
