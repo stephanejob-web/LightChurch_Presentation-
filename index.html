@@ -2556,6 +2556,92 @@
             cursor: zoom-in;
         }
 
+        /* ===== iMAC 24" MOCKUP (Slide 8) ===== */
+        .imac-mockup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            max-width: 18.4%;
+            cursor: pointer;
+        }
+
+        .imac-display {
+            position: relative;
+            width: 100%;
+            background: linear-gradient(180deg, #e2e2e2 0%, #d6d6d6 45%, #dcdcdc 100%);
+            border-radius: 0.5vw 0.5vw 0.12vw 0.12vw;
+            padding: 0.26vw 0.28vw 0.58vw;
+            box-shadow:
+                0 0 0 1px rgba(0, 0, 0, 0.13),
+                inset 0 1px 0 rgba(255, 255, 255, 0.65),
+                0 0.5vw 2vw rgba(0, 0, 0, 0.45),
+                0 0.1vw 0.4vw rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s;
+        }
+
+        body.light .imac-display {
+            background: linear-gradient(180deg, #f2f2f2 0%, #e8e8e8 45%, #eee 100%);
+            box-shadow:
+                0 0 0 1px rgba(0, 0, 0, 0.07),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                0 0.5vw 2vw rgba(0, 0, 0, 0.12),
+                0 0.1vw 0.4vw rgba(0, 0, 0, 0.07);
+        }
+
+        .imac-mockup:hover .imac-display {
+            transform: translateY(-0.3vw);
+            box-shadow:
+                0 0 0 1px rgba(0, 0, 0, 0.13),
+                inset 0 1px 0 rgba(255, 255, 255, 0.65),
+                0 0.9vw 3.5vw rgba(0, 0, 0, 0.55),
+                0 0.1vw 0.4vw rgba(0, 0, 0, 0.2);
+        }
+
+        .imac-screen {
+            background: #080808;
+            border-radius: 0.2vw;
+            overflow: hidden;
+            display: block;
+        }
+
+        .imac-screen img {
+            width: 100%;
+            display: block;
+            cursor: zoom-in;
+        }
+
+        .imac-chin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 0.32vw;
+        }
+
+        .imac-apple {
+            width: 0.38vw;
+            height: auto;
+            fill: rgba(0, 0, 0, 0.28);
+            margin-top: 0.04vw;
+        }
+
+        body.light .imac-apple { fill: rgba(0, 0, 0, 0.18); }
+
+        .imac-neck {
+            width: 8.5%;
+            height: 1.8vw;
+            background: linear-gradient(90deg, #b2b2b2 0%, #d0d0d0 35%, #d8d8d8 50%, #cecece 65%, #b2b2b2 100%);
+            clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+        }
+
+        .imac-base {
+            width: 52%;
+            height: 0.38vw;
+            background: linear-gradient(90deg, #a8a8a8 0%, #cccccc 20%, #d6d6d6 50%, #cccccc 80%, #a8a8a8 100%);
+            border-radius: 0 0 0.4vw 0.4vw;
+            box-shadow: 0 0.12vw 0.5vw rgba(0, 0, 0, 0.22);
+        }
+
         /* ===== LIGHTBOX ===== */
         .lightbox-overlay {
             position: fixed;
@@ -3270,52 +3356,47 @@
                     </div>
                 </div>
             </div>
-            <!-- Mini galerie captures carte -->
-            <div class="anim d3" style="display: flex; gap: 0.6vw; margin-top: 0.8vw; width: 100%; max-width: 92vw; justify-content: center;">
-                <div class="browser-mockup" style="flex: 1; max-width: 20%;">
-                    <div class="browser-bar">
-                        <span class="browser-dot red"></span>
-                        <span class="browser-dot yellow"></span>
-                        <span class="browser-dot green"></span>
-                        <div class="browser-url">Recherche Paris</div>
+            <!-- Mini galerie captures carte — iMac mockup -->
+            <div class="anim d3" style="display: flex; gap: 1vw; margin-top: 0.8vw; width: 100%; max-width: 92vw; justify-content: center; align-items: flex-end;">
+                <div class="imac-mockup" style="max-width: 20%;">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-map/map-1.png" alt="Recherche d'églises à Paris"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
-                    <img src="captures-map/map-1.png" alt="Recherche d'églises à Paris">
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
                 </div>
-                <div class="browser-mockup" style="flex: 1; max-width: 20%;">
-                    <div class="browser-bar">
-                        <span class="browser-dot red"></span>
-                        <span class="browser-dot yellow"></span>
-                        <span class="browser-dot green"></span>
-                        <div class="browser-url">Fiche événement</div>
+                <div class="imac-mockup" style="max-width: 20%;">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-map/map-2.png" alt="Fiche détaillée d'un événement"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
-                    <img src="captures-map/map-2.png" alt="Fiche détaillée d'un événement">
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
                 </div>
-                <div class="browser-mockup" style="flex: 1; max-width: 20%;">
-                    <div class="browser-bar">
-                        <span class="browser-dot red"></span>
-                        <span class="browser-dot yellow"></span>
-                        <span class="browser-dot green"></span>
-                        <div class="browser-url">Fiche église</div>
+                <div class="imac-mockup" style="max-width: 20%;">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-map/map-3.png" alt="Fiche détaillée d'une église"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
-                    <img src="captures-map/map-3.png" alt="Fiche détaillée d'une église">
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
                 </div>
-                <div class="browser-mockup" style="flex: 1; max-width: 20%;">
-                    <div class="browser-bar">
-                        <span class="browser-dot red"></span>
-                        <span class="browser-dot yellow"></span>
-                        <span class="browser-dot green"></span>
-                        <div class="browser-url">Vue France</div>
+                <div class="imac-mockup" style="max-width: 20%;">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-map/map-4.png" alt="Carte de France — toutes les églises"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
-                    <img src="captures-map/map-4.png" alt="Carte de France — toutes les églises">
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
                 </div>
-                <div class="browser-mockup" style="flex: 1; max-width: 20%;">
-                    <div class="browser-bar">
-                        <span class="browser-dot red"></span>
-                        <span class="browser-dot yellow"></span>
-                        <span class="browser-dot green"></span>
-                        <div class="browser-url">Mode sombre</div>
+                <div class="imac-mockup" style="max-width: 20%;">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-map/map-5.png" alt="Carte de France — mode sombre"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
-                    <img src="captures-map/map-5.png" alt="Carte de France — mode sombre">
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
                 </div>
             </div>
         </div>
@@ -3379,52 +3460,47 @@
                     <div class="feat white-dot"><span class="dot"></span><span>Coordonner des événements communs entre églises</span></div>
                 </div>
             </div>
-            <!-- Mini galerie captures -->
-            <div class="anim d3" style="display: flex; gap: 0.8vw; margin-top: 1.2vw; width: 100%; max-width: 92vw; justify-content: center;">
-                <div class="browser-mockup" style="flex: 1; max-width: 18.4%;">
-                    <div class="browser-bar">
-                        <span class="browser-dot red"></span>
-                        <span class="browser-dot yellow"></span>
-                        <span class="browser-dot green"></span>
-                        <div class="browser-url">Événements</div>
+            <!-- Mini galerie captures — iMac mockup -->
+            <div class="anim d3" style="display: flex; gap: 1.2vw; margin-top: 1.2vw; width: 100%; max-width: 92vw; justify-content: center; align-items: flex-end;">
+                <div class="imac-mockup">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-pastor/pastor-1.png" alt="Liste événements"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
-                    <img src="captures-pastor/pastor-1.png" alt="Liste événements">
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
                 </div>
-                <div class="browser-mockup" style="flex: 1; max-width: 18.4%;">
-                    <div class="browser-bar">
-                        <span class="browser-dot red"></span>
-                        <span class="browser-dot yellow"></span>
-                        <span class="browser-dot green"></span>
-                        <div class="browser-url">Vue cartes</div>
+                <div class="imac-mockup">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-pastor/pastor-2.png" alt="Vue cartes événements"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
-                    <img src="captures-pastor/pastor-2.png" alt="Vue cartes événements">
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
                 </div>
-                <div class="browser-mockup" style="flex: 1; max-width: 18.4%;">
-                    <div class="browser-bar">
-                        <span class="browser-dot red"></span>
-                        <span class="browser-dot yellow"></span>
-                        <span class="browser-dot green"></span>
-                        <div class="browser-url">Horaires</div>
+                <div class="imac-mockup">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-pastor/pastor-3.png" alt="Gestion horaires"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
-                    <img src="captures-pastor/pastor-3.png" alt="Gestion horaires">
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
                 </div>
-                <div class="browser-mockup" style="flex: 1; max-width: 18.4%;">
-                    <div class="browser-bar">
-                        <span class="browser-dot red"></span>
-                        <span class="browser-dot yellow"></span>
-                        <span class="browser-dot green"></span>
-                        <div class="browser-url">Réseau pastoral</div>
+                <div class="imac-mockup">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-pastor/pastor-4.png" alt="Réseau Pastoral"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
-                    <img src="captures-pastor/pastor-4.png" alt="Réseau Pastoral">
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
                 </div>
-                <div class="browser-mockup" style="flex: 1; max-width: 18.4%;">
-                    <div class="browser-bar">
-                        <span class="browser-dot red"></span>
-                        <span class="browser-dot yellow"></span>
-                        <span class="browser-dot green"></span>
-                        <div class="browser-url">Nouvel événement</div>
+                <div class="imac-mockup">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-pastor/pastor-5.png" alt="Créer événement"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
-                    <img src="captures-pastor/pastor-5.png" alt="Créer événement">
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
                 </div>
             </div>
         </div>
@@ -3887,13 +3963,13 @@
             });
         }
 
-        // Collect browser-mockup images — scoped per slide
-        document.querySelectorAll('.browser-mockup img').forEach(img => {
+        // Collect browser-mockup + iMac images — scoped per slide
+        document.querySelectorAll('.browser-mockup img, .imac-screen img').forEach(img => {
             img.addEventListener('click', function(e) {
                 e.stopPropagation();
                 lbOverlay.classList.remove('ios-mode');
                 const parentSlide = this.closest('.slide');
-                lbImages = Array.from(parentSlide.querySelectorAll('.browser-mockup img'));
+                lbImages = Array.from(parentSlide.querySelectorAll('.browser-mockup img, .imac-screen img'));
                 lbIndex = lbImages.indexOf(this);
                 openLightbox(this.src, this.alt);
             });
