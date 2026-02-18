@@ -1686,30 +1686,75 @@
         .stack-photos {
             position: relative;
             width: 8vw;
-            height: 16.5vw;
+            height: 17.2vw;
         }
 
-        .stack-photo {
+        /* ── Mini iPhone 16 Pro frame ── */
+        .stack-phone-frame {
             position: absolute;
             width: 8vw;
+            height: 16.72vw;        /* ratio 16 Pro : 71.5×149.6mm = 2.09:1 */
             top: 0;
             left: 0;
-            border-radius: 0.8vw;
-            border: 0.15vw solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0.4vw 1.2vw rgba(0, 0, 0, 0.5);
-            object-fit: cover;
+            background: linear-gradient(158deg, #1e1e20 0%, #0c0c0e 55%, #18181a 100%);
+            border-radius: 1.6vw;   /* proportionnel au grand mockup */
+            overflow: hidden;
+            box-shadow:
+                inset 0 0 0 0.06vw rgba(45, 45, 50, 0.95),
+                0 0 0 0.07vw rgba(85, 85, 92, 0.5),
+                0 0 0 0.29vw #252528,
+                0 0 0 0.36vw rgba(105, 103, 112, 0.3),
+                0 1.5vw 5vw rgba(0, 0, 0, 0.6);
             transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
 
-        .stack-photo:nth-child(1) { transform: rotate(-9deg) translateX(-0.4vw); z-index: 1; }
-        .stack-photo:nth-child(2) { transform: rotate(-4deg) translateX(-0.1vw); z-index: 2; }
-        .stack-photo:nth-child(3) { transform: rotate(3deg) translateX(0.2vw);  z-index: 3; }
-        .stack-photo:nth-child(4) { transform: rotate(0deg);                    z-index: 4; }
+        body.light .stack-phone-frame {
+            background: linear-gradient(158deg, #eae6df 0%, #d6d2cb 55%, #e0dcd5 100%);
+            box-shadow:
+                inset 0 0 0 0.06vw rgba(175, 169, 158, 0.85),
+                0 0 0 0.07vw rgba(196, 192, 183, 0.9),
+                0 0 0 0.29vw #bdb8b0,
+                0 0 0 0.36vw rgba(155, 149, 140, 0.4),
+                0 1.5vw 5vw rgba(0, 0, 0, 0.15);
+        }
 
-        .screenshot-stack:hover .stack-photo:nth-child(1) { transform: rotate(-13deg) translateX(-1.1vw) translateY(-0.4vw); box-shadow: 0 0.6vw 1.8vw rgba(0,0,0,0.65); }
-        .screenshot-stack:hover .stack-photo:nth-child(2) { transform: rotate(-6deg)  translateX(-0.4vw) translateY(-0.2vw); box-shadow: 0 0.6vw 1.8vw rgba(0,0,0,0.6);  }
-        .screenshot-stack:hover .stack-photo:nth-child(3) { transform: rotate(5deg)   translateX(0.4vw)  translateY(-0.2vw); box-shadow: 0 0.6vw 1.8vw rgba(0,0,0,0.6);  }
-        .screenshot-stack:hover .stack-photo:nth-child(4) { transform: rotate(1deg)   translateY(-0.4vw);                    box-shadow: 0 0.8vw 2vw   rgba(0,0,0,0.75); }
+        /* Dynamic Island miniature */
+        .stack-phone-di {
+            position: absolute;
+            top: 0.28vw;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2.3vw;
+            height: 0.5vw;
+            background: #000;
+            border-radius: 0.4vw;
+            z-index: 3;
+            box-shadow: 0 0 0.3vw rgba(0, 0, 0, 0.9);
+        }
+
+        body.light .stack-phone-di { background: #111113; }
+
+        .stack-phone-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            display: block;
+        }
+
+        /* Rotations du stack — fan de phones */
+        .stack-phone-frame:nth-child(1) { transform: rotate(-9deg) translateX(-0.4vw); z-index: 1; }
+        .stack-phone-frame:nth-child(2) { transform: rotate(-4deg) translateX(-0.1vw); z-index: 2; }
+        .stack-phone-frame:nth-child(3) { transform: rotate(3deg)  translateX(0.2vw);  z-index: 3; }
+        .stack-phone-frame:nth-child(4) { transform: rotate(0deg);                     z-index: 4; }
+
+        .screenshot-stack:hover .stack-phone-frame:nth-child(1) { transform: rotate(-13deg) translateX(-1.1vw) translateY(-0.4vw); }
+        .screenshot-stack:hover .stack-phone-frame:nth-child(2) { transform: rotate(-6deg)  translateX(-0.4vw) translateY(-0.2vw); }
+        .screenshot-stack:hover .stack-phone-frame:nth-child(3) { transform: rotate(5deg)   translateX(0.4vw)  translateY(-0.2vw); }
+        .screenshot-stack:hover .stack-phone-frame:nth-child(4) { transform: rotate(1deg)   translateY(-0.4vw); }
 
         .stack-hint {
             font-size: 0.75vw;
@@ -1718,8 +1763,7 @@
             letter-spacing: 0.04em;
         }
 
-        body.light .stack-hint  { color: rgba(0, 0, 0, 0.4); }
-        body.light .stack-photo { border-color: rgba(0, 0, 0, 0.1); box-shadow: 0 0.4vw 1vw rgba(0,0,0,0.2); }
+        body.light .stack-hint { color: rgba(0, 0, 0, 0.4); }
 
         /* ===== DEVICE COMMUN ===== */
         .device-wrapper {
@@ -1736,92 +1780,111 @@
             text-transform: uppercase;
         }
 
-        /* ===== iPHONE MOCKUP ===== */
+        /* ===== iPHONE 16 PRO MOCKUP — BLACK TITANIUM ===== */
         .iphone-frame {
             position: relative;
             width: 14.5vw;
-            height: 29vw;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-            border-radius: 3.2vw;
-            border: 1.2px solid rgba(255, 255, 255, 0.1);
+            height: 30.3vw;              /* ratio réel 16 Pro : 71.5×149.6mm = 2.09:1 */
+            background: linear-gradient(158deg, #1e1e20 0%, #0c0c0e 55%, #18181a 100%);
+            border-radius: 2.85vw;       /* 16 Pro — coins plus droits que le 15 Pro */
+            border: none;
             box-shadow:
-                0 0 0 0.1vw rgba(255, 255, 255, 0.15),
-                0 0 0 0.4vw rgba(0, 0, 0, 0.8),
-                0 2vw 8vw rgba(0, 0, 0, 0.6),
-                inset 0 1px 1px rgba(255, 255, 255, 0.08),
-                inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+                /* bord intérieur écran */
+                inset 0 0 0 0.1vw rgba(45, 45, 50, 0.95),
+                /* chamfer interne du cadre titane */
+                0 0 0 0.13vw rgba(85, 85, 92, 0.5),
+                /* corps du cadre titane */
+                0 0 0 0.52vw #252528,
+                /* chamfer externe — reflet titane brossé */
+                0 0 0 0.64vw rgba(105, 103, 112, 0.32),
+                /* ombre portée */
+                0 3vw 10vw rgba(0, 0, 0, 0.72),
+                0 0.6vw 2.5vw rgba(0, 0, 0, 0.45),
+                /* lueur interne subtile */
+                inset 0 1px 0 rgba(255, 255, 255, 0.04);
             overflow: hidden;
             animation: phone-float-left 6s ease-in-out infinite;
-            backdrop-filter: blur(0.5px);
         }
 
         body.light .iphone-frame {
-            background: linear-gradient(135deg, #f5f5f7 0%, #efefef 100%);
-            border-color: rgba(0, 0, 0, 0.08);
+            /* Natural Titanium */
+            background: linear-gradient(158deg, #eae6df 0%, #d6d2cb 55%, #e0dcd5 100%);
             box-shadow:
-                0 0 0 0.1vw rgba(0, 0, 0, 0.05),
-                0 0 0 0.4vw rgba(255, 255, 255, 0.8),
-                0 2vw 8vw rgba(0, 0, 0, 0.15),
-                inset 0 1px 1px rgba(255, 255, 255, 0.5),
-                inset 0 -1px 1px rgba(0, 0, 0, 0.05);
+                inset 0 0 0 0.1vw rgba(175, 169, 158, 0.85),
+                0 0 0 0.13vw rgba(196, 192, 183, 0.9),
+                0 0 0 0.52vw #bdb8b0,
+                0 0 0 0.64vw rgba(155, 149, 140, 0.45),
+                0 3vw 10vw rgba(0, 0, 0, 0.18),
+                0 0.6vw 2.5vw rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.65);
         }
 
-        /* Dynamic Island - iPhone 15/16 Pro Style */
+        /* Dynamic Island — iPhone 16 Pro */
         .iphone-dynamic-island {
-            width: 4.5vw;
-            height: 0.85vw;
+            width: 4.2vw;
+            height: 0.9vw;
             background: #000;
             border-radius: 0.8vw;
-            margin: 0.5vw auto 0;
+            margin: 0.55vw auto 0;
             position: relative;
             z-index: 3;
-            box-shadow: 0 0 0.8vw rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.05);
-            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            box-shadow:
+                0 0 0.6vw rgba(0, 0, 0, 0.9),
+                0 0 0 1px rgba(40, 40, 45, 0.6),
+                inset 0 1px 2px rgba(255, 255, 255, 0.04);
         }
 
         body.light .iphone-dynamic-island {
-            background: #1d1d1f;
+            background: #111113;
         }
 
-        /* Stainless Steel Bezel Effect */
+        /* ── Boutons côté DROIT : Power (haut) + Camera Control (bas) ── */
         .iphone-frame::before {
             content: '';
             position: absolute;
-            right: -2.5px;
-            top: 6vw;
-            width: 2px;
-            height: 2.8vw;
-            background: linear-gradient(90deg, #454545, #2a2a2a, #454545);
-            border-radius: 0 1px 1px 0;
-            box-shadow: inset 0 0 1px rgba(255, 255, 255, 0.3);
+            right: -3.5px;
+            top: 7.8vw;
+            width: 3px;
+            height: 4.2vw;              /* Power button — long */
+            background: linear-gradient(90deg, #222224, #38383c, #222224);
+            border-radius: 0 2.5px 2.5px 0;
+            box-shadow:
+                inset 0 0 2px rgba(255, 255, 255, 0.2),
+                /* Camera Control — bouton exclusif au 16 Pro */
+                0 9.8vw 0 0 #363638;
         }
 
         body.light .iphone-frame::before {
-            background: linear-gradient(90deg, #d0d0d0, #b8b8b8, #d0d0d0);
-            box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(90deg, #a5a09a, #bdb8b2, #a5a09a);
+            box-shadow:
+                inset 0 0 1px rgba(255, 255, 255, 0.5),
+                0 9.8vw 0 0 #bdb8b2;
         }
 
+        /* ── Boutons côté GAUCHE : Action (haut) + Volume Up + Volume Down ── */
         .iphone-frame::after {
             content: '';
             position: absolute;
-            left: -2.5px;
-            top: 5vw;
-            width: 2px;
-            height: 1.8vw;
-            background: linear-gradient(90deg, #2a2a2a, #454545, #2a2a2a);
-            border-radius: 1px 0 0 1px;
-            box-shadow: 
-                inset 0 0 1px rgba(255, 255, 255, 0.3),
-                0 2.5vw 0 linear-gradient(90deg, #2a2a2a, #454545, #2a2a2a),
-                0 4.2vw 0 linear-gradient(90deg, #2a2a2a, #454545, #2a2a2a);
+            left: -3.5px;
+            top: 6.6vw;                 /* Action button — remplace le switch muet */
+            width: 3px;
+            height: 2vw;
+            background: linear-gradient(90deg, #222224, #38383c, #222224);
+            border-radius: 2.5px 0 0 2.5px;
+            box-shadow:
+                inset 0 0 2px rgba(255, 255, 255, 0.2),
+                /* Volume Up */
+                0 3.1vw 0 0 #363638,
+                /* Volume Down */
+                0 5.7vw 0 0 #363638;
         }
 
         body.light .iphone-frame::after {
-            background: linear-gradient(90deg, #b8b8b8, #d0d0d0, #b8b8b8);
-            box-shadow: 
-                inset 0 0 1px rgba(0, 0, 0, 0.1),
-                0 2.5vw 0 linear-gradient(90deg, #b8b8b8, #d0d0d0, #b8b8b8),
-                0 4.2vw 0 linear-gradient(90deg, #b8b8b8, #d0d0d0, #b8b8b8);
+            background: linear-gradient(90deg, #a5a09a, #bdb8b2, #a5a09a);
+            box-shadow:
+                inset 0 0 1px rgba(255, 255, 255, 0.5),
+                0 3.1vw 0 0 #bdb8b2,
+                0 5.7vw 0 0 #bdb8b2;
         }
 
         @keyframes phone-float-left {
@@ -2533,6 +2596,71 @@
 
         .lightbox-overlay.active img {
             transform: scale(1);
+        }
+
+        /* ── Lightbox mode iOS : iPhone 16 Pro frame ── */
+        .lb-phone-mockup { display: contents; }
+        .lb-phone-di     { display: none; }
+
+        #lightbox.ios-mode .lb-phone-mockup {
+            display: block;
+            position: relative;
+            width: 22vw;
+            height: 45.98vw;            /* ratio 16 Pro : 2.09:1 */
+            background: linear-gradient(158deg, #1e1e20 0%, #0c0c0e 55%, #18181a 100%);
+            border-radius: 4.32vw;
+            overflow: hidden;
+            box-shadow:
+                inset 0 0 0 0.15vw rgba(45, 45, 50, 0.95),
+                0 0 0 0.20vw rgba(85, 85, 92, 0.5),
+                0 0 0 0.79vw #252528,
+                0 0 0 0.97vw rgba(105, 103, 112, 0.3),
+                0 4.5vw 15vw rgba(0, 0, 0, 0.85);
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        #lightbox.ios-mode.active .lb-phone-mockup {
+            transform: scale(1);
+        }
+
+        body.light #lightbox.ios-mode .lb-phone-mockup {
+            background: linear-gradient(158deg, #eae6df 0%, #d6d2cb 55%, #e0dcd5 100%);
+            box-shadow:
+                inset 0 0 0 0.15vw rgba(175, 169, 158, 0.85),
+                0 0 0 0.20vw rgba(196, 192, 183, 0.9),
+                0 0 0 0.79vw #bdb8b0,
+                0 0 0 0.97vw rgba(155, 149, 140, 0.4),
+                0 4.5vw 15vw rgba(0, 0, 0, 0.2);
+        }
+
+        #lightbox.ios-mode .lb-phone-di {
+            display: block;
+            position: absolute;
+            top: 0.83vw;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6.37vw;
+            height: 1.37vw;
+            background: #000;
+            border-radius: 1.21vw;
+            z-index: 3;
+            box-shadow: 0 0 1vw rgba(0, 0, 0, 0.9);
+        }
+
+        body.light #lightbox.ios-mode .lb-phone-di { background: #111113; }
+
+        #lightbox.ios-mode #lightboxImg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            max-width: none;
+            max-height: none;
+            border-radius: 0;
+            box-shadow: none;
+            transform: none !important;
+            object-fit: cover;
+            z-index: 1;
         }
 
         .lightbox-close {
@@ -3330,7 +3458,7 @@
                 <div class="phone-showcase">
                     <div class="device-wrapper">
                         <div class="iphone-frame" style="padding: 0;">
-                            <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 3vw; z-index: 1;">
+                            <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 2.75vw; z-index: 1;">
                                 <source src="ScreenRecording_01-22-2026 09-10-08_1.MP4" type="video/mp4">
                             </video>
                             <div class="iphone-dynamic-island" style="position: absolute; top: 0.5vw; left: 50%; transform: translateX(-50%); z-index: 5;"></div>
@@ -3363,10 +3491,22 @@
                 <!-- Screenshot Stack -->
                 <div class="screenshot-stack" id="iosScreenshotStack">
                     <div class="stack-photos">
-                        <img class="stack-photo" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.08.16.png" alt="Capture 1">
-                        <img class="stack-photo" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.09.30.png" alt="Capture 3">
-                        <img class="stack-photo" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.12.55.png" alt="Capture 7">
-                        <img class="stack-photo" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.13.26.png" alt="Capture 9">
+                        <div class="stack-phone-frame">
+                            <div class="stack-phone-di"></div>
+                            <img class="stack-phone-screen" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.08.16.png" alt="Capture 1">
+                        </div>
+                        <div class="stack-phone-frame">
+                            <div class="stack-phone-di"></div>
+                            <img class="stack-phone-screen" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.09.30.png" alt="Capture 3">
+                        </div>
+                        <div class="stack-phone-frame">
+                            <div class="stack-phone-di"></div>
+                            <img class="stack-phone-screen" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.12.55.png" alt="Capture 7">
+                        </div>
+                        <div class="stack-phone-frame">
+                            <div class="stack-phone-di"></div>
+                            <img class="stack-phone-screen" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.13.26.png" alt="Capture 9">
+                        </div>
                     </div>
                     <div class="stack-hint">10 captures · cliquer pour voir</div>
                 </div>
@@ -3598,7 +3738,10 @@
     <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
         <button class="lightbox-close" onclick="closeLightbox(event)">&#10005;</button>
         <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1, event)">&#8249;</button>
-        <img id="lightboxImg" src="" alt="">
+        <div class="lb-phone-mockup" id="lbPhoneMockup">
+            <div class="lb-phone-di"></div>
+            <img id="lightboxImg" src="" alt="">
+        </div>
         <button class="lightbox-nav lightbox-next" onclick="navLightbox(1, event)">&#8250;</button>
         <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
@@ -3710,6 +3853,7 @@
                 e.stopPropagation();
                 lbImages = allIosScreenshots;
                 lbIndex = 0;
+                lbOverlay.classList.add('ios-mode');
                 openLightbox(lbImages[0].src, lbImages[0].alt);
             });
         }
@@ -3718,6 +3862,7 @@
         document.querySelectorAll('.browser-mockup img').forEach(img => {
             img.addEventListener('click', function(e) {
                 e.stopPropagation();
+                lbOverlay.classList.remove('ios-mode');
                 const parentSlide = this.closest('.slide');
                 lbImages = Array.from(parentSlide.querySelectorAll('.browser-mockup img'));
                 lbIndex = lbImages.indexOf(this);
@@ -3733,7 +3878,10 @@
 
         function closeLightbox(e) {
             if (e.target === lbImg) return;
+            const phoneMockup = document.getElementById('lbPhoneMockup');
+            if (phoneMockup && phoneMockup.contains(e.target)) return;
             lbOverlay.classList.remove('active');
+            lbOverlay.classList.remove('ios-mode');
         }
 
         function navLightbox(dir, e) {
@@ -3745,7 +3893,7 @@
 
         document.addEventListener('keydown', function(e) {
             if (!lbOverlay.classList.contains('active')) return;
-            if (e.key === 'Escape') lbOverlay.classList.remove('active');
+            if (e.key === 'Escape') { lbOverlay.classList.remove('active'); lbOverlay.classList.remove('ios-mode'); }
             if (e.key === 'ArrowLeft') { e.stopPropagation(); navLightbox(-1, e); }
             if (e.key === 'ArrowRight') { e.stopPropagation(); navLightbox(1, e); }
         }, true);
