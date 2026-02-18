@@ -1670,6 +1670,57 @@
             gap: 2.5vw;
         }
 
+        /* ===== SCREENSHOT STACK (Slide 10) ===== */
+        .screenshot-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            cursor: pointer;
+            margin-left: 0.5vw;
+            padding-bottom: 0.5vw;
+            gap: 0.5vw;
+            user-select: none;
+        }
+
+        .stack-photos {
+            position: relative;
+            width: 8vw;
+            height: 16.5vw;
+        }
+
+        .stack-photo {
+            position: absolute;
+            width: 8vw;
+            top: 0;
+            left: 0;
+            border-radius: 0.8vw;
+            border: 0.15vw solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0.4vw 1.2vw rgba(0, 0, 0, 0.5);
+            object-fit: cover;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .stack-photo:nth-child(1) { transform: rotate(-9deg) translateX(-0.4vw); z-index: 1; }
+        .stack-photo:nth-child(2) { transform: rotate(-4deg) translateX(-0.1vw); z-index: 2; }
+        .stack-photo:nth-child(3) { transform: rotate(3deg) translateX(0.2vw);  z-index: 3; }
+        .stack-photo:nth-child(4) { transform: rotate(0deg);                    z-index: 4; }
+
+        .screenshot-stack:hover .stack-photo:nth-child(1) { transform: rotate(-13deg) translateX(-1.1vw) translateY(-0.4vw); box-shadow: 0 0.6vw 1.8vw rgba(0,0,0,0.65); }
+        .screenshot-stack:hover .stack-photo:nth-child(2) { transform: rotate(-6deg)  translateX(-0.4vw) translateY(-0.2vw); box-shadow: 0 0.6vw 1.8vw rgba(0,0,0,0.6);  }
+        .screenshot-stack:hover .stack-photo:nth-child(3) { transform: rotate(5deg)   translateX(0.4vw)  translateY(-0.2vw); box-shadow: 0 0.6vw 1.8vw rgba(0,0,0,0.6);  }
+        .screenshot-stack:hover .stack-photo:nth-child(4) { transform: rotate(1deg)   translateY(-0.4vw);                    box-shadow: 0 0.8vw 2vw   rgba(0,0,0,0.75); }
+
+        .stack-hint {
+            font-size: 0.75vw;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            letter-spacing: 0.04em;
+        }
+
+        body.light .stack-hint  { color: rgba(0, 0, 0, 0.4); }
+        body.light .stack-photo { border-color: rgba(0, 0, 0, 0.1); box-shadow: 0 0.4vw 1vw rgba(0,0,0,0.2); }
+
         /* ===== DEVICE COMMUN ===== */
         .device-wrapper {
             display: flex;
@@ -3309,6 +3360,16 @@
                             <div class="launch-date-line"></div>
                         </div>
                     </div>
+                <!-- Screenshot Stack -->
+                <div class="screenshot-stack" id="iosScreenshotStack">
+                    <div class="stack-photos">
+                        <img class="stack-photo" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.08.16.png" alt="Capture 1">
+                        <img class="stack-photo" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.09.30.png" alt="Capture 3">
+                        <img class="stack-photo" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.12.55.png" alt="Capture 7">
+                        <img class="stack-photo" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.13.26.png" alt="Capture 9">
+                    </div>
+                    <div class="stack-hint">10 captures · cliquer pour voir</div>
+                </div>
                 </div>
                 <!-- Features -->
                 <div class="app-features">
@@ -3629,6 +3690,29 @@
         const lbCaption = document.getElementById('lightboxCaption');
         let lbImages = [];
         let lbIndex = 0;
+
+        // iOS Screenshot Stack — Slide 10
+        const iosStack = document.getElementById('iosScreenshotStack');
+        if (iosStack) {
+            const allIosScreenshots = [
+                { src: 'Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.08.16.png', alt: 'Capture 1' },
+                { src: 'Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.08.40.png', alt: 'Capture 2' },
+                { src: 'Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.09.30.png', alt: 'Capture 3' },
+                { src: 'Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.09.41.png', alt: 'Capture 4' },
+                { src: 'Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.09.49.png', alt: 'Capture 5' },
+                { src: 'Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.09.54.png', alt: 'Capture 6' },
+                { src: 'Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.12.55.png', alt: 'Capture 7' },
+                { src: 'Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.13.20.png', alt: 'Capture 8' },
+                { src: 'Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.13.26.png', alt: 'Capture 9' },
+                { src: 'Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.13.39.png', alt: 'Capture 10' },
+            ];
+            iosStack.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lbImages = allIosScreenshots;
+                lbIndex = 0;
+                openLightbox(lbImages[0].src, lbImages[0].alt);
+            });
+        }
 
         // Collect browser-mockup images — scoped per slide
         document.querySelectorAll('.browser-mockup img').forEach(img => {
