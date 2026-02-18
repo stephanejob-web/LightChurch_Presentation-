@@ -2712,6 +2712,33 @@
             background: rgba(255, 255, 255, 0.6);
         }
 
+        /* Compteur iOS — top-left */
+        .lb-counter {
+            display: none;
+            position: absolute;
+            top: 1.5vw;
+            left: 1.5vw;
+            font-size: 0.95vw;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            font-variant-numeric: tabular-nums;
+            color: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.4vw 1.1vw;
+            border-radius: 980px;
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        body.light .lb-counter {
+            color: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.06);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        #lightbox.ios-mode .lb-counter   { display: block; }
+        #lightbox.ios-mode .lightbox-caption { display: none; }
+
         .lightbox-nav {
             position: absolute;
             top: 50%;
@@ -3517,7 +3544,7 @@
                         <div class="app-feat-icon af-blue">📍</div>
                         <div>
                             <div class="app-feat-title">Le GPS fait le travail</div>
-                            <div class="app-feat-desc">L'app détecte la position et affiche les églises les plus proches automatiquement</div>
+                            <div class="app-feat-desc">L'app détecte la position et affiche les églises et les événements les plus proches automatiquement</div>
                         </div>
                     </div>
                     <div class="app-feat-card">
@@ -3737,6 +3764,7 @@
     <!-- LIGHTBOX -->
     <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
         <button class="lightbox-close" onclick="closeLightbox(event)">&#10005;</button>
+        <div class="lb-counter" id="lbCounter"></div>
         <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1, event)">&#8249;</button>
         <div class="lb-phone-mockup" id="lbPhoneMockup">
             <div class="lb-phone-di"></div>
@@ -3831,6 +3859,7 @@
         const lbOverlay = document.getElementById('lightbox');
         const lbImg = document.getElementById('lightboxImg');
         const lbCaption = document.getElementById('lightboxCaption');
+        const lbCounter = document.getElementById('lbCounter');
         let lbImages = [];
         let lbIndex = 0;
 
@@ -3872,7 +3901,11 @@
 
         function openLightbox(src, alt) {
             lbImg.src = src;
-            lbCaption.textContent = alt;
+            if (lbOverlay.classList.contains('ios-mode')) {
+                lbCounter.textContent = (lbIndex + 1) + ' / ' + lbImages.length;
+            } else {
+                lbCaption.textContent = alt;
+            }
             lbOverlay.classList.add('active');
         }
 
@@ -3888,7 +3921,11 @@
             e.stopPropagation();
             lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
             lbImg.src = lbImages[lbIndex].src;
-            lbCaption.textContent = lbImages[lbIndex].alt;
+            if (lbOverlay.classList.contains('ios-mode')) {
+                lbCounter.textContent = (lbIndex + 1) + ' / ' + lbImages.length;
+            } else {
+                lbCaption.textContent = lbImages[lbIndex].alt;
+            }
         }
 
         document.addEventListener('keydown', function(e) {
