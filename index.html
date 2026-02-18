@@ -1756,14 +1756,26 @@
         .screenshot-stack:hover .stack-phone-frame:nth-child(3) { transform: rotate(5deg)   translateX(0.4vw)  translateY(-0.2vw); }
         .screenshot-stack:hover .stack-phone-frame:nth-child(4) { transform: rotate(1deg)   translateY(-0.4vw); }
 
-        .stack-hint {
-            font-size: 0.75vw;
-            color: rgba(255, 255, 255, 0.5);
+        .stack-label {
+            font-size: 0.8vw;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.75);
             text-align: center;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.06em;
+            display: flex;
+            align-items: center;
+            gap: 0.35vw;
+            margin-bottom: 0.6vw;
         }
 
-        body.light .stack-hint { color: rgba(0, 0, 0, 0.4); }
+        .stack-label svg {
+            width: 0.9vw;
+            height: 0.9vw;
+            opacity: 0.7;
+            flex-shrink: 0;
+        }
+
+        body.light .stack-label { color: rgba(0, 0, 0, 0.55); }
 
         /* ===== DEVICE COMMUN ===== */
         .device-wrapper {
@@ -2564,6 +2576,14 @@
             flex: 1;
             max-width: 18.4%;
             cursor: pointer;
+            position: relative;
+            z-index: 1;
+            transition: z-index 0s 0.4s;
+        }
+
+        .imac-mockup:hover {
+            z-index: 10;
+            transition: z-index 0s 0s;
         }
 
         .imac-display {
@@ -2590,12 +2610,18 @@
         }
 
         .imac-mockup:hover .imac-display {
-            transform: translateY(-0.3vw);
+            transform: scale(1.65) translateY(-0.8vw);
             box-shadow:
                 0 0 0 1px rgba(0, 0, 0, 0.13),
                 inset 0 1px 0 rgba(255, 255, 255, 0.65),
-                0 0.9vw 3.5vw rgba(0, 0, 0, 0.55),
-                0 0.1vw 0.4vw rgba(0, 0, 0, 0.2);
+                0 1.5vw 5vw rgba(0, 0, 0, 0.65),
+                0 0.2vw 0.6vw rgba(0, 0, 0, 0.3);
+        }
+
+        .imac-mockup:hover .imac-neck,
+        .imac-mockup:hover .imac-base {
+            opacity: 0;
+            transition: opacity 0.2s;
         }
 
         .imac-screen {
@@ -3357,7 +3383,11 @@
                 </div>
             </div>
             <!-- Mini galerie captures carte — iMac mockup -->
-            <div class="anim d3" style="display: flex; gap: 1vw; margin-top: 0.8vw; width: 100%; max-width: 92vw; justify-content: center; align-items: flex-end;">
+            <div class="stack-label anim d3" style="justify-content: center; margin-top: 0.8vw; margin-bottom: 0;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                La plateforme web
+            </div>
+            <div class="anim d3" style="display: flex; gap: 1vw; margin-top: 0.6vw; width: 100%; max-width: 92vw; justify-content: center; align-items: flex-end;">
                 <div class="imac-mockup" style="max-width: 20%;">
                     <div class="imac-display">
                         <div class="imac-screen"><img src="captures-map/map-1.png" alt="Recherche d'églises à Paris"></div>
@@ -3461,7 +3491,11 @@
                 </div>
             </div>
             <!-- Mini galerie captures — iMac mockup -->
-            <div class="anim d3" style="display: flex; gap: 1.2vw; margin-top: 1.2vw; width: 100%; max-width: 92vw; justify-content: center; align-items: flex-end;">
+            <div class="stack-label anim d3" style="justify-content: center; margin-top: 1.2vw; margin-bottom: 0;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+                L'interface de gestion
+            </div>
+            <div class="anim d3" style="display: flex; gap: 1.2vw; margin-top: 0.6vw; width: 100%; max-width: 92vw; justify-content: center; align-items: flex-end;">
                 <div class="imac-mockup">
                     <div class="imac-display">
                         <div class="imac-screen"><img src="captures-pastor/pastor-1.png" alt="Liste événements"></div>
@@ -3593,6 +3627,10 @@
                     </div>
                 <!-- Screenshot Stack -->
                 <div class="screenshot-stack" id="iosScreenshotStack">
+                    <div class="stack-label">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                        L'app en images
+                    </div>
                     <div class="stack-photos">
                         <div class="stack-phone-frame">
                             <div class="stack-phone-di"></div>
@@ -3611,7 +3649,6 @@
                             <img class="stack-phone-screen" src="Capture-IOS/Simulator Screenshot - iPhone 16e - 2026-02-18 at 14.13.26.png" alt="Capture 9">
                         </div>
                     </div>
-                    <div class="stack-hint">10 captures · cliquer pour voir</div>
                 </div>
                 </div>
                 <!-- Features -->
