@@ -2698,12 +2698,13 @@
         }
 
         .lightbox-overlay img {
-            max-width: 88vw;
-            max-height: 85vh;
-            border-radius: 1vw;
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5vw;
             box-shadow: 0 2vw 8vw rgba(0, 0, 0, 0.6);
             transform: scale(0.9);
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            object-fit: contain;
         }
 
         .lightbox-overlay.active img {
@@ -4190,17 +4191,21 @@
             });
         }
 
-        // Collect browser-mockup + iMac images — scoped per slide
-        document.querySelectorAll('.browser-mockup img, .imac-screen img').forEach(img => {
-            img.addEventListener('click', function(e) {
-                e.stopPropagation();
-                lbOverlay.classList.remove('ios-mode');
-                const parentSlide = this.closest('.slide');
-                lbImages = Array.from(parentSlide.querySelectorAll('.browser-mockup img, .imac-screen img'));
-                lbIndex = lbImages.indexOf(this);
-                openLightbox(this.src, this.alt);
-            });
-        });
+        // Collect browser-mockup + iMac images — event delegation for reliability
+        document.addEventListener('click', function(e) {
+            const img = e.target;
+            if (img.tagName !== 'IMG') return;
+            const isImac = img.closest('.imac-screen');
+            const isBrowser = img.closest('.browser-mockup');
+            if (!isImac && !isBrowser) return;
+            e.stopPropagation();
+            e.preventDefault();
+            lbOverlay.classList.remove('ios-mode');
+            const parentSlide = img.closest('.slide');
+            lbImages = Array.from(parentSlide.querySelectorAll('.imac-screen img, .browser-mockup img'));
+            lbIndex = lbImages.indexOf(img);
+            openLightbox(img.src, img.alt);
+        }, true);
 
         function openLightbox(src, alt) {
             lbImg.src = src;
