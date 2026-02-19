@@ -2698,12 +2698,13 @@
         }
 
         .lightbox-overlay img {
-            max-width: 88vw;
-            max-height: 85vh;
-            border-radius: 1vw;
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5vw;
             box-shadow: 0 2vw 8vw rgba(0, 0, 0, 0.6);
             transform: scale(0.9);
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            object-fit: contain;
         }
 
         .lightbox-overlay.active img {
@@ -3047,38 +3048,37 @@
             <h1 class="section-title anim d1">
                 Ces histoires arrivent <span class="gradient-red">chaque jour</span>
             </h1>
-            <div class="grid-4 anim d2">
-                <div class="consequence-card">
+            <div class="anim d2" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8vw; width: 100%; max-width: 92vw;">
+                <div class="consequence-card" style="padding: 1.2vw 1vw;">
                     <div class="c-number">1</div>
-                    <div class="c-title">Sarah, 28 ans, mutée à Lyon</div>
-                    <div class="c-text">Elle cherche une église évangélique. Google affiche des fiches sans horaires, des pages Facebook mortes. Après 3 semaines, elle abandonne. <span style="color: #FF6B6B; font-weight: 600;">Elle ne va plus au culte.</span></div>
+                    <div class="c-title">Stéphanie, touchée lors d'une évangélisation</div>
+                    <div class="c-text">Elle a reçu un prospectus dans la rue, elle a été touchée. Elle veut aller dans une église mais ne sait pas laquelle choisir. <span style="color: #FF6B6B; font-weight: 600;">Elle ne fait jamais le premier pas.</span></div>
                 </div>
-                <div class="consequence-card">
+                <div class="consequence-card" style="padding: 1.2vw 1vw;">
                     <div class="c-number">2</div>
                     <div class="c-title">Pasteur Marc, conférence à Toulon</div>
-                    <div class="c-text">Il a organisé une conférence pendant 4 mois. Le jour J : 200 chaises, 38 personnes. L'info n'est jamais sortie de son groupe WhatsApp. <span style="color: #FF6B6B; font-weight: 600;">162 places vides.</span></div>
+                    <div class="c-text">200 chaises, 38 personnes. L'info n'est jamais sortie de son groupe WhatsApp. <span style="color: #FF6B6B; font-weight: 600;">162 places vides.</span></div>
                 </div>
-                <div class="consequence-card">
+                <div class="consequence-card" style="padding: 1.2vw 1vw;">
                     <div class="c-number">3</div>
-                    <div class="c-title">David, touriste américain à Paris</div>
-                    <div class="c-text">Dimanche matin. Il tape "evangelical church near me". Google montre 3 résultats, 2 ont fermé, le 3e n'a pas d'horaire. <span style="color: #FF6B6B; font-weight: 600;">Il reste à l'hôtel.</span></div>
+                    <div class="c-title">Une mère de famille en détresse à Nice</div>
+                    <div class="c-text">Son mari vient de la quitter. Une voisine lui parle de Jésus. Elle veut essayer une église. Elle ne sait pas où aller, ni à qui faire confiance. <span style="color: #FF6B6B; font-weight: 600;">Elle reste seule avec sa douleur.</span></div>
                 </div>
-                <div class="consequence-card">
+                <div class="consequence-card" style="padding: 1.2vw 1vw;">
                     <div class="c-number">4</div>
                     <div class="c-title">Deux pasteurs, même ville à Marseille</div>
-                    <div class="c-text">Ils ont chacun 80 membres. Ils ne connaissent pas les événements que l'autre organise. Résultat : deux événements identiques, le même week-end. <span style="color: #FF6B6B; font-weight: 600;">Zéro coordination. Deux fois moins d'impact.</span></div>
+                    <div class="c-text">Ils ne connaissent pas les événements de l'autre. Deux événements identiques, le même week-end. <span style="color: #FF6B6B; font-weight: 600;">Zéro coordination.</span></div>
                 </div>
-            </div>
-            <div class="anim d3" style="margin-top: 1.2vw; width: 100%; max-width: 92vw; background: linear-gradient(145deg, rgba(255, 59, 48, 0.06), rgba(255, 107, 107, 0.03)); border: 1.5px solid rgba(255, 107, 107, 0.25); border-radius: 1.2vw; padding: 1.3vw 2.5vw; display: flex; align-items: center; gap: 2vw;">
-                <div style="font-size: 3vw; flex-shrink: 0;">📖</div>
-                <div>
-                    <div style="font-size: var(--fs-card-title); font-weight: 700; color: #FF6B6B; margin-bottom: 0.3vw;">Un évangéliste distribue des prospectus à Toulon</div>
-                    <div style="font-size: var(--fs-card-text); color: var(--grey); line-height: 1.5;">Il donne un Évangile avec le tampon de son église à La Seyne. Mais la personne habite Toulon — elle ne fera jamais 15 km. <span style="color: #FF6B6B; font-weight: 600;">Le prospectus finit à la poubelle.</span></div>
+                <div class="consequence-card" style="padding: 1.2vw 1vw;">
+                    <div class="c-number">5</div>
+                    <div class="c-title">Un évangéliste distribue des prospectus</div>
+                    <div class="c-text">Il donne un Évangile avec le tampon de son église. Mais la personne n'habite pas à proximité. <span style="color: #FF6B6B; font-weight: 600;">Le prospectus finit à la poubelle.</span></div>
                 </div>
-            </div>
-            <div class="anim d4" style="margin-top: 1vw; width: 100%; max-width: 92vw; background: var(--problem-bg); border: 1px solid var(--problem-border); border-radius: 1.2vw; padding: 1.3vw 2vw; text-align: center;">
-                <div style="font-size: var(--fs-card-title); font-weight: 700; color: #FF6B6B; margin-bottom: 0.4vw;">Et surtout : aucune garantie de fiabilité</div>
-                <div style="font-size: var(--fs-card-text); color: var(--grey); line-height: 1.5;">Des centaines d'églises apparaissent en ligne. Mais lesquelles sont fiables ? Que prêchent-elles vraiment ? <span style="color: #FF6B6B; font-weight: 600;">Personne ne vérifie.</span></div>
+                <div class="consequence-card" style="padding: 1.2vw 1vw;">
+                    <div class="c-number">6</div>
+                    <div class="c-title">Des centaines d'églises en ligne</div>
+                    <div class="c-text">Lesquelles sont fiables ? Quelle doctrine ? Quelle affiliation ? <span style="color: #FF6B6B; font-weight: 600;">Personne ne vérifie. Risque de dérives.</span></div>
+                </div>
             </div>
         </div>
 
@@ -3159,11 +3159,202 @@
             </div>
         </div>
 
+        <!-- ======== SLIDE 3b : FOCUS EVANGELISATION DE RUE ======== -->
+        <div class="slide" style="justify-content: center; padding: 1.5vh 4vw 2vh;">
+            <p class="overline anim" style="color: #FF6B6B; margin-bottom: 0.3vw;">Focus : Évangélisation de rue</p>
+            <h1 class="section-title anim d1" style="margin-bottom: 1vw; font-size: 3.2vw;">
+                Un prospectus sans <span class="gradient-red">proximité</span>, c'est un prospectus <span class="gradient-red">perdu</span>
+            </h1>
+
+            <div class="anim d2" style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.2vw; width: 100%; max-width: 90vw; align-items: stretch;">
+
+                <!-- COLONNE GAUCHE : AUJOURD'HUI -->
+                <div style="background: linear-gradient(145deg, rgba(255, 59, 48, 0.07), rgba(255, 107, 107, 0.03)); border: 1.5px solid rgba(255, 107, 107, 0.3); border-radius: 1.2vw; padding: 1.2vw 1.8vw; display: flex; flex-direction: column; gap: 0.6vw;">
+                    <div style="font-size: 1.1vw; font-weight: 700; color: #FF6B6B; text-transform: uppercase; letter-spacing: 0.15vw; text-align: center;">Aujourd'hui</div>
+
+                    <!-- Etape 1 -->
+                    <div style="display: flex; align-items: center; gap: 0.8vw;">
+                        <div style="width: 2.4vw; height: 2.4vw; border-radius: 50%; background: rgba(255, 107, 107, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.3vw; height: 1.3vw;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1vw; font-weight: 600; color: var(--text);">L'évangéliste distribue un prospectus</div>
+                            <div style="font-size: 0.95vw; color: var(--grey);">Avec le tampon de son église à La Seyne-sur-Mer</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; color: rgba(255, 107, 107, 0.4);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.2vw; height: 1.2vw;"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+                    <!-- Etape 2 -->
+                    <div style="display: flex; align-items: center; gap: 0.8vw;">
+                        <div style="width: 2.4vw; height: 2.4vw; border-radius: 50%; background: rgba(255, 107, 107, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.3vw; height: 1.3vw;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1vw; font-weight: 600; color: var(--text);">La personne n'habite pas &agrave; proximit&eacute;</div>
+                            <div style="font-size: 0.95vw; color: var(--grey);">L'&eacute;glise est trop loin &mdash; pour un premier contact, c'est r&eacute;dhibitoire</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; color: rgba(255, 107, 107, 0.4);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.2vw; height: 1.2vw;"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+                    <!-- Etape 3 -->
+                    <div style="display: flex; align-items: center; gap: 0.8vw;">
+                        <div style="width: 2.4vw; height: 2.4vw; border-radius: 50%; background: rgba(255, 107, 107, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.3vw; height: 1.3vw;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1vw; font-weight: 700; color: #FF6B6B;">Le prospectus finit &agrave; la poubelle</div>
+                            <div style="font-size: 0.95vw; color: var(--grey);">Effort perdu. Contact perdu. &Acirc;me perdue.</div>
+                        </div>
+                    </div>
+
+                    <!-- Barre de distance -->
+                    <div style="margin-top: auto; background: rgba(255, 59, 48, 0.06); border-radius: 0.8vw; padding: 0.6vw 1vw;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 0.5vw;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2" style="width: 1.1vw; height: 1.1vw;"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+                            <span style="font-size: 1vw; font-weight: 700; color: #FF6B6B;">Premier contact perdu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEPARATEUR CENTRAL -->
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6vw;">
+                    <div style="width: 2px; flex: 1; background: linear-gradient(to bottom, transparent, rgba(255,107,107,0.3), var(--grey), rgba(48,176,78,0.3), transparent);"></div>
+                    <div style="font-size: 1.8vw; background: linear-gradient(135deg, #FF6B6B, #30B04E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800;">VS</div>
+                    <div style="width: 2px; flex: 1; background: linear-gradient(to bottom, transparent, rgba(48,176,78,0.3), var(--grey), rgba(255,107,107,0.3), transparent);"></div>
+                </div>
+
+                <!-- COLONNE DROITE : AVEC LIGHTCHURCH -->
+                <div style="background: linear-gradient(145deg, rgba(48, 176, 78, 0.07), rgba(48, 176, 78, 0.02)); border: 1.5px solid rgba(48, 176, 78, 0.3); border-radius: 1.2vw; padding: 1.2vw 1.8vw; display: flex; flex-direction: column; gap: 0.6vw;">
+                    <div style="font-size: 1.1vw; font-weight: 700; color: #30B04E; text-transform: uppercase; letter-spacing: 0.15vw; text-align: center;">Avec Light Church</div>
+
+                    <!-- Etape 1 -->
+                    <div style="display: flex; align-items: center; gap: 0.8vw;">
+                        <div style="width: 2.4vw; height: 2.4vw; border-radius: 50%; background: rgba(48, 176, 78, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#30B04E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.3vw; height: 1.3vw;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1vw; font-weight: 600; color: var(--text);">M&ecirc;me prospectus, une ligne en plus</div>
+                            <div style="font-size: 0.95vw; color: var(--grey);">&laquo;&nbsp;Cherchez une &eacute;glise pr&egrave;s de chez vous sur <span style="color: #30B04E; font-weight: 700;">lightchurch.fr</span>&nbsp;&raquo;</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; color: rgba(48, 176, 78, 0.4);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.2vw; height: 1.2vw;"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+                    <!-- Etape 2 -->
+                    <div style="display: flex; align-items: center; gap: 0.8vw;">
+                        <div style="width: 2.4vw; height: 2.4vw; border-radius: 50%; background: rgba(48, 176, 78, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#30B04E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.3vw; height: 1.3vw;"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1vw; font-weight: 600; color: var(--text);">La personne tape lightchurch.fr</div>
+                            <div style="font-size: 0.95vw; color: var(--grey);">G&eacute;olocalisation &rarr; &eacute;glises les plus proches</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; color: rgba(48, 176, 78, 0.4);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.2vw; height: 1.2vw;"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+                    <!-- Etape 3 -->
+                    <div style="display: flex; align-items: center; gap: 0.8vw;">
+                        <div style="width: 2.4vw; height: 2.4vw; border-radius: 50%; background: rgba(48, 176, 78, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#30B04E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.3vw; height: 1.3vw;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1vw; font-weight: 700; color: #30B04E;">Elle trouve une &eacute;glise &agrave; proximit&eacute; de chez elle</div>
+                            <div style="font-size: 0.95vw; color: var(--grey);">Horaires, adresse, itin&eacute;raire. Elle a toutes les infos pour s'y rendre.</div>
+                        </div>
+                    </div>
+
+                    <!-- Barre de distance -->
+                    <div style="margin-top: auto; background: rgba(48, 176, 78, 0.06); border-radius: 0.8vw; padding: 0.6vw 1vw;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 0.5vw;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#30B04E" stroke-width="2" style="width: 1.1vw; height: 1.1vw;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            <span style="font-size: 1vw; font-weight: 700; color: #30B04E;">Premier contact pr&eacute;serv&eacute;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BANDEAU BAS -->
+            <div class="anim d3" style="margin-top: 1vw; width: 100%; max-width: 90vw; background: linear-gradient(135deg, rgba(41, 151, 255, 0.06), rgba(41, 151, 255, 0.02)); border: 1.5px solid rgba(41, 151, 255, 0.25); border-radius: 1vw; padding: 1vw 2.5vw; text-align: center;">
+                <div style="font-size: 1.2vw; font-weight: 700; color: var(--text); line-height: 1.4;">
+                    &laquo;&nbsp;L'&eacute;vang&eacute;lisation de rue ne s'arr&ecirc;te pas au prospectus.
+                    <span style="color: var(--accent-1);">Elle s'ach&egrave;ve quand la personne pousse la porte d'une &eacute;glise.</span>&nbsp;&raquo;
+                </div>
+                <div style="font-size: 1vw; font-weight: 600; color: var(--grey); line-height: 1.5; font-style: italic; margin-top: 0.5vw;">
+                    &laquo;&nbsp;Comment croiront-ils en celui dont ils n'ont pas entendu parler ? Et comment entendront-ils parler de lui, <span style="color: var(--accent-1); font-weight: 700;">sans quelqu'un qui les pr&ecirc;che ?</span>&nbsp;&raquo;
+                    <span style="font-style: normal; font-weight: 700; color: var(--accent-1);">&mdash; Romains 10:14</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== SLIDE 3c : FOCUS FIABILITE ======== -->
+        <div class="slide" style="justify-content: center; padding: 1.5vh 4vw 2vh;">
+            <p class="overline anim" style="color: #FF6B6B; margin-bottom: 0.3vw;">Focus : Fiabilit&eacute;</p>
+            <h1 class="section-title anim d1" style="margin-bottom: 0.8vw; font-size: 3.2vw;">
+                Des centaines d'&eacute;glises en ligne.<br><span class="gradient-red">Aucune v&eacute;rification.</span>
+            </h1>
+
+            <!-- CHIFFRE CENTRAL -->
+            <div class="anim d2" style="margin-bottom: 1.5vw; text-align: center;">
+                <div style="font-size: 1.2vw; color: var(--grey); line-height: 1.6; max-width: 55vw; margin: 0 auto;">
+                    Une personne cherche une &eacute;glise en ligne. Elle trouve des dizaines de r&eacute;sultats.<br>
+                    <span style="color: #FF6B6B; font-weight: 600;">Mais comment savoir si cette &eacute;glise est s&eacute;rieuse, affili&eacute;e, doctrinalement fiable ?</span>
+                </div>
+            </div>
+
+            <!-- 3 COLONNES PROBLEMES -->
+            <div class="anim d2" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2vw; width: 100%; max-width: 88vw;">
+
+                <!-- Probleme 1 -->
+                <div style="background: linear-gradient(145deg, rgba(255, 59, 48, 0.06), rgba(255, 107, 107, 0.02)); border: 1.5px solid rgba(255, 107, 107, 0.25); border-radius: 1.2vw; padding: 1.5vw 1.8vw; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.6vw;">
+                    <div style="width: 3.5vw; height: 3.5vw; border-radius: 50%; background: rgba(255, 107, 107, 0.1); display: flex; align-items: center; justify-content: center; font-size: 1.8vw;">&#128269;</div>
+                    <div style="font-size: 1.2vw; font-weight: 700; color: #FF6B6B;">Doctrine non v&eacute;rifi&eacute;e</div>
+                    <div style="font-size: 0.95vw; color: var(--grey); line-height: 1.5;">Que pr&ecirc;che cette &eacute;glise ? Quelles sont ses croyances fondamentales ? <span style="color: #FF6B6B; font-weight: 600;">Aucune information accessible.</span></div>
+                </div>
+
+                <!-- Probleme 2 -->
+                <div style="background: linear-gradient(145deg, rgba(255, 59, 48, 0.06), rgba(255, 107, 107, 0.02)); border: 1.5px solid rgba(255, 107, 107, 0.25); border-radius: 1.2vw; padding: 1.5vw 1.8vw; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.6vw;">
+                    <div style="width: 3.5vw; height: 3.5vw; border-radius: 50%; background: rgba(255, 107, 107, 0.1); display: flex; align-items: center; justify-content: center; font-size: 1.8vw;">&#127970;</div>
+                    <div style="font-size: 1.2vw; font-weight: 700; color: #FF6B6B;">Affiliation inconnue</div>
+                    <div style="font-size: 0.95vw; color: var(--grey); line-height: 1.5;">Est-elle rattach&eacute;e &agrave; une f&eacute;d&eacute;ration ? Au CNEF ? &Agrave; une union d'&eacute;glises ? <span style="color: #FF6B6B; font-weight: 600;">Impossible &agrave; savoir.</span></div>
+                </div>
+
+                <!-- Probleme 3 -->
+                <div style="background: linear-gradient(145deg, rgba(255, 59, 48, 0.06), rgba(255, 107, 107, 0.02)); border: 1.5px solid rgba(255, 107, 107, 0.25); border-radius: 1.2vw; padding: 1.5vw 1.8vw; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.6vw;">
+                    <div style="width: 3.5vw; height: 3.5vw; border-radius: 50%; background: rgba(255, 107, 107, 0.1); display: flex; align-items: center; justify-content: center; font-size: 1.8vw;">&#9888;&#65039;</div>
+                    <div style="font-size: 1.2vw; font-weight: 700; color: #FF6B6B;">Risque de d&eacute;rives</div>
+                    <div style="font-size: 0.95vw; color: var(--grey); line-height: 1.5;">Des mouvements sectaires se pr&eacute;sentent comme &eacute;vang&eacute;liques. Sans contr&ocirc;le, <span style="color: #FF6B6B; font-weight: 600;">n'importe qui peut se d&eacute;clarer &eacute;glise.</span></div>
+                </div>
+            </div>
+
+            <!-- FLECHE DE TRANSITION -->
+            <div class="anim d3" style="margin: 1.2vw 0; text-align: center; font-size: 1.5vw; color: var(--grey);">&#8595;</div>
+
+            <!-- BANDEAU SOLUTION LIGHTCHURCH -->
+            <div class="anim d3" style="width: 100%; max-width: 88vw; background: linear-gradient(145deg, rgba(48, 176, 78, 0.07), rgba(48, 176, 78, 0.02)); border: 1.5px solid rgba(48, 176, 78, 0.3); border-radius: 1.2vw; padding: 1.2vw 2.5vw; display: grid; grid-template-columns: auto 1fr; gap: 1.5vw; align-items: center;">
+                <div style="width: 4vw; height: 4vw; border-radius: 50%; background: rgba(48, 176, 78, 0.12); display: flex; align-items: center; justify-content: center; font-size: 2.2vw; flex-shrink: 0;">&#9989;</div>
+                <div>
+                    <div style="font-size: 1.3vw; font-weight: 700; color: #30B04E; margin-bottom: 0.3vw;">Avec Light Church : chaque &eacute;glise est valid&eacute;e</div>
+                    <div style="font-size: 0.95vw; color: var(--grey); line-height: 1.6;">Seules les &eacute;glises <span style="color: #30B04E; font-weight: 600;">affili&eacute;es &agrave; une f&eacute;d&eacute;ration reconnue</span> (CNEF, ADD, CEAF...) apparaissent sur la plateforme. Chaque fiche affiche clairement l'union d'&eacute;glises, la confession de foi et le pasteur r&eacute;f&eacute;rent. <span style="color: #30B04E; font-weight: 600;">Z&eacute;ro zone grise.</span></div>
+                </div>
+            </div>
+
+            <!-- CITATION -->
+            <div class="anim d4" style="margin-top: 1vw; width: 100%; max-width: 88vw; background: linear-gradient(135deg, rgba(41, 151, 255, 0.06), rgba(41, 151, 255, 0.02)); border: 1.5px solid rgba(41, 151, 255, 0.25); border-radius: 1vw; padding: 0.8vw 2.5vw; text-align: center;">
+                <div style="font-size: 1.3vw; font-weight: 700; color: var(--text); line-height: 1.4;">
+                    &laquo;&nbsp;Light Church ne r&eacute;f&eacute;rence pas des &eacute;glises. <span style="color: var(--accent-1);">Il certifie des communaut&eacute;s.</span>&nbsp;&raquo;
+                </div>
+            </div>
+        </div>
+
+
         <!-- ======== SLIDE 6 : CARTE + FICHE ======== -->
         <div class="slide" style="padding-top: 2vw; padding-bottom: 4.5vw;">
             <p class="overline accent anim">Le pilier Trouver en action</p>
             <h1 class="section-title anim d1" style="font-size: 3.2vw;">
-                Sarah ne chercherait <span class="gradient-gold">plus en vain</span>
+                St&eacute;phanie ne chercherait <span class="gradient-gold">plus en vain</span>
             </h1>
             <div class="map-grid anim d2" style="height: 26vw; margin-top: 1.5vw;">
                 <!-- Carte de France -->
@@ -3387,26 +3578,42 @@
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 La plateforme web
             </div>
-            <div class="anim d3" style="display: flex; gap: 2vw; margin-top: 0.8vw; width: 100%; max-width: 80vw; justify-content: center; align-items: flex-end;">
-                <div class="imac-mockup" style="max-width: 23%;">
+            <div class="anim d3" style="display: flex; gap: 1.2vw; margin-top: 0.8vw; width: 100%; max-width: 92vw; justify-content: center; align-items: flex-end;">
+                <div class="imac-mockup" style="max-width: 17%;">
                     <div class="imac-display">
-                        <div class="imac-screen"><img src="captures-map/map-1.png" alt="Recherche d'églises à Paris"></div>
+                        <div class="imac-screen"><img src="captures-map/map-1.png" alt="Recherche par ville"></div>
                         <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
                     <div class="imac-neck"></div>
                     <div class="imac-base"></div>
                 </div>
-                <div class="imac-mockup" style="max-width: 23%;">
+                <div class="imac-mockup" style="max-width: 17%;">
                     <div class="imac-display">
-                        <div class="imac-screen"><img src="captures-map/map-2.png" alt="Fiche détaillée d'un événement"></div>
+                        <div class="imac-screen"><img src="captures-map/map-2.png" alt="Fiche événement"></div>
                         <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
                     <div class="imac-neck"></div>
                     <div class="imac-base"></div>
                 </div>
-                <div class="imac-mockup" style="max-width: 23%;">
+                <div class="imac-mockup" style="max-width: 17%;">
                     <div class="imac-display">
-                        <div class="imac-screen"><img src="captures-map/map-3.png" alt="Fiche détaillée d'une église"></div>
+                        <div class="imac-screen"><img src="captures-map/map-3.png" alt="Fiche église"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
+                    </div>
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
+                </div>
+                <div class="imac-mockup" style="max-width: 17%;">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-map/map-4.png" alt="Vue carte événements"></div>
+                        <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
+                    </div>
+                    <div class="imac-neck"></div>
+                    <div class="imac-base"></div>
+                </div>
+                <div class="imac-mockup" style="max-width: 17%;">
+                    <div class="imac-display">
+                        <div class="imac-screen"><img src="captures-map/map-5.png" alt="Vue satellite"></div>
                         <div class="imac-chin"><svg class="imac-apple" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>
                     </div>
                     <div class="imac-neck"></div>
@@ -3572,7 +3779,7 @@
         <div class="slide">
             <p class="overline anim" style="color: #9C27B0;">L'expérience mobile</p>
             <h1 class="section-title anim d1">
-                David à Paris, dimanche matin ? <span class="gradient-text">Il ouvre l'app.</span>
+                St&eacute;phanie veut trouver une &eacute;glise ? <span class="gradient-text">Elle ouvre l'app.</span>
             </h1>
             <div class="mobile-slide-grid anim d2">
                 <!-- Phone Mockup -->
@@ -3686,19 +3893,19 @@
             <div class="grid-2 anim d2" style="margin-top: 3vw;">
                 <div class="panel" style="background: var(--problem-bg); border: 1px solid var(--problem-border); border-radius: 1.5vw; padding: 2vw;">
                     <div class="panel-head" style="color: #FF6B6B; font-size: 2vw; margin-bottom: 1.8vw; justify-content: center;">&#10060; Sans Light Church</div>
-                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Sarah</strong> cherche une église pendant 3 semaines. Elle abandonne.</span></div>
+                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Stéphanie</strong> est touchée lors d'une évangélisation. Elle ne sait pas où aller. Elle ne fait jamais le premier pas.</span></div>
                     <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Pasteur Marc</strong> organise une conférence. 162 places restent vides.</span></div>
-                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">David</strong> cherche un culte à Paris. Google ne montre rien de fiable.</span></div>
+                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Une mère en détresse</strong> à Nice cherche une église. Elle ne sait pas à qui faire confiance. Elle reste seule.</span></div>
                     <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Deux pasteurs</strong> dans la même ville ne connaissent pas leurs événements.</span></div>
-                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Un évangéliste</strong> donne un prospectus avec l'adresse de son église à 15 km. La personne ne s'y rendra jamais.</span></div>
+                    <div class="feat" style="color: var(--grey);"><span class="dot" style="background: #FF6B6B;"></span><span><strong style="color: var(--text);">Un évangéliste</strong> donne un prospectus. La personne n'habite pas à proximité. Le contact est perdu.</span></div>
                 </div>
                 <div class="panel" style="background: rgba(48, 176, 78, 0.04); border: 1px solid rgba(48, 176, 78, 0.15); border-radius: 1.5vw; padding: 2vw;">
                     <div class="panel-head" style="color: #30B04E; font-size: 2vw; margin-bottom: 1.8vw; justify-content: center;">&#9889; Avec Light Church</div>
-                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>Sarah</strong> ouvre la carte, trouve 4 églises à 2 km. Elle y va dimanche.</span></div>
+                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>Stéphanie</strong> ouvre la carte, trouve une église à proximité. Elle a toutes les infos pour s'y rendre.</span></div>
                     <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>Pasteur Marc</strong> publie son événement. Toute la France le voit. Salle comble.</span></div>
-                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>David</strong> ouvre l'app, le GPS le guide jusqu'au culte le plus proche.</span></div>
+                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>La mère en détresse</strong> trouve une église vérifiée, avec les horaires et l'adresse. Elle n'est plus seule.</span></div>
                     <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>Les deux pasteurs</strong> voient leurs événements et organisent ensemble.</span></div>
-                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>L'évangéliste</strong> écrit lightchurch.fr sur le prospectus. La personne trouve une église à 500 m de chez elle.</span></div>
+                    <div class="feat"><span class="dot" style="background: #30B04E;"></span><span style="color: var(--text);"><strong>L'évangéliste</strong> oriente vers lightchurch.fr. La personne trouve une église à proximité de chez elle.</span></div>
                 </div>
             </div>
         </div>
@@ -3984,17 +4191,21 @@
             });
         }
 
-        // Collect browser-mockup + iMac images — scoped per slide
-        document.querySelectorAll('.browser-mockup img, .imac-screen img').forEach(img => {
-            img.addEventListener('click', function(e) {
-                e.stopPropagation();
-                lbOverlay.classList.remove('ios-mode');
-                const parentSlide = this.closest('.slide');
-                lbImages = Array.from(parentSlide.querySelectorAll('.browser-mockup img, .imac-screen img'));
-                lbIndex = lbImages.indexOf(this);
-                openLightbox(this.src, this.alt);
-            });
-        });
+        // Collect browser-mockup + iMac images — event delegation for reliability
+        document.addEventListener('click', function(e) {
+            const img = e.target;
+            if (img.tagName !== 'IMG') return;
+            const isImac = img.closest('.imac-screen');
+            const isBrowser = img.closest('.browser-mockup');
+            if (!isImac && !isBrowser) return;
+            e.stopPropagation();
+            e.preventDefault();
+            lbOverlay.classList.remove('ios-mode');
+            const parentSlide = img.closest('.slide');
+            lbImages = Array.from(parentSlide.querySelectorAll('.imac-screen img, .browser-mockup img'));
+            lbIndex = lbImages.indexOf(img);
+            openLightbox(img.src, img.alt);
+        }, true);
 
         function openLightbox(src, alt) {
             lbImg.src = src;
