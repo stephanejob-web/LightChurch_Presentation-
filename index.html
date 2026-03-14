@@ -2509,6 +2509,34 @@
             filter: brightness(1.05);
         }
 
+        /* ===== CNEF SLIDES LIGHT THEME ===== */
+        body.light .cnef-src-box {
+            background: linear-gradient(145deg, #EEF4FF, #E2EDFF) !important;
+            border-color: rgba(0, 113, 227, 0.25) !important;
+        }
+        body.light .cnef-src-title {
+            color: #1D1D1F !important;
+        }
+        body.light .cnef-old-box {
+            background: linear-gradient(145deg, #FFF0F0, #FFE5E5) !important;
+            border-color: rgba(255, 59, 48, 0.25) !important;
+        }
+        body.light .cnef-out-green {
+            background: linear-gradient(145deg, #EBF8F0, #D8F2E3) !important;
+            border-color: rgba(48, 176, 78, 0.35) !important;
+        }
+        body.light .cnef-out-gold {
+            background: linear-gradient(145deg, #FDF6E3, #FAF0C8) !important;
+            border-color: rgba(191, 155, 48, 0.35) !important;
+        }
+        body.light .cnef-out-gold strong {
+            color: rgba(0, 0, 0, 0.45) !important;
+        }
+        body.light .cnef-cost-box {
+            background: linear-gradient(145deg, #EBF8F0, #D8F2E3) !important;
+            border-color: rgba(48, 176, 78, 0.4) !important;
+        }
+
         /* ===== BROWSER MOCKUP ===== */
         .browser-mockup {
             border-radius: 0.8vw;
@@ -4064,14 +4092,55 @@
             </p>
         </div>
 
+        <!-- ======== SLIDE CNEF 0 : OPERATIONNEL AUJOURD'HUI ======== -->
+        <div class="slide" style="background: radial-gradient(ellipse at 40% 50%, rgba(48,176,78,0.1) 0%, transparent 65%);">
+            <p class="overline anim" style="font-size: 1.4vw; letter-spacing: 0.15vw; color: #30B04E;">Pas un prototype — une réalité</p>
+            <h1 class="hero-title anim d1" style="font-size: 6.5vw; margin-top: 0.4vw; line-height: 1.05;">
+                La plateforme<br><span style="background: linear-gradient(135deg, #30B04E, #5DD87A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">est prête.</span>
+            </h1>
+
+            <div class="anim d2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2vw; margin-top: 2.5vw; max-width: 80vw;">
+                <div style="display: flex; align-items: center; gap: 1vw; padding: 1vw 1.5vw; background: rgba(48,176,78,0.08); border: 1px solid rgba(48,176,78,0.25); border-radius: 1vw;">
+                    <span style="font-size: 1.4vw; flex-shrink: 0;">✅</span>
+                    <span style="font-size: 1.2vw; color: var(--text);">Carte interactive avec clustering</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1vw; padding: 1vw 1.5vw; background: rgba(48,176,78,0.08); border: 1px solid rgba(48,176,78,0.25); border-radius: 1vw;">
+                    <span style="font-size: 1.4vw; flex-shrink: 0;">✅</span>
+                    <span style="font-size: 1.2vw; color: var(--text);">Fiches d'églises complètes</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1vw; padding: 1vw 1.5vw; background: rgba(48,176,78,0.08); border: 1px solid rgba(48,176,78,0.25); border-radius: 1vw;">
+                    <span style="font-size: 1.4vw; flex-shrink: 0;">✅</span>
+                    <span style="font-size: 1.2vw; color: var(--text);">Événements & notifications push</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1vw; padding: 1vw 1.5vw; background: rgba(48,176,78,0.08); border: 1px solid rgba(48,176,78,0.25); border-radius: 1vw;">
+                    <span style="font-size: 1.4vw; flex-shrink: 0;">✅</span>
+                    <span style="font-size: 1.2vw; color: var(--text);">Espace pasteur + admin</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1vw; padding: 1vw 1.5vw; background: rgba(48,176,78,0.08); border: 1px solid rgba(48,176,78,0.25); border-radius: 1vw;">
+                    <span style="font-size: 1.4vw; flex-shrink: 0;">✅</span>
+                    <span style="font-size: 1.2vw; color: var(--text);">Application mobile iOS & Android</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1vw; padding: 1vw 1.5vw; background: rgba(48,176,78,0.08); border: 1px solid rgba(48,176,78,0.25); border-radius: 1vw;">
+                    <span style="font-size: 1.4vw; flex-shrink: 0;">✅</span>
+                    <span style="font-size: 1.2vw; color: var(--text);">Recherche par distance géographique</span>
+                </div>
+            </div>
+
+            <div class="anim d3" style="margin-top: 2.8vw; padding: 1.4vw 3vw; background: linear-gradient(135deg, rgba(48,176,78,0.15), rgba(48,176,78,0.05)); border: 1.5px solid rgba(48,176,78,0.4); border-radius: 1.2vw; max-width: 80vw; text-align: center;">
+                <span style="font-size: 1.7vw; font-weight: 800; color: #30B04E;">Phase 1 = pointer eglises.org vers notre serveur.</span>
+                <span style="font-size: 1.5vw; color: var(--grey); margin-left: 1vw;">8 à 10 jours de travail.</span>
+            </div>
+        </div>
+
         <!-- ======== SLIDE CNEF 1 : TRANSITION ======== -->
         <div class="slide" style="background: radial-gradient(ellipse at 50% 60%, rgba(41,151,255,0.12) 0%, transparent 70%);">
             <p class="overline accent anim" style="font-size: 1.4vw; letter-spacing: 0.15vw;">Ce que ça signifie pour vous</p>
-            <h1 class="hero-title anim d1" style="font-size: 6vw; margin-top: 0.5vw;">
-                LightChurch <span class="gradient-text">+ CNEF</span>
+            <h1 class="hero-title anim d1" style="font-size: 5.5vw; margin-top: 0.5vw;">
+                eglises.org <span class="gradient-text">propulsé par LightChurch</span>
             </h1>
-            <p class="body-text anim d2" style="font-size: 2vw; margin-top: 1.2vw; max-width: 60vw;">
-                Ce qui existe déjà, ce qui reste à construire,<br>et combien ça coûte.
+            <p class="body-text anim d2" style="font-size: 1.8vw; margin-top: 1.2vw; max-width: 65vw; color: var(--grey);">
+                Vous gardez votre marque, votre domaine, vos 280 000 visites/mois.<br>
+                LightChurch devient <strong style="color: var(--text);">le moteur derrière</strong> — moderne, maintenu, extensible.
             </p>
             <div class="anim d3" style="display: flex; gap: 1.5vw; margin-top: 3vw; flex-wrap: wrap; justify-content: center;">
                 <div style="padding: 0.8vw 2vw; border-radius: 980px; background: rgba(48,176,78,0.1); border: 1px solid rgba(48,176,78,0.3); color: #30B04E; font-size: 1.2vw; font-weight: 600;">✓ Ce qui est prêt</div>
@@ -4143,7 +4212,7 @@
         <!-- ======== SLIDE CNEF SCHEMA INTEGRATION ======== -->
         <div class="slide" style="justify-content: center;">
             <p class="overline accent anim">Architecture</p>
-            <h1 class="section-title anim d1" style="font-size: 3vw; margin-bottom: 2.5vw;">Comment LightChurch s'intègre <span class="gradient-text">à l'écosystème CNEF</span></h1>
+            <h1 class="section-title anim d1" style="font-size: 3vw; margin-bottom: 2.5vw;">LightChurch, <span class="gradient-text">le moteur derrière eglises.org</span></h1>
 
             <div class="anim d2" style="width: 100%; max-width: 92vw; position: relative;">
 
@@ -4151,9 +4220,9 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5vw; margin-bottom: 0;">
 
                     <!-- Assoconnect -->
-                    <div style="background: linear-gradient(145deg,#1a1a2e,#16213e); border: 1.5px solid rgba(41,151,255,0.3); border-radius: 1.2vw; padding: 1.2vw 1.5vw; text-align: center; position: relative;">
+                    <div class="cnef-src-box" style="background: linear-gradient(145deg,#1a1a2e,#16213e); border: 1.5px solid rgba(41,151,255,0.3); border-radius: 1.2vw; padding: 1.2vw 1.5vw; text-align: center; position: relative;">
                         <div style="font-size: 1.8vw; margin-bottom: 0.4vw;">🗄️</div>
-                        <div style="font-size: 1.3vw; font-weight: 800; color: #fff; margin-bottom: 0.3vw;">Assoconnect</div>
+                        <div class="cnef-src-title" style="font-size: 1.3vw; font-weight: 800; color: #fff; margin-bottom: 0.3vw;">Assoconnect</div>
                         <div style="font-size: 1vw; color: var(--grey); line-height: 1.4;">BDD centrale CNEF<br>10 000+ fiches organismes</div>
                         <div style="position: absolute; bottom: -1.8vw; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0; z-index: 10;">
                             <div style="width: 2px; height: 1vw; background: rgba(41,151,255,0.5);"></div>
@@ -4164,9 +4233,9 @@
                     </div>
 
                     <!-- lecnef.org -->
-                    <div style="background: linear-gradient(145deg,#1a1a2e,#16213e); border: 1.5px solid rgba(41,151,255,0.3); border-radius: 1.2vw; padding: 1.2vw 1.5vw; text-align: center; position: relative;">
+                    <div class="cnef-src-box" style="background: linear-gradient(145deg,#1a1a2e,#16213e); border: 1.5px solid rgba(41,151,255,0.3); border-radius: 1.2vw; padding: 1.2vw 1.5vw; text-align: center; position: relative;">
                         <div style="font-size: 1.8vw; margin-bottom: 0.4vw;">🌐</div>
-                        <div style="font-size: 1.3vw; font-weight: 800; color: #fff; margin-bottom: 0.3vw;">lecnef.org</div>
+                        <div class="cnef-src-title" style="font-size: 1.3vw; font-weight: 800; color: #fff; margin-bottom: 0.3vw;">lecnef.org</div>
                         <div style="font-size: 1vw; color: var(--grey); line-height: 1.4;">Site principal CNEF<br>Comptes organisations membres</div>
                         <div style="position: absolute; bottom: -1.8vw; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0; z-index: 10;">
                             <div style="width: 2px; height: 1vw; background: rgba(41,151,255,0.5);"></div>
@@ -4177,7 +4246,7 @@
                     </div>
 
                     <!-- eglises.org actuel -->
-                    <div style="background: linear-gradient(145deg,#1a0e0e,#2a1010); border: 1.5px solid rgba(255,107,107,0.3); border-radius: 1.2vw; padding: 1.2vw 1.5vw; text-align: center; position: relative; opacity: 0.75;">
+                    <div class="cnef-old-box" style="background: linear-gradient(145deg,#1a0e0e,#2a1010); border: 1.5px solid rgba(255,107,107,0.3); border-radius: 1.2vw; padding: 1.2vw 1.5vw; text-align: center; position: relative; opacity: 0.75;">
                         <div style="font-size: 1.8vw; margin-bottom: 0.4vw;">⚠️</div>
                         <div style="font-size: 1.3vw; font-weight: 800; color: #FF6B6B; margin-bottom: 0.3vw; text-decoration: line-through;">eglises.org actuel</div>
                         <div style="font-size: 1vw; color: var(--grey); line-height: 1.4;">WordPress 2020<br>Bugs · pas de carte · manuel</div>
@@ -4192,7 +4261,7 @@
 
                 <!-- ═══ CENTRE : LIGHTCHURCH ═══ -->
                 <div style="margin: 2.8vw 15vw 0; background: linear-gradient(145deg, #0A4DA6, #1976D2); border-radius: 1.4vw; padding: 1.4vw 2vw; text-align: center; position: relative; box-shadow: 0 0 3vw rgba(41,151,255,0.25);">
-                    <div style="font-size: 1vw; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12vw; color: rgba(255,255,255,0.6); margin-bottom: 0.3vw;">Hub central</div>
+                    <div style="font-size: 1vw; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12vw; color: rgba(255,255,255,0.6); margin-bottom: 0.3vw;">Moteur central</div>
                     <div style="font-size: 2vw; font-weight: 900; color: #fff; letter-spacing: -0.02em;">⚡ LightChurch</div>
                     <div style="font-size: 1vw; color: rgba(255,255,255,0.65); margin-top: 0.3vw;">Backend Node.js · BDD MySQL · API REST · Auth JWT</div>
 
@@ -4211,15 +4280,16 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5vw; margin-top: 2.8vw; padding: 0 8vw;">
 
                     <!-- eglises.org nouveau -->
-                    <div style="background: linear-gradient(145deg,#0d2a1a,#0f3d20); border: 1.5px solid rgba(48,176,78,0.4); border-radius: 1.2vw; padding: 1.2vw 1.5vw; text-align: center;">
+                    <div class="cnef-out-green" style="background: linear-gradient(145deg,#0d2a1a,#0f3d20); border: 1.5px solid rgba(48,176,78,0.4); border-radius: 1.2vw; padding: 1.2vw 1.5vw; text-align: center;">
                         <div style="font-size: 1.8vw; margin-bottom: 0.4vw;">⛪</div>
                         <div style="font-size: 1.3vw; font-weight: 800; color: #30B04E; margin-bottom: 0.3vw;">eglises.org</div>
+                        <div style="font-size: 0.85vw; color: var(--gold-light); font-style: italic; margin-bottom: 0.3vw;">propulsé par LightChurch</div>
                         <div style="font-size: 1vw; color: var(--grey); line-height: 1.4;">Carte interactive · Recherche par distance<br>2 642 églises · 181 œuvres · Fiches complètes</div>
                         <div style="margin-top: 0.6vw; display: inline-block; background: rgba(48,176,78,0.15); border: 1px solid rgba(48,176,78,0.3); border-radius: 980px; padding: 0.2vw 0.8vw; font-size: 0.9vw; color: #30B04E; font-weight: 600;">✓ Phase 1</div>
                     </div>
 
                     <!-- arpe.org -->
-                    <div style="background: linear-gradient(145deg,#2a1f05,#3d2e08); border: 1.5px solid rgba(191,155,48,0.4); border-radius: 1.2vw; padding: 1.2vw 1.5vw; text-align: center;">
+                    <div class="cnef-out-gold" style="background: linear-gradient(145deg,#2a1f05,#3d2e08); border: 1.5px solid rgba(191,155,48,0.4); border-radius: 1.2vw; padding: 1.2vw 1.5vw; text-align: center;">
                         <div style="font-size: 1.8vw; margin-bottom: 0.4vw;">📚</div>
                         <div style="font-size: 1.3vw; font-weight: 800; color: var(--gold-light); margin-bottom: 0.3vw;">ARPE / EEM.org</div>
                         <div style="font-size: 1vw; color: var(--grey); line-height: 1.4; margin-bottom: 0.4vw;"><strong style="color:rgba(255,255,255,0.5); font-size:0.85vw; text-transform:uppercase; letter-spacing:0.08vw;">5 types :</strong> Ressource · Ministère · Réseau · Formation · Événement</div>
@@ -4270,73 +4340,20 @@
             </div>
         </div>
 
-        <!-- ======== SLIDE CNEF 4 : BUDGET ======== -->
-        <div class="slide">
-            <p class="overline accent anim">Budget</p>
-            <h1 class="section-title anim d1">Estimation <span class="gradient-gold">financière</span></h1>
-            <div class="grid-3 anim d2" style="margin-top: 2vw;">
-                <div class="stat" style="background: linear-gradient(145deg, #0A4DA6, #1976D2);">
-                    <div style="font-size: 1.1vw; font-weight: 600; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.08vw; margin-bottom: 0.6vw;">Phase 1 — eglises.org</div>
-                    <div class="stat-num gradient-text">3 000 €</div>
-                    <div class="stat-lbl">~10 jours · Déploiement rapide</div>
-                </div>
-                <div class="stat" style="background: linear-gradient(145deg, #1B6B35, #2E8B48);">
-                    <div style="font-size: 1.1vw; font-weight: 600; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.08vw; margin-bottom: 0.6vw;">Phases 1 + 2</div>
-                    <div class="stat-num" style="background: linear-gradient(135deg,#30B04E,#5DD47B); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">12 000 €</div>
-                    <div class="stat-lbl">~40 jours · Projet complet</div>
-                </div>
-                <div class="stat" style="background: linear-gradient(145deg, #8B6914, #BF9B30);">
-                    <div style="font-size: 1.1vw; font-weight: 600; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.08vw; margin-bottom: 0.6vw;">Phases 1 + 2 + 3</div>
-                    <div class="stat-num gradient-gold">21 000 €</div>
-                    <div class="stat-lbl">~70 jours · Intégration totale</div>
-                </div>
-            </div>
-            <div class="anim d3" style="margin-top: 2.5vw; padding: 1.4vw 3vw; background: rgba(48,176,78,0.08); border: 1px solid rgba(48,176,78,0.3); border-radius: 1.2vw; text-align: center; max-width: 65vw;">
-                <div style="font-size: 1.8vw; font-weight: 800; color: #30B04E; margin-bottom: 0.4vw;">✅ Budget CNEF disponible : 14 040 €</div>
-                <div style="font-size: 1.3vw; color: var(--grey);">Les Phases 1 + 2 sont entièrement couvertes par les fonds CIS déjà disponibles</div>
-            </div>
-            <p class="anim d4" style="margin-top: 1.2vw; font-size: 1.1vw; color: var(--grey); text-align: center;">
-                Maintenance annuelle : ~5 000 €/an &nbsp;·&nbsp; Hébergement VPS (OVH) : ~360 €/an &nbsp;·&nbsp; Devis détaillé sur demande
-            </p>
-        </div>
-
         <!-- ======== SLIDE CNEF 5 : PROCHAINES ETAPES ======== -->
         <div class="slide">
-            <p class="overline anim" style="color: var(--gold);">Et maintenant ?</p>
-            <h1 class="section-title anim d1">Prochaines <span class="gradient-gold">étapes</span></h1>
-            <div class="anim d2" style="display: flex; flex-direction: column; gap: 1.2vw; margin-top: 2vw; width: 100%; max-width: 70vw;">
-                <div style="display: flex; align-items: center; gap: 1.5vw; padding: 1.3vw 2vw; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1.2vw;">
-                    <div style="width: 3vw; height: 3vw; border-radius: 50%; background: linear-gradient(135deg,#0A4DA6,#2997FF); display:flex; align-items:center; justify-content:center; font-size:1.4vw; font-weight:800; flex-shrink:0;">1</div>
-                    <div>
-                        <div style="font-size: 1.5vw; font-weight: 700; color: var(--text);">Valider la Phase 1 comme priorité immédiate</div>
-                        <div style="font-size: 1.1vw; color: var(--grey); margin-top: 0.2vw;">Remplacer eglises.org — résultat visible rapidement, sans risque</div>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: center; gap: 1.5vw; padding: 1.3vw 2vw; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1.2vw;">
-                    <div style="width: 3vw; height: 3vw; border-radius: 50%; background: linear-gradient(135deg,#1B6B35,#30B04E); display:flex; align-items:center; justify-content:center; font-size:1.4vw; font-weight:800; flex-shrink:0;">2</div>
-                    <div>
-                        <div style="font-size: 1.5vw; font-weight: 700; color: var(--text);">Confirmer le budget Phase 1 + 2 (≈ 12 000 €)</div>
-                        <div style="font-size: 1.1vw; color: var(--grey); margin-top: 0.2vw;">Couvert par les fonds CIS déjà disponibles (14 040 €)</div>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: center; gap: 1.5vw; padding: 1.3vw 2vw; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1.2vw;">
-                    <div style="width: 3vw; height: 3vw; border-radius: 50%; background: linear-gradient(135deg,#BF6A00,#D4A632); display:flex; align-items:center; justify-content:center; font-size:1.4vw; font-weight:800; flex-shrink:0;">3</div>
-                    <div>
-                        <div style="font-size: 1.5vw; font-weight: 700; color: var(--text);">Obtenir la documentation API Assoconnect</div>
-                        <div style="font-size: 1.1vw; color: var(--grey); margin-top: 0.2vw;">Nécessaire pour chiffrer précisément la Phase 3</div>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: center; gap: 1.5vw; padding: 1.3vw 2vw; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1.2vw;">
-                    <div style="width: 3vw; height: 3vw; border-radius: 50%; background: linear-gradient(135deg,#6A1B9A,#9C27B0); display:flex; align-items:center; justify-content:center; font-size:1.4vw; font-weight:800; flex-shrink:0;">4</div>
-                    <div>
-                        <div style="font-size: 1.5vw; font-weight: 700; color: var(--text);">Démarrage Phase 1 — Avril 2026</div>
-                        <div style="font-size: 1.1vw; color: var(--grey); margin-top: 0.2vw;">Livraison estimée : 6 semaines après démarrage</div>
-                    </div>
-                </div>
+            <p class="overline anim" style="color: #30B04E;">Infrastructure</p>
+            <h1 class="section-title anim d1">Ce que LightChurch <span style="background: linear-gradient(135deg, #30B04E, #5DD87A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">coûte à faire tourner</span></h1>
+
+            <div class="anim d2 cnef-cost-box" style="background: linear-gradient(145deg, #0d1f0d, #0f2e14); border: 1.5px solid rgba(48,176,78,0.35); border-radius: 2vw; padding: 3vw 5vw; text-align: center; margin-top: 2.5vw;">
+                <p style="font-size: 1.2vw; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15vw; color: rgba(48,176,78,0.7); margin-bottom: 1vw;">Coût d'exploitation aujourd'hui</p>
+                <div style="font-size: 10vw; font-weight: 900; background: linear-gradient(135deg, #30B04E, #5DD87A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;">12 €</div>
+                <div style="font-size: 2vw; color: var(--grey); margin-top: 0.5vw; letter-spacing: 0.05vw;">par mois</div>
+                <div style="margin: 1.8vw auto; height: 1px; background: rgba(48,176,78,0.2); max-width: 30vw;"></div>
+                <div style="font-size: 2.8vw; font-weight: 800; color: #30B04E;">144 €/an</div>
+                <div style="font-size: 1.2vw; color: var(--grey); margin-top: 0.6vw; line-height: 1.6;">Serveur VPS OVH · Base de données · API · Domaine</div>
+                <div style="margin-top: 1.8vw; display: inline-block; background: rgba(48,176,78,0.12); border: 1px solid rgba(48,176,78,0.3); border-radius: 980px; padding: 0.5vw 1.5vw; font-size: 1.1vw; color: #30B04E; font-weight: 600;">✓ Déjà en production</div>
             </div>
-            <p class="anim d3" style="margin-top: 2vw; font-size: 1.5vw; font-weight: 600; text-align: center;">
-                <span class="gradient-gold">La question n'est pas si cela va se faire — mais avec qui.</span>
-            </p>
         </div>
 
         <!-- ======== SLIDE 15 : FERMETURE ======== -->
@@ -4363,7 +4380,7 @@
                 </div>
             </div>
             <p class="anim d5" style="margin-top: 1.8vw; font-size: 1.3vw; color: var(--grey); text-align: center;">
-                contact@lightchurch.fr
+                stephane.job@protonmail.com
             </p>
             <p class="anim d5" style="margin-top: 1vw; font-size: 1.5vw; text-align: center; font-weight: 500; color: var(--text);">
                 Ensemble, rendons chaque église visible et chaque événement accessible.
